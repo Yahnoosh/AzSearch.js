@@ -1,0 +1,32 @@
+{
+  "name": "azuresearchreactsamples",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start_server": "http-server",
+    "tscompile": "tsc",
+    "devPack": "webpack -d",
+    "prodPack": "webpack -p"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "azsearchstore": "0.0.12",
+    "object-assign": "^4.1.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-redux": "^5.0.3",
+    "redux": "^3.6.0",
+    "react-autosuggest": "9.0.0"
+  },
+  "devDependencies": {
+    "@types/object-assign": "^4.0.30",
+    "@types/react-autosuggest": "^8.0.0",
+    "@types/react-dom": "^0.14.23",
+    "@types/react-redux": "^4.4.37",
+    "awesome-typescript-loader": "^3.1.2",
+    "typescript": "^2.2.2",
+    "webpack": "^2.2.3"
+  }
+}
