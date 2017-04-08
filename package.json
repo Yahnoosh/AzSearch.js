@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
     "start_server": "http-server",
     "tscompile": "tsc",
     "devPack": "webpack -d",
-    "prodPack": "webpack -p"
+    "prodPack": "webpack -p",
+    "compile": "npm run lint && npm run tscompile"
   },
   "author": "",
   "license": "MIT",
@@ -26,6 +28,7 @@
     "@types/react-dom": "^0.14.23",
     "@types/react-redux": "^4.4.37",
     "awesome-typescript-loader": "^3.1.2",
+    "ts-lint": "4.5.1",
     "typescript": "^2.2.2",
     "webpack": "^2.2.3"
   }

@@ -2,27 +2,26 @@ import * as React from "react";
 import { PropsType } from "../containers/ResultsContainer";
 import * as objAssign from "object-assign";
 
-
-var css = {
+let css = {
     "maxWidth": "200px",
     "maxHeight": "200px"
-}
+};
 
-var containerCss = {
+let containerCss = {
     "width": "200px",
     "height": "200px"
-}
+};
 
 export type State = {};
 
-class Results extends React.Component<PropsType, State>{
+class Results extends React.Component<PropsType, State> {
 
     render() {
         const { results } = this.props;
 
         const renderedResults = results.map((result: any, index: number) => {
             let summary = result.summary;
-            result.summary = summary.length < 200 ? summary :  result.summary.substring(0,200) + "...";
+            result.summary = summary.length < 200 ? summary :  result.summary.substring(0, 200) + "...";
             return (
                 <div className={"searchResults__result col-xs-12 col-sm-12"}  key={index} >
                     <div className="cols-xs-3 col-sm-3">

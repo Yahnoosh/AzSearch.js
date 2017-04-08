@@ -4,32 +4,32 @@ import { PropsType } from "../containers/SearchBoxContainer";
 import * as objAssign from "object-assign";
 
 let defaultCss = {
-    searchBox__container:            'searchBox__container',
-    searchBox__containerOpen:        'searchBox__container--open',
-    searchBox__input:                'searchBox__input',
-    searchBox__suggestionsContainer: 'searchBox__suggestions-container',
-    searchBox__suggestionsList:      'searchBox__suggestions-list',
-    searchBox__suggestion:           'searchBox__suggestion',
-    searchBox__suggestionFocused:    'searchBox__suggestion--focused',
-    searchBox__sectionContainer:     'searchBox__section-container',
-    searchBox__sectionTitle:         'searchBox__section-title',  
-    searchBox__inputContainer:       'searchBox__input-container',
-    searchBox__buttonContainer:      'searchBox__button-container',
-    searchBox__button:               'searchBox__button',
-    searchBox__buttonIcon:           'searchBox__button-icon'
+    searchBox__container:            "searchBox__container",
+    searchBox__containerOpen:        "searchBox__container--open",
+    searchBox__input:                "searchBox__input",
+    searchBox__suggestionsContainer: "searchBox__suggestions-container",
+    searchBox__suggestionsList:      "searchBox__suggestions-list",
+    searchBox__suggestion:           "searchBox__suggestion",
+    searchBox__suggestionFocused:    "searchBox__suggestion--focused",
+    searchBox__sectionContainer:     "searchBox__section-container",
+    searchBox__sectionTitle:         "searchBox__section-title",
+    searchBox__inputContainer:       "searchBox__input-container",
+    searchBox__buttonContainer:      "searchBox__button-container",
+    searchBox__button:               "searchBox__button",
+    searchBox__buttonIcon:           "searchBox__button-icon"
 };
 
-var searchBoxCssClasses = {
-        searchBox__input: 'searchBox__input form-control',
-        searchBox__inputContainer: 'searchBox__input-container input-group',
-        searchBox__buttonContainer: 'input-group-btn',
-        searchBox__button: 'btn btn-default',
-        searchBox__buttonIcon: 'glyphicon glyphicon-search'
+let searchBoxCssClasses = {
+        searchBox__input: "searchBox__input form-control",
+        searchBox__inputContainer: "searchBox__input-container input-group",
+        searchBox__buttonContainer: "input-group-btn",
+        searchBox__button: "btn btn-default",
+        searchBox__buttonIcon: "glyphicon glyphicon-search"
     };
 
 const css = objAssign(defaultCss, searchBoxCssClasses);
 
-var theme = {
+let theme = {
             container:            css.searchBox__container,
             containerOpen:        css.searchBox__containerOpen,
             input:                css.searchBox__input,
@@ -38,20 +38,20 @@ var theme = {
             suggestion:           css.searchBox__suggestion,
             suggestionFocused:    css.searchBox__suggestionFocused,
             sectionContainer:     css.searchBox__sectionContainer,
-            sectionTitle:         css.searchBox__sectionTitle            
+            sectionTitle:         css.searchBox__sectionTitle
         };
 
 export type State = {};
 
-class SearchBox extends React.Component<PropsType, State>{
-    onInputChange(changeEvent: React.ChangeEvent<HTMLInputElement>, newValue: any){
-        if(newValue.method === "up" || newValue.method === "down"){
+class SearchBox extends React.Component<PropsType, State> {
+    onInputChange(changeEvent: React.ChangeEvent<HTMLInputElement>, newValue: any) {
+        if (newValue.method === "up" || newValue.method === "down") {
             return;
         }
         const input = newValue.newValue;
         // remove highlight tags for the stored input
         this.props.onInputChange(input);
-        if(newValue.method === "click" || newValue.method === "enter") {
+        if (newValue.method === "click" || newValue.method === "enter") {
             this.props.clearFacetsAndSearch();
         }
     }
@@ -61,9 +61,9 @@ class SearchBox extends React.Component<PropsType, State>{
         }
     }
     getSuggestionValue(suggestion: any) {
-        return suggestion.searchText.replace(this.props.preTag, "").replace(this.props.postTag, ""); 
+        return suggestion.searchText.replace(this.props.preTag, "").replace(this.props.postTag, "");
     }
-    renderInputComponent(inputProps: any){
+    renderInputComponent(inputProps: any) {
         return (
                 <div className={css.searchBox__inputContainer}>
                     <input {...inputProps} type="text"></input>
@@ -72,13 +72,13 @@ class SearchBox extends React.Component<PropsType, State>{
                     </span>
                 </div>
 
-        ); 
+        );
     }
     renderSuggestion(suggestion: any) {
-        return <div dangerouslySetInnerHTML={{__html: suggestion.searchText}} ></div>
+        return <div dangerouslySetInnerHTML={{__html: suggestion.searchText}} ></div>;
     }
     render() {
-        const { input, onInputChange, suggestions, suggest, clearSuggestions, postTag, preTag, clearFacetsAndSearch }= this.props
+        const { input, onInputChange, suggestions, suggest, clearSuggestions, postTag, preTag, clearFacetsAndSearch } = this.props;
 
         // input props
 

@@ -1,12 +1,12 @@
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import * as React from "react";
 import { Store, inputActions, suggestionsActions, asyncActions, facetsActions } from "azsearchstore";
 import * as redux from "redux";
 import SearchBox from "../components/SearchBox";
 
-function getReturnType<RT>(expression: (...params: any[])=>RT): RT {
+function getReturnType<RT>(expression: (...params: any[]) => RT): RT {
     return {} as RT;
-}          
+}
 
 const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
     return {
@@ -23,8 +23,8 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
             dispatch(facetsActions.clearFacetsSelections());
             dispatch(asyncActions.fetchSearchResults);
         }
-    }
-}
+    };
+};
 
 function mapStateToProps(state: Store.SearchState) {
     return {
@@ -32,7 +32,7 @@ function mapStateToProps(state: Store.SearchState) {
         preTag: state.parameters.suggestionsParameters.highlightPreTag,
         postTag: state.parameters.suggestionsParameters.highlightPostTag,
         suggestions: state.suggestions.suggestions
-    }
+    };
 }
 
 export const stateProps = getReturnType(mapStateToProps);

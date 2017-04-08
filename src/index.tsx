@@ -1,10 +1,10 @@
-import { connect, Provider } from 'react-redux';
+import { connect, Provider } from "react-redux";
 import * as React from "react";
 import { Store, AzSearchStore } from "azsearchstore";
 import * as redux from "redux";
 import SearchBoxContainer from "./containers/SearchBoxContainer";
 import ResultsContainer from "./containers/ResultsContainer";
-import FacetContainer from "./containers/FacetContainer";
+import CheckboxFacetContainer from "./containers/CheckboxFacetContainer";
 import { render } from "react-dom";
 
 const store = new AzSearchStore();
@@ -39,21 +39,21 @@ render(
 
 render(
     <Provider store={store.store}>
-        <FacetContainer facet={"groupName"} />
+        <CheckboxFacetContainer facet={"groupName"} />
     </Provider>,
     document.getElementById("groupNameFacet")
 );
 
 render(
     <Provider store={store.store}>
-        <FacetContainer facet={"language"} />
+        <CheckboxFacetContainer facet={"language"} />
     </Provider>,
     document.getElementById("languageFacet")
 );
 
 render(
     <Provider store={store.store}>
-        <FacetContainer facet={"type"} />
+        <CheckboxFacetContainer facet={"type"} />
     </Provider>,
     document.getElementById("typeFacet")
 );

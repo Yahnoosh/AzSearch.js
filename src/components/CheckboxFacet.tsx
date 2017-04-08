@@ -1,9 +1,9 @@
 import * as React from "react";
-import { PropsType } from "../containers/FacetContainer";
+import { PropsType } from "../containers/CheckboxFacetContainer";
 import * as objAssign from "object-assign";
 import { Store } from "azsearchstore";
 
-var facetCssClasses = {
+let facetCssClasses = {
     searchFacets__checkboxFacet: "panel-body",
     searchFacets__rangeFacet: "panel-body",
     searchFacets__facetHeaderContainer: "panel-heading",
@@ -17,41 +17,41 @@ var facetCssClasses = {
     searchFacets__facetControlRangeLabel: "list-group-item center-block text-center",
 };
 
-var defaultCss = {
-    searchFacets__rangeFacet: 'searchResults__rangeFacet',
-    searchFacets__checkboxFacet: 'searchResults__checkboxFacet',
-    searchFacets__facetHeaderContainer: 'searchResults__facetHeader-container',
-    searchFacets__facetHeader: 'searchResults__facetHeader',
-    searchFacets__facetHeaderLink: 'searchResults__facetHeader-link',
-    searchFacets__facetHeaderIconCollapsed: 'searchResults__facetHeader-icon--collapsed',
-    searchFacets__facetHeaderIconOpen: 'searchResults__facetHeader-icon--open',
-    searchFacets__facetControlContainer: 'searchResults__facetControl-container',
-    searchFacets__facetControlList: 'searchResults__facetControl-list',
-    searchFacets__facetControl: 'searchResults__facetControl',
-    searchFacets__facetControlCheckboxWrapper: 'searchResults__facetControl-checkbox-wrapper',
-    searchFacets__facetControlCheckboxChecked: 'searchResults__facetControl-checkbox--checked',
-    searchFacets__facetControlCheckboxCheckedHover: 'searchResults__facetControl-checkbox--checkedHover',
-    searchFacets__facetControlCheckboxUnchecked: 'searchResults__facetControl-checkbox--unchecked',
-    searchFacets__facetControlCheckboxUncheckedHover: 'searchResults__facetControl-checkbox--uncheckedHover',
-    searchFacets__facetControlCheckbox: 'searchResults__facetControl-checkbox',
-    searchFacets__facetControlRangeLabel: 'searchResults__facetControl-rangeLabel',
-    searchFacets__facetControlRangeLabelMin: 'searchResults__facetControl-rangeLabelMin',
-    searchFacets__facetControlRangeLabelMax: 'searchResults__facetControl-rangeLabelMax',
-    searchFacets__facetControlRangeLabelRange: 'searchResults__facetControl-rangeLabelRange'
+let defaultCss = {
+    searchFacets__rangeFacet: "searchResults__rangeFacet",
+    searchFacets__checkboxFacet: "searchResults__checkboxFacet",
+    searchFacets__facetHeaderContainer: "searchResults__facetHeader-container",
+    searchFacets__facetHeader: "searchResults__facetHeader",
+    searchFacets__facetHeaderLink: "searchResults__facetHeader-link",
+    searchFacets__facetHeaderIconCollapsed: "searchResults__facetHeader-icon--collapsed",
+    searchFacets__facetHeaderIconOpen: "searchResults__facetHeader-icon--open",
+    searchFacets__facetControlContainer: "searchResults__facetControl-container",
+    searchFacets__facetControlList: "searchResults__facetControl-list",
+    searchFacets__facetControl: "searchResults__facetControl",
+    searchFacets__facetControlCheckboxWrapper: "searchResults__facetControl-checkbox-wrapper",
+    searchFacets__facetControlCheckboxChecked: "searchResults__facetControl-checkbox--checked",
+    searchFacets__facetControlCheckboxCheckedHover: "searchResults__facetControl-checkbox--checkedHover",
+    searchFacets__facetControlCheckboxUnchecked: "searchResults__facetControl-checkbox--unchecked",
+    searchFacets__facetControlCheckboxUncheckedHover: "searchResults__facetControl-checkbox--uncheckedHover",
+    searchFacets__facetControlCheckbox: "searchResults__facetControl-checkbox",
+    searchFacets__facetControlRangeLabel: "searchResults__facetControl-rangeLabel",
+    searchFacets__facetControlRangeLabelMin: "searchResults__facetControl-rangeLabelMin",
+    searchFacets__facetControlRangeLabelMax: "searchResults__facetControl-rangeLabelMax",
+    searchFacets__facetControlRangeLabelRange: "searchResults__facetControl-rangeLabelRange"
 };
 const cssClasses = objAssign(defaultCss, facetCssClasses);
 
 
 export type State = {};
 
-class CheckboxFacet extends React.Component<PropsType, State>{
+class CheckboxFacet extends React.Component<PropsType, State> {
     render() {
         const facet = this.props.facet as Store.CheckboxFacet;
         let toggleFacet = this.props.toggleFacet;
         // input props
 
         if (!facet || Object.keys(facet.values).length < 1) {
-            return <div></div>
+            return <div></div>;
         }
 
         let checkboxes = Object.keys(facet.values).map((valueKey: string, index: number) => {
@@ -64,7 +64,7 @@ class CheckboxFacet extends React.Component<PropsType, State>{
                                         </label>
                     </div>
                 </li>
-            )
+            );
         });
 
 
