@@ -7,11 +7,6 @@ let css = {
     "maxHeight": "200px"
 };
 
-let containerCss = {
-    "width": "200px",
-    "height": "200px"
-};
-
 export type State = {};
 
 class Results extends React.Component<PropsType, State> {
@@ -24,10 +19,10 @@ class Results extends React.Component<PropsType, State> {
             result.summary = summary.length < 200 ? summary :  result.summary.substring(0, 200) + "...";
             return (
                 <div className={"searchResults__result col-xs-12 col-sm-12"}  key={index} >
-                    <div className="cols-xs-3 col-sm-3">
+                    <div className="col-xs-12 col-sm-5 col-md-3 result_img">
                         <img style={css} className="img-responsive" src={result.previewImage} alt="image not found" />
                     </div>
-                    <div className={"col-xs-6 col-sm-6"}>
+                    <div className={"col-xs-12 col-sm-7 col-md-9"}>
                         <a href={`https://channel9.msdn.com${result.groupUrl}`}>
                            {result.groupName}
                         </a>

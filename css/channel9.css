@@ -6,6 +6,15 @@
     word-wrap: break-word;
     vertical-align: bottom;
     border:0;
+	padding-left: 0;
+}
+
+.results_section  {
+	padding: 20px;
+}
+
+.result_img {
+	padding: 0;
 }
 
 .resultLabel {
@@ -19,6 +28,7 @@
 	left: 0;
 	right: 0;
 	margin: auto;
+	margin-left: 0;
 	max-width: 70%;
 	max-height: 70%;
 	width: auto;
@@ -26,3 +36,31 @@
   vertical-align: bottom;
 }
 
+.checkboxLabel {
+	width: 100%;	
+}
+
+.list-group-item {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.checkbox {
+	width: 100%;
+}
+
+@media only screen and (max-width: 500px) {
+	.pagelabel {
+		font-size: 1em;
+	}
+}
+
+@media only screen and (max-width: 420px) {
+	.pagelabel {
+		display: none;
+		font-size: 1em;
+	}
+	#searchBox {
+		margin-left: 2em;
+	}
+}

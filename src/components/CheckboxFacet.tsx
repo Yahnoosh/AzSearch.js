@@ -59,8 +59,8 @@ class CheckboxFacet extends React.Component<PropsType, State> {
             return (
                 <li key={index + 1} className={cssClasses.searchFacets__facetControl}>
                     <div className={cssClasses.searchFacets__facetControlCheckboxWrapper}>
-                        <label>
-                            <input type="checkbox" className={cssClasses.searchFacets__facetControlCheckbox} onChange={toggleFacet.bind(null, valueKey)} checked={value.selected} /> {value.value}({value.count})
+                        <label className="checkboxLabel">
+                            <input type="checkbox" className={cssClasses.searchFacets__facetControlCheckbox} onChange={toggleFacet.bind(null, valueKey)} checked={value.selected} /> {value.value + " "}({value.count})
                                         </label>
                     </div>
                 </li>

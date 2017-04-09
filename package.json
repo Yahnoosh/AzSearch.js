@@ -7,8 +7,9 @@
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
     "start_server": "http-server",
     "tscompile": "tsc",
-    "devPack": "webpack -d",
-    "prodPack": "webpack -p",
+    "devbuild": "npm run compile && npm run devpack",
+    "devpack": "webpack -d",
+    "prodpack": "webpack -p",
     "compile": "npm run lint && npm run tscompile"
   },
   "author": "",
