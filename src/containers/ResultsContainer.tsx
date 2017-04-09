@@ -1,3 +1,5 @@
+/// <reference path="../types/hogan.js.d.ts" />
+import { Template } from "hogan.js";
 import { connect } from "react-redux";
 import * as React from "react";
 import { Store, inputActions, suggestionsActions, asyncActions, facetsActions } from "azsearchstore";
@@ -8,13 +10,18 @@ function getReturnType<RT>(expression: (...params: any[]) => RT): RT {
     return {} as RT;
 }
 
+export interface OwnProps {
+    template: Template;
+}
+
 const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
     return {};
 };
 
-const mapStateToProps = (state: Store.SearchState) => {
+const mapStateToProps = (state: Store.SearchState, ownProps: OwnProps) => {
     return {
-        results: state.results.results
+        results: state.results.results,
+        template: ownProps.template
     };
 };
 
@@ -24,6 +31,4 @@ export const dispatchProps = getReturnType(mapDispatchToProps);
 export type PropsType = typeof stateProps & typeof dispatchProps;
 type State = {};
 
-const ResultsContainer = connect(mapStateToProps, mapDispatchToProps)(Results);
-
-export default ResultsContainer;
+export const ResultsContainer = connect(mapStateToProps, mapDispatchToProps)(Results);

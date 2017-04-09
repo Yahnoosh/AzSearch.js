@@ -29,6 +29,7 @@
     "@types/react-dom": "^0.14.23",
     "@types/react-redux": "^4.4.37",
     "awesome-typescript-loader": "^3.1.2",
+    "hogan.js": "3.0.2",
     "ts-lint": "4.5.1",
     "typescript": "^2.2.2",
     "webpack": "^2.2.3"

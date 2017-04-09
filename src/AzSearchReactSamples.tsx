@@ -1,11 +1,13 @@
+/// <reference path="./types/hogan.js.d.ts" />
+
 import { Provider } from "react-redux";
 import { Store, AzSearchStore } from "azsearchstore";
 import { render } from "react-dom";
+import { compile } from "hogan.js";
 import * as React from "react";
-import SearchBoxContainer from "./containers/SearchBoxContainer";
-import ResultsContainer from "./containers/ResultsContainer";
-import { CheckboxFacetContainer, OwnProps }from "./containers/CheckboxFacetContainer";
-
+import { SearchBoxContainer, OwnProps as BoxOwnProps} from "./containers/SearchBoxContainer";
+import { ResultsContainer, OwnProps as ResultsOwnProps }from "./containers/ResultsContainer";
+import { CheckboxFacetContainer, OwnProps as CheckboxOwnProps } from "./containers/CheckboxFacetContainer";
 import SearchBox from "./components/SearchBox";
 import CheckboxFacet from "./components/CheckboxFacet";
 import Results from "./components/Results";
@@ -21,11 +23,12 @@ class Automagic {
         this.store.setConfig(config);
     }
 
-    public addSearchBox(htmlId: string, parameters?: Store.SuggestionsParametersUpdate) {
+    public addSearchBox(htmlId: string, parameters?: Store.SuggestionsParametersUpdate, mustacheTemplate?: string) {
         this.store.updateSuggestionsParameters(parameters);
+        let template = mustacheTemplate ? compile(mustacheTemplate) : null;
         render(
             <Provider store={this.store.store}>
-                <SearchBoxContainer />
+                <SearchBoxContainer template={template}/>
             </Provider>,
             document.getElementById(htmlId)
         );
@@ -41,10 +44,11 @@ class Automagic {
         );
     }
 
-    public addResults(htmlId: string, parameters?: Store.SearchParametersUpdate) {
+    public addResults(htmlId: string, parameters?: Store.SearchParametersUpdate, mustacheTemplate?: string) {
+        let template = mustacheTemplate ? compile(mustacheTemplate) : null;
         render(
             <Provider store={this.store.store}>
-                <ResultsContainer />
+                <ResultsContainer template={template} />
             </Provider>,
             document.getElementById(htmlId)
         );

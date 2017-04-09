@@ -10,10 +10,43 @@ let suggestionsProcessor = (suggestions: {}[]) => {
     });
 };
 
-automagic.store.setSuggestionsProcessor(suggestionsProcessor);
+let resultsProcessor = (results: {}[]) => {
+    return results.map((result: any) => {
+        let summary = result.summary;
+        result.summary = summary.length < 200 ? summary : result.summary.substring(0, 200) + "...";
+        return result;
+    });
+};
 
-automagic.addSearchBox("searchBox", {highlightPreTag: "<b>", highlightPostTag: "</b>", suggesterName: "sg"});
-automagic.addResults("results");
+let resultTemplate =
+    `<div class="col-xs-12 col-sm-5 col-md-3 result_img">
+        <img class="img-responsive result_img" src={{previewImage}} alt="image not found" />
+    </div>
+    <div class="col-xs-12 col-sm-7 col-md-9">
+        <a href="https://channel9.msdn.com{{groupUrl}}">
+            {{result.groupName}}
+        </a>
+        <a href="https://channel9.msdn.com{{url}}">
+            <h4>{{title}}</h4>
+        </a>
+        <div class="resultDescription">
+            {{{summary}}}
+        </div>
+        <div>
+            views: {{totalViewCount}}
+        </div>
+    </div>`;
+let suggestionsTemplate = "{{{searchText}}}";
+automagic.store.setSuggestionsProcessor(suggestionsProcessor);
+automagic.store.setResultsProcessor(resultsProcessor);
+automagic.addSearchBox("searchBox",
+    {
+        highlightPreTag: "<b>",
+        highlightPostTag: "</b>",
+        suggesterName: "sg"
+    },
+    suggestionsTemplate);
+automagic.addResults("results", null, resultTemplate);
 automagic.addCheckboxFacet("groupNameFacet", "groupName", false);
 automagic.addCheckboxFacet("languageFacet", "language", false);
 automagic.addCheckboxFacet("typeFacet", "type", false);

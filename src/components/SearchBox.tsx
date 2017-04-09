@@ -4,42 +4,42 @@ import { PropsType } from "../containers/SearchBoxContainer";
 import * as objAssign from "object-assign";
 
 let defaultCss = {
-    searchBox__container:            "searchBox__container",
-    searchBox__containerOpen:        "searchBox__container--open",
-    searchBox__input:                "searchBox__input",
+    searchBox__container: "searchBox__container",
+    searchBox__containerOpen: "searchBox__container--open",
+    searchBox__input: "searchBox__input",
     searchBox__suggestionsContainer: "searchBox__suggestions-container",
-    searchBox__suggestionsList:      "searchBox__suggestions-list",
-    searchBox__suggestion:           "searchBox__suggestion",
-    searchBox__suggestionFocused:    "searchBox__suggestion--focused",
-    searchBox__sectionContainer:     "searchBox__section-container",
-    searchBox__sectionTitle:         "searchBox__section-title",
-    searchBox__inputContainer:       "searchBox__input-container",
-    searchBox__buttonContainer:      "searchBox__button-container",
-    searchBox__button:               "searchBox__button",
-    searchBox__buttonIcon:           "searchBox__button-icon"
+    searchBox__suggestionsList: "searchBox__suggestions-list",
+    searchBox__suggestion: "searchBox__suggestion",
+    searchBox__suggestionFocused: "searchBox__suggestion--focused",
+    searchBox__sectionContainer: "searchBox__section-container",
+    searchBox__sectionTitle: "searchBox__section-title",
+    searchBox__inputContainer: "searchBox__input-container",
+    searchBox__buttonContainer: "searchBox__button-container",
+    searchBox__button: "searchBox__button",
+    searchBox__buttonIcon: "searchBox__button-icon"
 };
 
 let searchBoxCssClasses = {
-        searchBox__input: "searchBox__input form-control",
-        searchBox__inputContainer: "searchBox__input-container input-group",
-        searchBox__buttonContainer: "input-group-btn",
-        searchBox__button: "btn btn-default",
-        searchBox__buttonIcon: "glyphicon glyphicon-search"
-    };
+    searchBox__input: "searchBox__input form-control",
+    searchBox__inputContainer: "searchBox__input-container input-group",
+    searchBox__buttonContainer: "input-group-btn",
+    searchBox__button: "btn btn-default",
+    searchBox__buttonIcon: "glyphicon glyphicon-search"
+};
 
 const css = objAssign(defaultCss, searchBoxCssClasses);
 
 let theme = {
-            container:            css.searchBox__container,
-            containerOpen:        css.searchBox__containerOpen,
-            input:                css.searchBox__input,
-            suggestionsContainer: css.searchBox__suggestionsContainer,
-            suggestionsList:      css.searchBox__suggestionsList,
-            suggestion:           css.searchBox__suggestion,
-            suggestionFocused:    css.searchBox__suggestionFocused,
-            sectionContainer:     css.searchBox__sectionContainer,
-            sectionTitle:         css.searchBox__sectionTitle
-        };
+    container: css.searchBox__container,
+    containerOpen: css.searchBox__containerOpen,
+    input: css.searchBox__input,
+    suggestionsContainer: css.searchBox__suggestionsContainer,
+    suggestionsList: css.searchBox__suggestionsList,
+    suggestion: css.searchBox__suggestion,
+    suggestionFocused: css.searchBox__suggestionFocused,
+    sectionContainer: css.searchBox__sectionContainer,
+    sectionTitle: css.searchBox__sectionTitle
+};
 
 export type State = {};
 
@@ -56,7 +56,7 @@ class SearchBox extends React.Component<PropsType, State> {
         }
     }
     handleKeyDown(evt: any) {
-        if (evt.key === "Enter" ) {
+        if (evt.key === "Enter") {
             return this.props.clearFacetsAndSearch();
         }
     }
@@ -65,23 +65,39 @@ class SearchBox extends React.Component<PropsType, State> {
     }
     renderInputComponent(inputProps: any) {
         return (
-                <div className={css.searchBox__inputContainer}>
-                    <input {...inputProps} type="text"></input>
-                    <span className={css.searchBox__buttonContainer}>
-                        <button className={css.searchBox__button} type="button" onClick={this.props.clearFacetsAndSearch}><span className={css.searchBox__buttonIcon}></span>&nbsp;</button>
-                    </span>
-                </div>
+            <div className={css.searchBox__inputContainer}>
+                <input {...inputProps} type="text"></input>
+                <span className={css.searchBox__buttonContainer}>
+                    <button className={css.searchBox__button} type="button" onClick={this.props.clearFacetsAndSearch}><span className={css.searchBox__buttonIcon}></span>&nbsp;</button>
+                </span>
+            </div>
 
         );
     }
     renderSuggestion(suggestion: any) {
-        return <div dangerouslySetInnerHTML={{__html: suggestion.searchText}} ></div>;
+        let template = this.props.template;
+        let html = template ? template.render(suggestion) : null;
+        if (html) {
+            return (
+                <div dangerouslySetInnerHTML={{ __html: html }} />
+            );
+        }
+        else {
+            return (
+                <div>
+                    <pre>
+                        <code>
+                            {JSON.stringify(suggestion, null, 4)}
+                        </code>
+                    </pre>
+                </div>
+            );
+        }
     }
     render() {
-        const { input, onInputChange, suggestions, suggest, clearSuggestions, postTag, preTag, clearFacetsAndSearch } = this.props;
+        const { input, onInputChange, suggestions, suggest, clearSuggestions, postTag, preTag, clearFacetsAndSearch, template } = this.props;
 
         // input props
-
         const inputProps = {
             placeholder: "Search...",
             value: input,
