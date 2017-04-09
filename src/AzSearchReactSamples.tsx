@@ -23,32 +23,32 @@ class Automagic {
         this.store.setConfig(config);
     }
 
-    public addSearchBox(htmlId: string, parameters?: Store.SuggestionsParametersUpdate, mustacheTemplate?: string) {
+    public addSearchBox(htmlId: string, parameters?: Store.SuggestionsParametersUpdate, mustacheTemplate?: string, cssClasses?: { [key: string]: string; } ) {
         this.store.updateSuggestionsParameters(parameters);
         let template = mustacheTemplate ? compile(mustacheTemplate) : null;
         render(
             <Provider store={this.store.store}>
-                <SearchBoxContainer template={template}/>
+                <SearchBoxContainer template={template} css={cssClasses}/>
             </Provider>,
             document.getElementById(htmlId)
         );
     }
 
-    public addCheckboxFacet(htmlId: string, fieldName: string, isNumeric: boolean) {
+    public addCheckboxFacet(htmlId: string, fieldName: string, isNumeric: boolean, cssClasses?: { [key: string]: string; }) {
         this.store.addCheckboxFacet(fieldName, isNumeric);
         render(
             <Provider store={this.store.store}>
-                <CheckboxFacetContainer facet={fieldName} />
+                <CheckboxFacetContainer facet={fieldName} css={cssClasses}/>
             </Provider>,
             document.getElementById(htmlId)
         );
     }
 
-    public addResults(htmlId: string, parameters?: Store.SearchParametersUpdate, mustacheTemplate?: string) {
+    public addResults(htmlId: string, parameters?: Store.SearchParametersUpdate, mustacheTemplate?: string, cssClasses?: { [key: string]: string; }) {
         let template = mustacheTemplate ? compile(mustacheTemplate) : null;
         render(
             <Provider store={this.store.store}>
-                <ResultsContainer template={template} />
+                <ResultsContainer template={template} css={cssClasses}/>
             </Provider>,
             document.getElementById(htmlId)
         );

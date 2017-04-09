@@ -23,6 +23,11 @@ body {
   padding-right: 0px;
 }
 
+#searchBox {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
 .searchBox__input-container {
   margin-top: .5em;
 }
@@ -236,4 +241,39 @@ a.searchResults__facetHeader-link {
 .rangeLabelWrapper {
     margin-right: auto;
     margin-left: auto;
+}
+
+.results_section  {
+	padding: 20px;
+}
+
+
+.checkboxLabel {
+	width: 100%;	
+}
+
+.list-group-item {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.checkbox {
+	width: 100%;
+}
+
+
+@media only screen and (max-width: 500px) {
+	.pagelabel {
+		font-size: 1em;
+	}
+}
+
+@media only screen and (max-width: 420px) {
+	.pagelabel {
+		display: none;
+		font-size: 1em;
+	}
+	#searchBox {
+		margin-left: 2em;
+	}
 }

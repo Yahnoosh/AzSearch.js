@@ -10,6 +10,7 @@ function getReturnType<RT>(expression: (...params: any[]) => RT): RT {
 
 export interface OwnProps {
     facet: string;
+    css: { [key: string]: string; };
 }
 
 const mapDispatchToProps = (dispatch: redux.Dispatch<any>, ownProps: OwnProps) => {
@@ -24,6 +25,7 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>, ownProps: OwnProps) =
 function mapStateToProps(state: Store.SearchState, ownProps: OwnProps) {
     return {
         facet: state.facets.facets[ownProps.facet],
+        css: ownProps.css
     };
 };
 

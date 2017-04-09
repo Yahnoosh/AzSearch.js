@@ -12,6 +12,7 @@ function getReturnType<RT>(expression: (...params: any[]) => RT): RT {
 
 export interface OwnProps {
     template: Template;
+    css: { [key: string]: string; };
 }
 
 const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
@@ -21,7 +22,8 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
 const mapStateToProps = (state: Store.SearchState, ownProps: OwnProps) => {
     return {
         results: state.results.results,
-        template: ownProps.template
+        template: ownProps.template,
+        css: ownProps.css
     };
 };
 

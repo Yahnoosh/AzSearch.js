@@ -2,44 +2,7 @@ import * as AutoSuggest from "react-autosuggest";
 import * as React from "react";
 import { PropsType } from "../containers/SearchBoxContainer";
 import * as objAssign from "object-assign";
-
-let defaultCss = {
-    searchBox__container: "searchBox__container",
-    searchBox__containerOpen: "searchBox__container--open",
-    searchBox__input: "searchBox__input",
-    searchBox__suggestionsContainer: "searchBox__suggestions-container",
-    searchBox__suggestionsList: "searchBox__suggestions-list",
-    searchBox__suggestion: "searchBox__suggestion",
-    searchBox__suggestionFocused: "searchBox__suggestion--focused",
-    searchBox__sectionContainer: "searchBox__section-container",
-    searchBox__sectionTitle: "searchBox__section-title",
-    searchBox__inputContainer: "searchBox__input-container",
-    searchBox__buttonContainer: "searchBox__button-container",
-    searchBox__button: "searchBox__button",
-    searchBox__buttonIcon: "searchBox__button-icon"
-};
-
-let searchBoxCssClasses = {
-    searchBox__input: "searchBox__input form-control",
-    searchBox__inputContainer: "searchBox__input-container input-group",
-    searchBox__buttonContainer: "input-group-btn",
-    searchBox__button: "btn btn-default",
-    searchBox__buttonIcon: "glyphicon glyphicon-search"
-};
-
-const css = objAssign(defaultCss, searchBoxCssClasses);
-
-let theme = {
-    container: css.searchBox__container,
-    containerOpen: css.searchBox__containerOpen,
-    input: css.searchBox__input,
-    suggestionsContainer: css.searchBox__suggestionsContainer,
-    suggestionsList: css.searchBox__suggestionsList,
-    suggestion: css.searchBox__suggestion,
-    suggestionFocused: css.searchBox__suggestionFocused,
-    sectionContainer: css.searchBox__sectionContainer,
-    sectionTitle: css.searchBox__sectionTitle
-};
+import { defaultCss } from "../utils/css";
 
 export type State = {};
 
@@ -64,6 +27,7 @@ class SearchBox extends React.Component<PropsType, State> {
         return suggestion.searchText.replace(this.props.preTag, "").replace(this.props.postTag, "");
     }
     renderInputComponent(inputProps: any) {
+        let css = objAssign({}, defaultCss, this.props.css);
         return (
             <div className={css.searchBox__inputContainer}>
                 <input {...inputProps} type="text"></input>
@@ -96,6 +60,20 @@ class SearchBox extends React.Component<PropsType, State> {
     }
     render() {
         const { input, onInputChange, suggestions, suggest, clearSuggestions, postTag, preTag, clearFacetsAndSearch, template } = this.props;
+
+        let css = objAssign({}, defaultCss, this.props.css);
+
+        let theme = {
+            container: css.searchBox__container,
+            containerOpen: css.searchBox__containerOpen,
+            input: css.searchBox__input,
+            suggestionsContainer: css.searchBox__suggestionsContainer,
+            suggestionsList: css.searchBox__suggestionsList,
+            suggestion: css.searchBox__suggestion,
+            suggestionFocused: css.searchBox__suggestionFocused,
+            sectionContainer: css.searchBox__sectionContainer,
+            sectionTitle: css.searchBox__sectionTitle
+        };
 
         // input props
         const inputProps = {
