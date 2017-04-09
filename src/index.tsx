@@ -1,15 +1,8 @@
-import { connect, Provider } from "react-redux";
-import * as React from "react";
 import { Store, AzSearchStore } from "azsearchstore";
-import * as redux from "redux";
-import SearchBoxContainer from "./containers/SearchBoxContainer";
-import ResultsContainer from "./containers/ResultsContainer";
-import CheckboxFacetContainer from "./containers/CheckboxFacetContainer";
-import { render } from "react-dom";
+import { Automagic } from "./AzSearchReactSamples";
 
-const store = new AzSearchStore();
+let automagic = new Automagic({ index: "channel9", queryKey: "insert key here", service: "azs-demos" });
 
-store.setConfig({ index: "channel9", queryKey: "insert key here", service: "azs-demos" });
 let suggestionsProcessor = (suggestions: {}[]) => {
     return suggestions.map((suggestion: any) => {
         suggestion.searchText = suggestion["@search.text"];
@@ -17,43 +10,9 @@ let suggestionsProcessor = (suggestions: {}[]) => {
     });
 };
 
-store.setSuggestionsProcessor(suggestionsProcessor);
-store.updateSuggestionsParameters({highlightPreTag: "<b>", highlightPostTag: "</b>", suggesterName: "sg"});
-store.addCheckboxFacet("groupName", false);
-store.addCheckboxFacet("language", false);
-store.addCheckboxFacet("type", false);
+automagic.store.setSuggestionsProcessor(suggestionsProcessor);
 
-render(
-    <Provider store={store.store}>
-        <SearchBoxContainer />
-    </Provider>,
-    document.getElementById("searchBox")
-);
-
-render(
-    <Provider store={store.store}>
-        <ResultsContainer />
-    </Provider>,
-    document.getElementById("results")
-);
-
-render(
-    <Provider store={store.store}>
-        <CheckboxFacetContainer facet={"groupName"} />
-    </Provider>,
-    document.getElementById("groupNameFacet")
-);
-
-render(
-    <Provider store={store.store}>
-        <CheckboxFacetContainer facet={"language"} />
-    </Provider>,
-    document.getElementById("languageFacet")
-);
-
-render(
-    <Provider store={store.store}>
-        <CheckboxFacetContainer facet={"type"} />
-    </Provider>,
-    document.getElementById("typeFacet")
-);
+automagic.addSearchBox("searchBox", {highlightPreTag: "<b>", highlightPostTag: "</b>", suggesterName: "sg"});
+automagic.addCheckboxFacet("groupNameFacet", "groupName", false);
+automagic.addCheckboxFacet("languageFacet", "language", false);
+automagic.addCheckboxFacet("typeFacet", "type", false);

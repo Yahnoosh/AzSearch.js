@@ -33,6 +33,4 @@ export const dispatchProps = getReturnType(mapDispatchToProps);
 export type PropsType = typeof stateProps & typeof dispatchProps;
 type State = {};
 
-const CheckboxFacetContainer = connect(mapStateToProps, mapDispatchToProps)(CheckboxFacet);
-
-export default CheckboxFacetContainer;
+export const CheckboxFacetContainer = connect(mapStateToProps, mapDispatchToProps)(CheckboxFacet);
