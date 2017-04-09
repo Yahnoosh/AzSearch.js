@@ -15,13 +15,11 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "azsearchstore": "0.0.12",
+    "azsearchstore": "0.0.13",
     "object-assign": "^4.1.1",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",
-    "redux": "^3.6.0",
-    "react-autosuggest": "9.0.0"
+    "react-autosuggest": "9.0.0",
+    "hogan.js": "3.0.2"
   },
   "devDependencies": {
     "@types/object-assign": "^4.0.30",
@@ -29,9 +27,13 @@
     "@types/react-dom": "^0.14.23",
     "@types/react-redux": "^4.4.37",
     "awesome-typescript-loader": "^3.1.2",
-    "hogan.js": "3.0.2",
     "ts-lint": "4.5.1",
     "typescript": "^2.2.2",
     "webpack": "^2.2.3"
+  },
+  "peerDependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "redux": "^3.6.0"
   }
 }

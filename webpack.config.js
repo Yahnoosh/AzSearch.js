@@ -12,7 +12,11 @@ module.exports = {
         // Add '.ts' and '.tsx' as resolvable extensions.
         extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
     },
-
+    externals: {
+        "react": "React",
+        "react-dom": "ReactDOM",
+        "redux": "Redux"
+    },
     module: {
         loaders: [
             // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
