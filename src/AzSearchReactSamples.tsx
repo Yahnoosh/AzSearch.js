@@ -8,9 +8,12 @@ import * as React from "react";
 import { SearchBoxContainer, OwnProps as BoxOwnProps} from "./containers/SearchBoxContainer";
 import { ResultsContainer, OwnProps as ResultsOwnProps }from "./containers/ResultsContainer";
 import { CheckboxFacetContainer, OwnProps as CheckboxOwnProps } from "./containers/CheckboxFacetContainer";
+import { PagerContainer, OwnProps as PagerOwnProps } from "./containers/PagerContainer";
 import SearchBox from "./components/SearchBox";
 import CheckboxFacet from "./components/CheckboxFacet";
 import Results from "./components/Results";
+import Pager from "./components/Pager";
+
 
 let Components = { SearchBox, CheckboxFacet, Results };
 let Containers = { CheckboxFacetContainer, ResultsContainer, SearchBoxContainer };
@@ -46,9 +49,19 @@ class Automagic {
 
     public addResults(htmlId: string, parameters?: Store.SearchParametersUpdate, mustacheTemplate?: string, cssClasses?: { [key: string]: string; }) {
         let template = mustacheTemplate ? compile(mustacheTemplate) : null;
+        this.store.updateSearchParameters(parameters);
         render(
             <Provider store={this.store.store}>
                 <ResultsContainer template={template} css={cssClasses}/>
+            </Provider>,
+            document.getElementById(htmlId)
+        );
+    }
+
+    public addPager(htmlId: string, cssClasses?: { [key: string]: string; }) {
+        render(
+            <Provider store={this.store.store}>
+                <PagerContainer css={cssClasses}/>
             </Provider>,
             document.getElementById(htmlId)
         );

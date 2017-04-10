@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import * as React from "react";
-import { Store, asyncActions, facetsActions } from "azsearchstore";
+import { Store, asyncActions, facetsActions, searchParameterActions } from "azsearchstore";
 import * as redux from "redux";
 import CheckboxFacet from "../components/CheckboxFacet";
 
@@ -16,6 +16,7 @@ export interface OwnProps {
 const mapDispatchToProps = (dispatch: redux.Dispatch<any>, ownProps: OwnProps) => {
     return {
         toggleFacet: (value: string) => {
+            dispatch(searchParameterActions.setPage(1));
             dispatch(facetsActions.toggleCheckboxFacetSelection(ownProps.facet, value));
             dispatch(asyncActions.fetchSearchResultsFromFacet);
         },

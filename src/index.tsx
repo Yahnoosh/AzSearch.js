@@ -46,7 +46,8 @@ automagic.addSearchBox("searchBox",
         suggesterName: "sg"
     },
     suggestionsTemplate);
-automagic.addResults("results", null, resultTemplate);
+automagic.addResults("results", { count: true }, resultTemplate);
+automagic.addPager("pager");
 automagic.addCheckboxFacet("groupNameFacet", "groupName", false);
 automagic.addCheckboxFacet("languageFacet", "language", false);
 automagic.addCheckboxFacet("typeFacet", "type", false);

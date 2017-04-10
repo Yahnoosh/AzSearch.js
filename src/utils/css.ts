@@ -35,5 +35,13 @@ export let defaultCss = {
     searchFacets__facetControlRangeLabelMax: "searchResults__facetControl-rangeLabelMax",
     searchFacets__facetControlRangeLabelRange: "searchResults__facetControl-rangeLabelRange",
     // results
-    searchResults__result: "searchResults__result col-xs-12 col-sm-12"
+    searchResults__result: "searchResults__result col-xs-12 col-sm-12",
+    pager__pageItem: "pager__pageItem page-item",
+    pager__pageItemActive: "pager__pageItemActive page-item active",
+    pager__pageItemDisabled: "pager__pageItemDisabled page-item disabled",
+    pager__pageLink: "pager__pageLink page-link",
+    pager__list: "pager__list pagination",
+    pager__nav: "pager__nav",
+    // should be only visible to screen reader
+    screenReaderOnly: "screenReaderOnly sr-only"
 };

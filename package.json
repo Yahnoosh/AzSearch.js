@@ -15,7 +15,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "azsearchstore": "0.0.13",
+    "azsearchstore": "0.0.14",
     "object-assign": "^4.1.1",
     "react-redux": "^5.0.3",
     "react-autosuggest": "9.0.0",
