@@ -36,6 +36,8 @@ export let defaultCss = {
     searchFacets__facetControlRangeLabelRange: "searchResults__facetControl-rangeLabelRange",
     // results
     searchResults__result: "searchResults__result col-xs-12 col-sm-12",
+    results__blurb: "results__blurb row",
+    // pager
     pager__pageItem: "pager__pageItem page-item",
     pager__pageItemActive: "pager__pageItemActive page-item active",
     pager__pageItemDisabled: "pager__pageItemDisabled page-item disabled",

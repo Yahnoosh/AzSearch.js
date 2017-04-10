@@ -7,8 +7,14 @@ export type State = {};
 
 class Results extends React.Component<PropsType, State> {
     render() {
-        const { results, template } = this.props;
+        const { results, template, skip, top, count } = this.props;
         let css = objAssign({}, defaultCss, this.props.css);
+        let countElement = count > 0 ? ` of ${count}` : "";
+        let resultsBlurb =
+            <div className={css.results__blurb}>
+                {skip + 1} - {skip + top} {countElement}
+            </div>;
+        resultsBlurb = results.length > 0 ? resultsBlurb : <div></div>;
 
         const renderedResults = results.map((result: any, index: number) => {
             let html = template ? template.render(result) : null;
@@ -32,6 +38,7 @@ class Results extends React.Component<PropsType, State> {
 
         return (
             <div>
+                {resultsBlurb}
                 {renderedResults}
             </div>
         );

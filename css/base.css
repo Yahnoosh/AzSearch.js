@@ -261,6 +261,12 @@ a.searchResults__facetHeader-link {
 	width: 100%;
 }
 
+.results__blurb {
+  float: left;
+  padding-left: 15px;
+  padding-bottom: 10px;
+}
+
 
 @media only screen and (max-width: 500px) {
 	.pagelabel {
