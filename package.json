@@ -15,7 +15,7 @@
     "tscompile": "tsc",
     "devbuild": "npm run compile && npm run devpack",
     "devpack": "webpack -d",
-    "prodpack": "webpack -p",
+    "prodpack": "webpack -p && copy AzSearch.css dist\\",
     "compile": "npm run lint && npm run tscompile"
   },
   "author": "Evan Boyle (https://github.com/EvanBoyle)",
