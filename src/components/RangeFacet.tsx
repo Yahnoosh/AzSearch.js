@@ -13,9 +13,35 @@ class RangeFacet extends React.Component<PropsType, State> {
         const facet = this.props.facet as Store.RangeFacet;
         let css = objAssign({}, defaultCss, this.props.css);
         const { onRangeChange, afterRangeChange, loadedResultsCount } = this.props;
-
+        let lowerValue;
+        let upperValue;
+        let lowerLabel;
+        let upperLabel;
+        let minValue;
+        let maxValue;
+        switch (facet.dataType) {
+            case "number":
+                lowerValue = facet.filterLowerBound as number;
+                upperValue = facet.filterUpperBound as number;
+                lowerLabel = Numeral(facet.filterLowerBound).format("0.0a");
+                upperLabel = Numeral(facet.filterUpperBound).format("0.0a");
+                minValue = facet.min as number;
+                maxValue = facet.max as number;
+                break;
+            case "date":
+                lowerValue = (facet.filterLowerBound as Date).getTime();
+                upperValue = (facet.filterUpperBound as Date).getTime();
+                lowerLabel = <span> {(facet.filterLowerBound as Date).toISOString()} <br/> </span>;
+                upperLabel = <span> <br/> {(facet.filterUpperBound as Date).toISOString()} </span>;
+                minValue = (facet.min as Date).getTime();
+                maxValue = (facet.max as Date).getTime();
+                break;
+        }
         let onChange = (value: number[]) => {
-            onRangeChange(value[0], value[1]);
+            const isDate = facet.dataType === "date";
+            let lower = isDate ? new Date(value[0]) : value[0];
+            let upper = isDate ? new Date(value[1]) : value[1];
+            onRangeChange(lower, upper);
         };
 
         let upperBoundLabel = facet.filterUpperBound === facet.max ? " <" : "";
@@ -37,21 +63,21 @@ class RangeFacet extends React.Component<PropsType, State> {
                     <ul className={css.searchFacets__facetControlList}>
                         <li className={css.searchFacets__facetControl}>
                             <Range
-                                value={[facet.filterLowerBound,
-                                facet.filterUpperBound]}
-                                min={facet.min}
-                                max={facet.max}
+                                value={[lowerValue,
+                                    upperValue]}
+                                min={minValue}
+                                max={maxValue}
                                 onChange={onChange}
                                 onAfterChange={afterRangeChange}
-                                className={css.searchFacets__sliderContainer}/>
+                                className={css.searchFacets__sliderContainer} />
                         </li>
                         <li className={css.searchFacets__facetControlRangeLabel}>
                             <span className={css.searchFacets__facetControlRangeLabelMin}>
-                                {Numeral(facet.filterLowerBound).format("0.0a")}
+                                {lowerLabel}
                             </span>
                             <span className={css.searchFacets__facetControlRangeLabelRange}>  <b> {"< " + facet.middleBucketCount + " <"} </b> </span>
                             <span className={css.searchFacets__facetControlRangeLabelMax}>
-                                {Numeral(facet.filterUpperBound).format("0.0a") + upperBoundLabel}
+                                {upperLabel} {upperBoundLabel}
                             </span>
                         </li>
                     </ul>

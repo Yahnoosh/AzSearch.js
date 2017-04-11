@@ -30,7 +30,7 @@ class SearchBox extends React.Component<PropsType, State> {
         let css = objAssign({}, defaultCss, this.props.css);
         return (
             <div className={css.searchBox__inputContainer}>
-                <input {...inputProps} type="text"></input>
+                <input {...inputProps} type="text" autoFocus></input>
                 <span className={css.searchBox__buttonContainer}>
                     <button className={css.searchBox__button} type="button" onClick={this.props.clearFacetsAndSearch}><span className={css.searchBox__buttonIcon}></span>&nbsp;</button>
                 </span>
