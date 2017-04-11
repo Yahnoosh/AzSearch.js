@@ -48,9 +48,10 @@ automagic.addSearchBox("searchBox",
     suggestionsTemplate);
 automagic.addResults("results", { count: true }, resultTemplate);
 automagic.addPager("pager");
-automagic.addCheckboxFacet("groupNameFacet", "groupName", false);
-automagic.addCheckboxFacet("languageFacet", "language", false);
-automagic.addCheckboxFacet("typeFacet", "type", false);
+automagic.addCheckboxFacet("tagsFacet", "tags", "collection");
+automagic.addCheckboxFacet("groupNameFacet", "groupName", "string");
+automagic.addCheckboxFacet("languageFacet", "language", "string");
+automagic.addCheckboxFacet("typeFacet", "type", "string");
 automagic.addRangeFacet("viewsFacet", "totalViewCount", "number", 0, 1200000);
 let startDate = new Date();
 startDate.setFullYear(2007);

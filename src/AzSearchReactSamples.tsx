@@ -40,8 +40,8 @@ class Automagic {
         );
     }
 
-    public addCheckboxFacet(htmlId: string, fieldName: string, isNumeric: boolean, cssClasses?: { [key: string]: string; }) {
-        this.store.addCheckboxFacet(fieldName, isNumeric);
+    public addCheckboxFacet(htmlId: string, fieldName: string, dataType: Store.CheckboxDataType, cssClasses?: { [key: string]: string; }) {
+        this.store.addCheckboxFacet(fieldName, dataType);
         render(
             <Provider store={this.store.store}>
                 <CheckboxFacetContainer facet={fieldName} css={cssClasses}/>
