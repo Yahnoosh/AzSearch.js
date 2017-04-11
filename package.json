@@ -1,8 +1,14 @@
 {
-  "name": "azuresearchreactsamples",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "azsearch.js",
+  "version": "0.0.1",
+  "description": "Automagical UI and react components for Azure Search using AzSearchStore",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EvanBoyle/AzSearch.js.git"
+  },
+  "main": "dist/AzSearch.bundle.js",
+  "module": "dist/AzSearch.js",
+  "typings": "dist/AzSearch.d.ts",
   "scripts": {
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
     "start_server": "http-server",
@@ -12,7 +18,7 @@
     "prodpack": "webpack -p",
     "compile": "npm run lint && npm run tscompile"
   },
-  "author": "",
+  "author": "Evan Boyle (https://github.com/EvanBoyle)",
   "license": "MIT",
   "dependencies": {
     "azsearchstore": "0.0.17",

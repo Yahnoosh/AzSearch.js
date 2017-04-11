@@ -301,3 +301,39 @@ a.searchResults__facetHeader-link {
 		margin-left: 2em;
 	}
 }
+
+.searchResults__result {
+	margin-bottom: 2em;
+	float: left;
+	text-align: left;
+    overflow: auto;
+    word-wrap: break-word;
+    vertical-align: bottom;
+    border:0;
+	padding-left: 0;
+}
+
+.result_img {
+	padding: 0;
+}
+
+.resultLabel {
+  vertical-align: top;
+}
+
+
+.searchResults__result img {
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin-left: 0;
+	width: auto;
+	height: auto;
+  vertical-align: bottom;
+}
+
+.result_img {
+	max-width: 200px;
+	max-height: 200px;
+}

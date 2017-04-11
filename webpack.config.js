@@ -1,8 +1,10 @@
 module.exports = {
-    entry: "./src/index.tsx",
+    entry: "./src/AzSearch.tsx",
     output: {
-        filename: "bundle.js",
+        filename: "AzSearch.bundle.js",
         path: __dirname + "/dist",
+        library: 'AzSearch',
+        libraryTarget: "umd"
     },
 
     // Enable sourcemaps for debugging webpack's output.
