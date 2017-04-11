@@ -51,3 +51,4 @@ automagic.addPager("pager");
 automagic.addCheckboxFacet("groupNameFacet", "groupName", false);
 automagic.addCheckboxFacet("languageFacet", "language", false);
 automagic.addCheckboxFacet("typeFacet", "type", false);
+automagic.addRangeFacet("viewsFacet", "totalViewCount", 0, 1200000);

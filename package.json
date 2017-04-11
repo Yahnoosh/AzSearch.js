@@ -16,17 +16,23 @@
   "license": "MIT",
   "dependencies": {
     "azsearchstore": "0.0.14",
+    "hogan.js": "3.0.2",
+    "numeral": "^2.0.6",
     "object-assign": "^4.1.1",
-    "react-redux": "^5.0.3",
+    "rc-slider": "6.1.2",
     "react-autosuggest": "9.0.0",
-    "hogan.js": "3.0.2"
+    "react-redux": "^5.0.3"
   },
   "devDependencies": {
+    "@types/numeral": "0.0.20",
     "@types/object-assign": "^4.0.30",
+    "@types/rc-slider": "6.1.2",
     "@types/react-autosuggest": "^8.0.0",
     "@types/react-dom": "^0.14.23",
     "@types/react-redux": "^4.4.37",
     "awesome-typescript-loader": "^3.1.2",
+    "css-loader": "^0.28.0",
+    "style-loader": "^0.16.1",
     "ts-lint": "4.5.1",
     "typescript": "^2.2.2",
     "webpack": "^2.2.3"

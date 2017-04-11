@@ -8,12 +8,15 @@ import * as React from "react";
 import { SearchBoxContainer, OwnProps as BoxOwnProps} from "./containers/SearchBoxContainer";
 import { ResultsContainer, OwnProps as ResultsOwnProps }from "./containers/ResultsContainer";
 import { CheckboxFacetContainer, OwnProps as CheckboxOwnProps } from "./containers/CheckboxFacetContainer";
+import { RangeFacetContainer, OwnProps as RangeOwnProps } from "./containers/RangeFacetContainer";
 import { PagerContainer, OwnProps as PagerOwnProps } from "./containers/PagerContainer";
 import SearchBox from "./components/SearchBox";
 import CheckboxFacet from "./components/CheckboxFacet";
+import RangeFacet from "./components/CheckboxFacet";
 import Results from "./components/Results";
 import Pager from "./components/Pager";
 
+import "rc-slider/assets/index.css";
 
 let Components = { SearchBox, CheckboxFacet, Results };
 let Containers = { CheckboxFacetContainer, ResultsContainer, SearchBoxContainer };
@@ -42,6 +45,16 @@ class Automagic {
         render(
             <Provider store={this.store.store}>
                 <CheckboxFacetContainer facet={fieldName} css={cssClasses}/>
+            </Provider>,
+            document.getElementById(htmlId)
+        );
+    }
+
+    public addRangeFacet(htmlId: string, fieldName: string, min: number, max: number, cssClasses?: { [key: string]: string; }) {
+        this.store.addRangeFacet(fieldName, min, max);
+        render(
+            <Provider store={this.store.store}>
+                <RangeFacetContainer facet={fieldName} css={cssClasses}/>
             </Provider>,
             document.getElementById(htmlId)
         );
