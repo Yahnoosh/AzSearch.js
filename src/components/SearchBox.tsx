@@ -24,7 +24,8 @@ class SearchBox extends React.Component<PropsType, State> {
         }
     }
     getSuggestionValue(suggestion: any) {
-        return suggestion.searchText.replace(this.props.preTag, "").replace(this.props.postTag, "");
+        let suggestionValueKey = this.props.suggestionValueKey ? this.props.suggestionValueKey : "@search.text";
+        return suggestion[suggestionValueKey].replace(this.props.preTag, "").replace(this.props.postTag, "");
     }
     renderInputComponent(inputProps: any) {
         let css = objAssign({}, defaultCss, this.props.css);

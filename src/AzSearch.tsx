@@ -29,12 +29,12 @@ class Automagic {
         this.store.setConfig(config);
     }
 
-    public addSearchBox(htmlId: string, parameters?: Store.SuggestionsParametersUpdate, mustacheTemplate?: string, cssClasses?: { [key: string]: string; } ) {
+    public addSearchBox(htmlId: string, parameters?: Store.SuggestionsParametersUpdate, suggestionValueKey?: string,  mustacheTemplate?: string, cssClasses?: { [key: string]: string; } ) {
         this.store.updateSuggestionsParameters(parameters);
         let template = mustacheTemplate ? compile(mustacheTemplate) : null;
         render(
             <Provider store={this.store.store}>
-                <SearchBoxContainer template={template} css={cssClasses}/>
+                <SearchBoxContainer template={template} css={cssClasses} suggestionValueKey={suggestionValueKey}/>
             </Provider>,
             document.getElementById(htmlId)
         );

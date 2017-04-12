@@ -123,9 +123,9 @@ Sets basic configuration to connect to service. Expects an object of type Config
 ```
 
 ### addSearchBox
-* ```addSearchBox(htmlId, suggestionsParametersUpdate, suggestionTemplate?, css?)```
+* ```addSearchBox(htmlId, suggestionsParametersUpdate?, suggestionValueKey?, suggestionTemplate?, css?)```
 
-Adds an input field capable of suggestions/autocomplete and executing search requests. Attaches on the specified htmlID. Optionally takes SuggestionUpdateParameters (from AzSearchStore), a [mustache template](https://mustache.github.io/mustache.5.html) to customize rendering, or css overrides. When template is not specified, a json representation of the suggestions is displayed. When specified, the mustache template is rendered against east suggestion. The content of each  suggestion can be customized by adding fields via the select parameter as shown in the example below, or by setting a 
+Adds an input field capable of suggestions/autocomplete and executing search requests. Attaches on the specified htmlID. Optionally takes SuggestionUpdateParameters (from AzSearchStore), a key indicating which value should be when keying up/down through suggestions (defaults to "@search.text"), a [mustache template](https://mustache.github.io/mustache.5.html) to customize rendering, or css overrides. When template is not specified, a json representation of the suggestions is displayed. When specified, the mustache template is rendered against east suggestion. The content of each  suggestion can be customized by adding fields via the select parameter as shown in the example below, or by setting a 
 [suggestions processor](https://github.com/EvanBoyle/AzSearchStore#client-side-results-processing) on the store.
 ```js
     // css class overrides
@@ -143,6 +143,7 @@ Adds an input field capable of suggestions/autocomplete and executing search req
             suggesterName: "sg",
             select: "number,street,city,region,countryCode"
         },
+        "displayText"
         suggestionsTemplate,
         css);
 
@@ -312,6 +313,7 @@ If you wish to use a custom theme. Please use the browser tools element inspecto
             suggesterName: "sg",
             select: "number,street,city,region,countryCode"
         },
+        "@search.text",
         suggestionsTemplate,
         css);
 

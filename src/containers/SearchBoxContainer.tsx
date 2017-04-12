@@ -11,6 +11,7 @@ function getReturnType<RT>(expression: (...params: any[]) => RT): RT {
 }
 
 export interface OwnProps {
+    suggestionValueKey?: string;
     template: Template;
     css: { [key: string]: string; };
 }
@@ -41,7 +42,8 @@ function mapStateToProps(state: Store.SearchState, ownProps: OwnProps) {
         postTag: state.parameters.suggestionsParameters.highlightPostTag,
         suggestions: state.suggestions.suggestions,
         template: ownProps.template,
-        css: ownProps.css
+        css: ownProps.css,
+        suggestionValueKey: ownProps.suggestionValueKey
     };
 }
 
