@@ -3,6 +3,8 @@ Automagical UI and sample react controls for [Azure Search](https://docs.microso
 
 
 ## Live Demos
+* [Real estate demo](http://azsearchstore.azurewebsites.net/realestate.html) | [source](https://github.com/EvanBoyle/AzSearch.js/blob/master/realestate.html)
+* [Channel9 demo](http://azsearchstore.azurewebsites.net/channel9.html) | [source](https://github.com/EvanBoyle/AzSearch.js/blob/master/channel9.html) 
 
 ## CORS
 
@@ -32,9 +34,6 @@ Samples and documentation assume the real estate sample index available through 
 ### CDN
 
 ```html
-<!-- LINKS ARE NOTE LIVE YET -->
-
-
 
 <!-- CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/azsearch.js/0.0.7/AzSearch.css">
