@@ -10,7 +10,7 @@
         crossorigin="anonymous">
 
     <link rel="stylesheet" href="./AzSearch.css">
-    <title>Channel9</title>
+    <title>Real Estate</title>
 </head>
 
 <body>
@@ -44,27 +44,23 @@
                     <ul class="nav nav-sidebar">
                         <div className="panel panel-primary behclick-panel">
                             <li>
-                                <div id="viewsFacet">
+                                <div id="sqftFacet">
                                 </div>
                             </li>
                             <li>
-                                <div id="publishedFacet">
+                                <div id="bedsFacet">
                                 </div>
                             </li>
                             <li>
-                                <div id="tagsFacet">
-                                </div>
-                            </li>
-                            <li>
-                                <div id="groupNameFacet">
-                                </div>
-                            </li>
-                            <li>
-                                <div id="languageFacet">
+                                <div id="bathsFacet">
                                 </div>
                             </li>
                             <li>
                                 <div id="typeFacet">
+                                </div>
+                            </li>
+                            <li>
+                                <div id="tagsFacet">
                                 </div>
                             </li>
                     </ul>
@@ -91,64 +87,74 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/redux/3.6.0/redux.min.js"></script>
 <!-- Main -->
 <script src="./dist/AzSearch.bundle.js"></script>
+<script src="./dist/AzSearch.bundle.js.map"></script>
 <script>
-    var automagic = new AzSearch.Automagic({ index: "channel9", queryKey: "", service: "azs-demos" });
-
-    var suggestionsProcessor = function (suggestions) {
-        return suggestions.map(function (suggestion) {
-            suggestion.searchText = suggestion["@search.text"];
-            return suggestion;
-        });
-    };
-
-    var resultsProcessor = function (results) {
-        return results.map(function (result) {
-            var summary = result.summary;
-            result.summary = summary.length < 200 ? summary : result.summary.substring(0, 200) + "...";
+    // Initialize
+    var automagic = new AzSearch.Automagic({ index: "realestate-us-sample", queryKey: "D1CD08C7AC6A1886024E0F23B1824417", service: "azs-playground" });
+    // Set some processors to format results for display
+    var suggestionsProcessor = function(results) {
+        return results.map(function(result){
+            result.displayText = result.number + " " + result.street+ " " +result.city+ ", " +result.region+ " " +result.countryCode;
+            result.searchText = result["@search.text"];
             return result;
         });
     };
-
-    var resultTemplate =
-        `<div class="col-xs-12 col-sm-5 col-md-3 result_img">
-        <img class="img-responsive result_img" src={{previewImage}} alt="image not found" />
-    </div>
-    <div class="col-xs-12 col-sm-7 col-md-9">
-        <a href="https://channel9.msdn.com{{groupUrl}}">
-            {{result.groupName}}
-        </a>
-        <a href="https://channel9.msdn.com{{url}}">
-            <h4>{{title}}</h4>
-        </a>
-        <div class="resultDescription">
-            {{{summary}}}
-        </div>
-        <div>
-            views: {{totalViewCount}}
-        </div>
-    </div>`;
-    var suggestionsTemplate = "{{{searchText}}}";
+    var resultsProcessor = function(results) {
+        return results.map(function(result){
+            result.displayText = result.number + " " + result.street+ " " +result.city+ ", " +result.region+ " " +result.countryCode;
+            var summary = result.description;
+            result.summary = summary.length < 200 ? summary : summary.substring(0, 200) + "...";
+            return result;
+        });
+    };
     automagic.store.setSuggestionsProcessor(suggestionsProcessor);
     automagic.store.setResultsProcessor(resultsProcessor);
+
+    // Create some mustache templates to customize result/suggestion display. Default is JSON.stringify(result,null,4) rendered in <pre> and <code>.
+    var resultTemplate =
+        `<div class="col-xs-12 col-sm-5 col-md-3 result_img">
+            <img class="img-responsive result_img" src={{thumbnail}} alt="image not found" />
+        </div>
+        <div class="col-xs-12 col-sm-7 col-md-9">
+            <h4>{{displayText}}</h4>
+            <div class="resultDescription">
+                {{{summary}}}
+            </div>
+            <div>
+                sqft: <b>{{sqft}}</b>
+            </div>
+            <div>
+                beds: <b>{{beds}}</b>
+            </div>
+            <div>
+                baths: <b>{{baths}}</b>
+            </div>
+        </div>`;
+    var suggestionsTemplate = "{{displayText}} <br/> {{{searchText}}}";
+    
+    // Add a search box that uses suggester "sg", grabbing some additional fields to display during suggestions. Use the template defined above
     automagic.addSearchBox("searchBox",
         {
             highlightPreTag: "<b>",
             highlightPostTag: "</b>",
-            suggesterName: "sg"
+            suggesterName: "sg",
+            select: "number,street,city,region,countryCode"
         },
         suggestionsTemplate);
+    // add a results view using the template defined above
     automagic.addResults("results", { count: true }, resultTemplate);
+    // Adds a pager control << 1 2 3 ... >>
     automagic.addPager("pager");
-    automagic.addCheckboxFacet("tagsFacet", "tags", "collection");
-    automagic.addCheckboxFacet("groupNameFacet", "groupName", "string");
-    automagic.addCheckboxFacet("languageFacet", "language", "string");
+    // range facet for sqft
+    automagic.addRangeFacet("sqftFacet", "sqft", "number", 0, 17000);
+    // checkbox facet for numeric field beds
+    automagic.addCheckboxFacet("bedsFacet", "beds", "number");
+    // checkbox facet for numeric field baths
+    automagic.addCheckboxFacet("bathsFacet", "baths", "number");
+    // checkbox facet for string field type
     automagic.addCheckboxFacet("typeFacet", "type", "string");
-    automagic.addRangeFacet("viewsFacet", "totalViewCount", "number", 0, 1200000);
-    let startDate = new Date();
-    startDate.setFullYear(2007);
-    let endDate = new Date();
-    automagic.addRangeFacet("publishedFacet", "published", "date", startDate, endDate);
-
+    // checkbox facet for collection field tags
+    automagic.addCheckboxFacet("tagsFacet", "tags", "collection");
 </script>
 <style>
 

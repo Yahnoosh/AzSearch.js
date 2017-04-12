@@ -31,8 +31,8 @@ class RangeFacet extends React.Component<PropsType, State> {
             case "date":
                 lowerValue = (facet.filterLowerBound as Date).getTime();
                 upperValue = (facet.filterUpperBound as Date).getTime();
-                lowerLabel = <span> {(facet.filterLowerBound as Date).toISOString()} <br/> </span>;
-                upperLabel = <span> <br/> {(facet.filterUpperBound as Date).toISOString()} </span>;
+                lowerLabel = <span> {(facet.filterLowerBound as Date).toISOString()} <br /> </span>;
+                upperLabel = <span> <br /> {(facet.filterUpperBound as Date).toISOString()} </span>;
                 minValue = (facet.min as Date).getTime();
                 maxValue = (facet.max as Date).getTime();
                 break;
@@ -43,10 +43,10 @@ class RangeFacet extends React.Component<PropsType, State> {
             let upper = isDate ? new Date(value[1]) : value[1];
             onRangeChange(lower, upper);
         };
-
         let upperBoundLabel = facet.filterUpperBound === facet.max ? " <" : "";
 
-        if (!facet || loadedResultsCount < 1) {
+        // todo with advanced faceting make display condition: !(facet.lowerBucketCount + facet.middleBucketCount + facet.upperBucketCount)
+        if (!facet) {
             return <div></div>;
         }
 
@@ -69,6 +69,8 @@ class RangeFacet extends React.Component<PropsType, State> {
                                 max={maxValue}
                                 onChange={onChange}
                                 onAfterChange={afterRangeChange}
+                                step={1}
+                                pushable={true}
                                 className={css.searchFacets__sliderContainer} />
                         </li>
                         <li className={css.searchFacets__facetControlRangeLabel}>
