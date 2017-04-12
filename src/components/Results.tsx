@@ -10,9 +10,12 @@ class Results extends React.Component<PropsType, State> {
         const { results, template, skip, top, count } = this.props;
         let css = objAssign({}, defaultCss, this.props.css);
         let countElement = count > 0 ? ` of ${count}` : "";
+        let bottomRange = skip + 1;
+        let topRange = skip + top;
+        topRange = topRange > count ? count : topRange;
         let resultsBlurb =
             <div className={css.results__blurb}>
-                {skip + 1} - {skip + top} {countElement}
+                {bottomRange} - {topRange} {countElement}
             </div>;
         resultsBlurb = results.length > 0 ? resultsBlurb : <div></div>;
 
