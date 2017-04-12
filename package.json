@@ -9,6 +9,9 @@
   "main": "dist/AzSearch.bundle.js",
   "module": "dist/AzSearch.js",
   "typings": "dist/AzSearch.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
     "start_server": "http-server",
