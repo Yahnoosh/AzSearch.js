@@ -55,8 +55,8 @@ Automagic provides a set of simple APIs to generate a sample search UI. Automagi
             suggesterName: "sg",
             select: "number,street,city,region,countryCode"
         });
-    // add a results view using the template defined above
-    automagic.addResults("results", { count: true }, resultTemplate);
+    // add a results view
+    automagic.addResults("results");
     // Adds a pager control << 1 2 3 ... >>
     automagic.addPager("pager");
     // range facet for sqft
@@ -72,7 +72,67 @@ Automagic provides a set of simple APIs to generate a sample search UI. Automagi
 ```
 
 ### constructor
+* ```constructor(config)```
+
+Sets basic configuration to connect to service. Expects an object of type Config from AzSearchStore
+
+```js
+    var automagic = new AzSearch.Automagic({ 
+        index: "realestate-us-sample", 
+        queryKey: "D1CD08C7AC6A1886024E0F23B1824417", 
+        service: "azs-playground" });
+```
+
+```ts
+    type Config = {
+        index: string;
+        queryKey: string;
+        service: string;
+        suggestCallback?: (state: Store.SearchState, postBody: {
+            [key: string]: any;
+        }) => Promise<any>;
+        searchCallback?: (state: Store.SearchState, postBody: {
+            [key: string]: any;
+        }) => Promise<any>;
+    };
+```
 ### addSearchBox
+Adds a input field capable of suggestions/autocomplete and executing text searches on the specified htmlID. Optionally takes SuggestionUpdateParameters (from AzSearchStore), a mustache template to customize rendering, or css overrides. When template is not specified, a json representation of the suggestions is shown in stead
+
+```js
+    // css class overrides
+    var css = {
+            searchBox__button: "searchBox__button btn btn-default",
+    };
+    // mustache template for custom suggestion rendering. Default is formatted JSON when not specified
+    var suggestionsTemplate = "{{displayText}} <br/> {{{searchText}}}";
+    // Add a search box that uses suggester "sg", grabbing some additional fields to display during suggestions. Use the template defined above
+    automagic.addSearchBox("searchBox",
+        {
+            highlightPreTag: "<b>",
+            highlightPostTag: "</b>",
+            suggesterName: "sg",
+            select: "number,street,city,region,countryCode"
+        },
+        suggestionsTemplate,
+        css);
+```
+
+```ts
+type SuggestionsParametersUpdate = {
+        top?: number;
+        filter?: string;
+        orderby?: string;
+        fuzzy?: boolean;
+        highlightPreTag?: string;
+        highlightPostTag?: string;
+        select?: string;
+        searchFields?: string;
+        minimumCoverage?: string;
+        apiVersion?: SearchApiVersion;
+        suggesterName?: string;
+    };
+```
 ### addResults
 ### addPager
 ### addRangeFacet
