@@ -6,6 +6,11 @@ Automagical UI and sample react controls for [Azure Search](https://docs.microso
 * [Real estate demo](http://azsearchstore.azurewebsites.net/realestate.html) | [source](https://github.com/EvanBoyle/AzSearch.js/blob/master/realestate.html)
 * [Channel9 demo](http://azsearchstore.azurewebsites.net/channel9.html) | [source](https://github.com/EvanBoyle/AzSearch.js/blob/master/channel9.html) 
 
+## App Generator
+The following link contains a tool to help generate starting sample app that you can further customeize:
+
+* [AzSearch.js application generator](http://azsearchstore.azurewebsites.net/azsearchgenerator/index.html). Generate an app to explore your data with just your service name, query key, and index definition JSON.
+
 ## CORS
 
 Don't forget to enable CORS on your index. Make sure to always use a [query key](https://docs.microsoft.com/en-us/azure/search/search-query-rest-api#identify-your-azure-search-services-query-api-key).
