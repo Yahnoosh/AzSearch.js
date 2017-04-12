@@ -23,7 +23,7 @@ Samples and documentation assume the real estate sample index available through 
     * [addRangeFacet](https://github.com/EvanBoyle/AzSearch.js#addrangefacet)
     * [addCheckboxFacet](https://github.com/EvanBoyle/AzSearch.js#addcheckboxfacet)
     * [store](https://github.com/EvanBoyle/AzSearch.js#store)
-    * [Custom CSS]()
+    * [Custom CSS](https://github.com/EvanBoyle/AzSearch.js#custom-css)
 * [Components & Containers](https://github.com/EvanBoyle/AzSearch.js#components--containers)
 * [Development](https://github.com/EvanBoyle/AzSearch.js#development)
 
@@ -32,6 +32,10 @@ Samples and documentation assume the real estate sample index available through 
 ### CDN
 
 ```html
+<!-- LINKS ARE NOTE LIVE YET -->
+
+
+
 <!-- CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/azsearch.js/0.0.2/AzSearch.css">
 <!-- Dependencies -->
@@ -288,10 +292,22 @@ Instance of [AzSearchStore](https://github.com/EvanBoyle/AzSearchStore). Methods
 If you wish to use a custom theme. Please use the browser tools element inspector ```ctrl shift C```and compare against [css constants used in the project](https://github.com/EvanBoyle/AzSearch.js/blob/master/src/utils/css.ts). Css classes can be overridden in the following manner and passed in to a component:
 
 ```js
+//...
 // css class overrides
     var css = {
+            searchBox__buttonIcon: "searchBox__button-icon glyphicon glyphicon-search",
             searchBox__button: "searchBox__button btn btn-default",
     };
+
+        automagic.addSearchBox("searchBox",
+        {
+            highlightPreTag: "<b>",
+            highlightPostTag: "</b>",
+            suggesterName: "sg",
+            select: "number,street,city,region,countryCode"
+        },
+        suggestionsTemplate,
+        css);
 
 ```
 
