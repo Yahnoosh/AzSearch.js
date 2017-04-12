@@ -4,7 +4,9 @@ Automagical UI and sample react controls for [Azure Search](https://docs.microso
 
 ## Live Demos
 
+## CORS
 
+Don't forget to enable CORS on your index. Make sure to always use a [query key](https://docs.microsoft.com/en-us/azure/search/search-query-rest-api#identify-your-azure-search-services-query-api-key).
 ## Quick note on data
 Samples and documentation assume the real estate sample index available through the portal. A demo account is provided for the samples. To create your own service and load the real estate sample [see this guide](https://docs.microsoft.com/en-us/azure/search/search-get-started-portal).
 
