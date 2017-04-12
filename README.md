@@ -11,21 +11,21 @@ Don't forget to enable CORS on your index. Make sure to always use a [query key]
 Samples and documentation assume the real estate sample index available through the portal. A demo account is provided for the samples. To create your own service and load the real estate sample [see this guide](https://docs.microsoft.com/en-us/azure/search/search-get-started-portal).
 
 ## Contents
-* [Installation]()
-    * [NPM]()
-    * [CDN]()
-* [Automagic]()
-    * [Basic usage]()
-    * [constructor]()
-    * [store]()
-    * [addSearchBox]()
-    * [addResults]()
-    * [addPager]()
-    * [addRangeFacet]()
-    * [addCheckboxFacet]()
+* [Installation](https://github.com/EvanBoyle/AzSearch.js#installation)
+    * [CDN](https://github.com/EvanBoyle/AzSearch.js#cdn)
+    * [NPM](https://github.com/EvanBoyle/AzSearch.js#npm)
+* [Automagic](https://github.com/EvanBoyle/AzSearch.js#automagic)
+    * [Basic usage](https://github.com/EvanBoyle/AzSearch.js#basic-usage)
+    * [constructor](https://github.com/EvanBoyle/AzSearch.js#constructor)
+    * [addSearchBox](https://github.com/EvanBoyle/AzSearch.js#addsearchbox)
+    * [addResults](https://github.com/EvanBoyle/AzSearch.js#addresults)
+    * [addPager](https://github.com/EvanBoyle/AzSearch.js#addpager)
+    * [addRangeFacet](https://github.com/EvanBoyle/AzSearch.js#addrangefacet)
+    * [addCheckboxFacet](https://github.com/EvanBoyle/AzSearch.js#addcheckboxfacet)
+    * [store](https://github.com/EvanBoyle/AzSearch.js#store)
     * [Custom CSS]()
-* [Components & Containers]()
-* [Development]()
+* [Components & Containers](https://github.com/EvanBoyle/AzSearch.js#components--containers)
+* [Development](https://github.com/EvanBoyle/AzSearch.js#development)
 
 ## Installation
 
@@ -113,26 +113,6 @@ Sets basic configuration to connect to service. Expects an object of type Config
         }) => Promise<any>;
     };
 ```
-
-### store
-* ```store```
-
-Instance of [AzSearchStore](https://github.com/EvanBoyle/AzSearchStore). Methods can be called directly on the store, and actions can be dispatched to the store using APIs documented in the [AzSearchStore repo](https://github.com/EvanBoyle/AzSearchStore).
-```js
-    // set api version to preview
-    automagic.store.setSearchApiVersion("2015-02-28-Preview");
-    // set a pre-defined input to search/suggest
-    automagic.store.setInput("bears beets battlestar galactica");
-    // log state changes to console
-    automagic.store.subscibe(function() {
-        var state = automagic.store.getState();
-        console.info(JSON.stringify(state, null, 4));
-    });
-    // clear all facets
-    automagic.store.clearFacetsSelections();
-
-```
-
 
 ### addSearchBox
 * ```addSearchBox(htmlId, suggestionsParametersUpdate, suggestionTemplate?, css?)```
@@ -283,6 +263,38 @@ Adds a checkbox style faceting control to the specified htmlId over the specifie
     // checkbox facet for collection field tags
     automagic.addCheckboxFacet("tagsFacet", "tags", "collection");
 ```
+
+### store
+* ```store```
+
+Instance of [AzSearchStore](https://github.com/EvanBoyle/AzSearchStore). Methods can be called directly on the store, and actions can be dispatched to the store using APIs documented in the [AzSearchStore repo](https://github.com/EvanBoyle/AzSearchStore).
+```js
+    // set api version to preview
+    automagic.store.setSearchApiVersion("2015-02-28-Preview");
+    // set a pre-defined input to search/suggest
+    automagic.store.setInput("bears beets battlestar galactica");
+    // log state changes to console
+    automagic.store.subscibe(function() {
+        var state = automagic.store.getState();
+        console.info(JSON.stringify(state, null, 4));
+    });
+    // clear all facets
+    automagic.store.clearFacetsSelections();
+
+```
+
+### Custom CSS
+
+If you wish to use a custom theme. Please use the browser tools element inspector ```ctrl shift C```and compare against [css constants used in the project](https://github.com/EvanBoyle/AzSearch.js/blob/master/src/utils/css.ts). Css classes can be overridden in the following manner and passed in to a component:
+
+```js
+// css class overrides
+    var css = {
+            searchBox__button: "searchBox__button btn btn-default",
+    };
+
+```
+
 
 ## Components & Containers
 
