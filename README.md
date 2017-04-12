@@ -121,7 +121,7 @@ Sets basic configuration to connect to service. Expects an object of type Config
 ### addSearchBox
 * ```addSearchBox(htmlId, suggestionsParametersUpdate, suggestionTemplate?, css?)```
 
-Adds a input field capable of suggestions/autocomplete and executing search requests. Attaches on the specified htmlID. Optionally takes SuggestionUpdateParameters (from AzSearchStore), a [mustache template](https://mustache.github.io/mustache.5.html) to customize rendering, or css overrides. When template is not specified, a json representation of the suggestions is displayed. When specified, the mustace template is rendered against east suggestion. The content of each  suggestion can be customized by adding fields via the select parameter as shown in the example below, or by setting a 
+Adds an input field capable of suggestions/autocomplete and executing search requests. Attaches on the specified htmlID. Optionally takes SuggestionUpdateParameters (from AzSearchStore), a [mustache template](https://mustache.github.io/mustache.5.html) to customize rendering, or css overrides. When template is not specified, a json representation of the suggestions is displayed. When specified, the mustache template is rendered against east suggestion. The content of each  suggestion can be customized by adding fields via the select parameter as shown in the example below, or by setting a 
 [suggestions processor](https://github.com/EvanBoyle/AzSearchStore#client-side-results-processing) on the store.
 ```js
     // css class overrides
@@ -145,7 +145,9 @@ Adds a input field capable of suggestions/autocomplete and executing search requ
     // Set a processor to format suggestions for display
     var suggestionsProcessor = function(results) {
         return results.map(function(result){
-            result.displayText = result.number + " " + result.street+ " " +result.city+ ", " +result.region+ " " +result.countryCode;
+            result.displayText = result.number + " " + 
+                result.street+ " " +result.city+ ", " +result.region+ " " +
+                result.countryCode;
             result.searchText = result["@search.text"];
             return result;
         });
