@@ -1,15 +1,27 @@
 # AzSearch.js
 Automagical UI and sample react controls for [Azure Search](https://docs.microsoft.com/en-us/azure/search/) using [AzSearchStore](https://github.com/EvanBoyle/AzSearchStore). Written in [TypeScript](https://www.typescriptlang.org/).
 
+
+## Live Demos
+
+
 ## Quick note on data
 Samples and documentation assume the real estate sample index available through the portal. A demo account is provided for the samples. To create your own service and load the real estate sample [see this guide](https://docs.microsoft.com/en-us/azure/search/search-get-started-portal).
 
 ## Contents
 * [Installation]()
-    * [Node]()
+    * [NPM]()
     * [CDN]()
 * [Automagic]()
     * [Basic usage]()
+    * [constructor]()
+    * [store]()
+    * [addSearchBox]()
+    * [addResults]()
+    * [addPager]()
+    * [addRangeFacet]()
+    * [addCheckboxFacet]()
+    * [Custom CSS]()
 * [Components & Containers]()
 * [Development]()
 
@@ -47,7 +59,8 @@ Automagic provides a set of simple APIs to generate a sample search UI. Automagi
         queryKey: "D1CD08C7AC6A1886024E0F23B1824417", 
         service: "azs-playground" });
 
-    // Add a search box on id #seachBox that uses suggester "sg", grabbing some additional fields to display during suggestions.
+    // Add a search box on id #seachBox that uses suggester "sg", grabbing some additional 
+    // fields to display during suggestions.
     automagic.addSearchBox("searchBox",
         {
             highlightPreTag: "<b>",
@@ -77,6 +90,8 @@ Automagic provides a set of simple APIs to generate a sample search UI. Automagi
 Sets basic configuration to connect to service. Expects an object of type Config from AzSearchStore
 
 ```js
+    // constructs and instance of Automagic
+    // will also create an instance of AzSearchStore that connects to your service
     var automagic = new AzSearch.Automagic({ 
         index: "realestate-us-sample", 
         queryKey: "D1CD08C7AC6A1886024E0F23B1824417", 
@@ -96,17 +111,41 @@ Sets basic configuration to connect to service. Expects an object of type Config
         }) => Promise<any>;
     };
 ```
-### addSearchBox
-Adds a input field capable of suggestions/autocomplete and executing text searches on the specified htmlID. Optionally takes SuggestionUpdateParameters (from AzSearchStore), a mustache template to customize rendering, or css overrides. When template is not specified, a json representation of the suggestions is shown in stead
 
+### store
+* ```store```
+
+Instance of [AzSearchStore](https://github.com/EvanBoyle/AzSearchStore). Methods can be called directly on the store, and actions can be dispatched to the store using APIs documented in the [AzSearchStore repo](https://github.com/EvanBoyle/AzSearchStore).
+```js
+    // set api version to preview
+    automagic.store.setSearchApiVersion("2015-02-28-Preview");
+    // set a pre-defined input to search/suggest
+    automagic.store.setInput("bears beets battlestar galactica");
+    // log state changes to console
+    automagic.store.subscibe(function() {
+        var state = automagic.store.getState();
+        console.info(JSON.stringify(state, null, 4));
+    });
+    // clear all facets
+    automagic.store.clearFacetsSelections();
+
+```
+
+
+### addSearchBox
+* ```addSearchBox(htmlId, suggestionsParametersUpdate, suggestionTemplate?, css?)```
+
+Adds a input field capable of suggestions/autocomplete and executing search requests. Attaches on the specified htmlID. Optionally takes SuggestionUpdateParameters (from AzSearchStore), a [mustache template](https://mustache.github.io/mustache.5.html) to customize rendering, or css overrides. When template is not specified, a json representation of the suggestions is displayed. When specified, the mustace template is rendered against east suggestion. The content of each  suggestion can be customized by adding fields via the select parameter as shown in the example below, or by setting a 
+[suggestions processor](https://github.com/EvanBoyle/AzSearchStore#client-side-results-processing) on the store.
 ```js
     // css class overrides
     var css = {
             searchBox__button: "searchBox__button btn btn-default",
     };
-    // mustache template for custom suggestion rendering. Default is formatted JSON when not specified
+    // mustache template for custom suggestion rendering. Default displays formatted JSON
     var suggestionsTemplate = "{{displayText}} <br/> {{{searchText}}}";
-    // Add a search box that uses suggester "sg", grabbing some additional fields to display during suggestions. Use the template defined above
+    // Add a search box that uses suggester "sg", grabbing some additional fields to 
+    // display during suggestions. Use the template defined above
     automagic.addSearchBox("searchBox",
         {
             highlightPreTag: "<b>",
@@ -116,10 +155,20 @@ Adds a input field capable of suggestions/autocomplete and executing text search
         },
         suggestionsTemplate,
         css);
+
+    // Set a processor to format suggestions for display
+    var suggestionsProcessor = function(results) {
+        return results.map(function(result){
+            result.displayText = result.number + " " + result.street+ " " +result.city+ ", " +result.region+ " " +result.countryCode;
+            result.searchText = result["@search.text"];
+            return result;
+        });
+    };
+    automagic.store.setSuggestionsProcessor(suggestionsProcessor);
 ```
 
 ```ts
-type SuggestionsParametersUpdate = {
+    type SuggestionsParametersUpdate = {
         top?: number;
         filter?: string;
         orderby?: string;
@@ -132,8 +181,111 @@ type SuggestionsParametersUpdate = {
         apiVersion?: SearchApiVersion;
         suggesterName?: string;
     };
+    type SearchApiVersion = "2016-09-01" | "2015-02-28-Preview";
+
 ```
 ### addResults
+* ```addResults(htmlId, searchParametersUpdate?, resultsTemplate?, css?)```
+
+Adds a view the search results on the specifed htmlId. Optionally takes searchParametersUpdate (from AzSearchStore), a mustache template used to format individual results, or css class overrides. When specified, the mustace template will be rendered against each individual search result. Otherwise formatted JSON will be displayed. The content of each search result can be customized by setting a 
+[results processor](https://github.com/EvanBoyle/AzSearchStore#client-side-results-processing) on the store.
+```js
+    var resultTemplate =
+        `<div class="col-xs-12 col-sm-5 col-md-3 result_img">
+            <img class="img-responsive result_img" src={{thumbnail}} alt="image not found" />
+        </div>
+        <div class="col-xs-12 col-sm-7 col-md-9">
+            <h4>{{displayText}}</h4>
+            <div class="resultDescription">
+                {{{summary}}}
+            </div>
+            <div>
+                sqft: <b>{{sqft}}</b>
+            </div>
+            <div>
+                beds: <b>{{beds}}</b>
+            </div>
+            <div>
+                baths: <b>{{baths}}</b>
+            </div>
+        </div>`;
+    // add a results view, updates parameters to include count, uses the above template
+    automagic.addResults("results", { count: true }, resultTemplate);
+    // add a resultsProcessor to more easily format the results display
+    var resultsProcessor = function(results) {
+        return results.map(function(result){
+            result.displayText = result.number + " " + result.street+ " " +result.city+ ", " +result.region+ " " +result.countryCode;
+            var summary = result.description;
+            result.summary = summary.length < 200 ? summary : summary.substring(0, 200) + "...";
+            return result;
+        });
+    };
+    automagic.store.setResultsProcessor(resultsProcessor);
+```
+```ts
+    type SearchParametersUpdate = {
+        count?: boolean;
+        top?: number;
+        skip?: number;
+        orderby?: string;
+        searchMode?: SearchMode;
+        scoringProfile?: string;
+        select?: string;
+        searchFields?: string;
+        minimumCoverage?: string;
+        apiVersion?: SearchApiVersion;
+        queryType?: QueryType;
+    };
+    type QueryType = "simple" | "full";
+    type SearchApiVersion = "2016-09-01" | "2015-02-28-Preview";
+    type SearchMode = "any" | "all";
+```
 ### addPager
+* ```addPager(htmlId, css?)```
+
+Adds a pagination control ```<<< 1 2 3 ... >>> ``` on the specified id after all of the results
+
+```js
+    // Adds a pager control << 1 2 3 ... >>
+    automagic.addPager("pager");
+```
 ### addRangeFacet
+* ```addRangeFacet(htmlId, fieldName, dataType, min, max, css?) ```
+    Adds a range facet control for on the specified htmlId for the given fieldName. dataType can be either "number" or "date". Range will go from min to max. Type of min and max should correspond to specified dataType. 
+
+```js
+    // range facet numeric field sqft
+    automagic.addRangeFacet("sqftFacet", "sqft", "number", 0, 17000);
+    // adding a range facet on date field 'published'
+    // notice that this one is for example only and is not in the realestate index
+    // initialize the date range at the year 2007
+    let startDate = new Date();
+    startDate.setFullYear(2007);
+    // allow date range to go all the way up to present
+    let endDate = new Date();
+    automagic.addRangeFacet("publishedFacet", "published", "date", startDate, endDate);
+```
+
 ### addCheckboxFacet
+
+* ```addCheckboxFacet(htmlId, fieldName, dataType, css?)```
+
+Adds a checkbox style faceting control to the specified htmlId over the specified field. Supported dataTypes are ```"number" | "string" | "collection"```. Also accepts optional css overrides
+
+```js
+    automagic.addCheckboxFacet("bedsFacet", "beds", "number");
+    // checkbox facet for numeric field baths
+    automagic.addCheckboxFacet("bathsFacet", "baths", "number");
+    // checkbox facet for string field type
+    automagic.addCheckboxFacet("typeFacet", "type", "string");
+    // checkbox facet for collection field tags
+    automagic.addCheckboxFacet("tagsFacet", "tags", "collection");
+```
+
+## Components & Containers
+
+AzSearch.js is build with react components and react-redux containers. Both of these are exposed and available for direct consumption/extension with your own instance of AzSearchStore. More docs on this coming soon.
+
+## Development
+
+Set up should be as simple as running ```npm install```. Run ```npm run devbuild``` for tslint, typescript compilation, and webpack dev bundling all in one step. Run ```npm run prodpack``` for a minified bundle.
