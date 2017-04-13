@@ -60,7 +60,7 @@ class SearchBox extends React.Component<PropsType, State> {
         }
     }
     render() {
-        const { input, onInputChange, suggestions, suggest, clearSuggestions, postTag, preTag, clearFacetsAndSearch, template } = this.props;
+        const { input, onInputChange, suggesterName, suggestions, suggest, clearSuggestions, postTag, preTag, clearFacetsAndSearch, template } = this.props;
 
         let css = objAssign({}, defaultCss, this.props.css);
 
@@ -77,6 +77,12 @@ class SearchBox extends React.Component<PropsType, State> {
             sectionTitle: css.searchBox__sectionTitle
         };
 
+        let suggestFetchRequested = (input: any) => {
+            if(suggesterName && input.value && input.value.length > 1) {
+                suggest();
+            }
+        }
+
         // input props
         const inputProps = {
             placeholder: "Search...",
@@ -88,7 +94,7 @@ class SearchBox extends React.Component<PropsType, State> {
         return (
             <AutoSuggest
                 suggestions={suggestions}
-                onSuggestionsFetchRequested={suggest}
+                onSuggestionsFetchRequested={suggestFetchRequested}
                 onSuggestionsClearRequested={clearSuggestions}
                 onSuggestionSelected={clearFacetsAndSearch}
                 inputProps={inputProps}

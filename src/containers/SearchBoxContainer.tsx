@@ -42,7 +42,8 @@ function mapStateToProps(state: Store.SearchState, ownProps: OwnProps) {
         suggestions: state.suggestions.suggestions,
         template: ownProps.template,
         css: ownProps.css,
-        suggestionValueKey: ownProps.suggestionValueKey
+        suggestionValueKey: ownProps.suggestionValueKey,
+        suggesterName: state.parameters.suggestionsParameters.suggesterName
     };
 }
 
