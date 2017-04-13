@@ -72,6 +72,7 @@ class SearchBox extends React.Component<PropsType, State> {
             suggestionsList: css.searchBox__suggestionsList,
             suggestion: css.searchBox__suggestion,
             suggestionFocused: css.searchBox__suggestionFocused,
+            suggestionHighlighted: css.searchBox__suggestionFocused,
             sectionContainer: css.searchBox__sectionContainer,
             sectionTitle: css.searchBox__sectionTitle
         };
