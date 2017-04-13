@@ -1,4 +1,4 @@
-/// <reference path="./types/hogan.js.d.ts" />
+/// <reference path="../dist/hogan.js.d.ts" />
 
 import { Provider } from "react-redux";
 import { Store, AzSearchStore } from "azsearchstore";

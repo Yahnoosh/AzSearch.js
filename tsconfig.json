@@ -10,7 +10,6 @@
         "jsx": "react"
     },
     "include": [
-        "./src/AzSearch.tsx",
-        "/src/utils/types/hogan.js.d.ts"
+        "./src/AzSearch.tsx"
     ]
 }
