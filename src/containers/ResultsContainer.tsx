@@ -1,4 +1,3 @@
-/// <reference path="../types/hogan.js.d.ts" />
 import { Template } from "hogan.js";
 import { connect } from "react-redux";
 import * as React from "react";
