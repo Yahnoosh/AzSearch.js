@@ -5,7 +5,7 @@ Automagical UI and sample react controls for [Azure Search](https://docs.microso
 ## Live Demos
 * [Real estate demo](http://azsearchstore.azurewebsites.net/realestate.html) | [source](https://github.com/EvanBoyle/AzSearch.js/blob/master/realestate.html)
 * [Channel9 demo](http://azsearchstore.azurewebsites.net/channel9.html) | [source](https://github.com/EvanBoyle/AzSearch.js/blob/master/channel9.html)
-* [Sample TypeScript project] (https://github.com/EvanBoyle/AzSearch.jsTypeScriptStarter)
+* [Sample TypeScript project](https://github.com/EvanBoyle/AzSearch.jsTypeScriptStarter)
 
 ## App Generator
 The following link contains a tool to help generate starting sample app that you can further customeize:
