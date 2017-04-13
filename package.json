@@ -1,6 +1,6 @@
 {
   "name": "azsearch.js",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Automagical UI and react components for Azure Search using AzSearchStore",
   "repository": {
     "type": "git",
