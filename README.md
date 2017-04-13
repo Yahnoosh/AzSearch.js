@@ -4,7 +4,8 @@ Automagical UI and sample react controls for [Azure Search](https://docs.microso
 
 ## Live Demos
 * [Real estate demo](http://azsearchstore.azurewebsites.net/realestate.html) | [source](https://github.com/EvanBoyle/AzSearch.js/blob/master/realestate.html)
-* [Channel9 demo](http://azsearchstore.azurewebsites.net/channel9.html) | [source](https://github.com/EvanBoyle/AzSearch.js/blob/master/channel9.html) 
+* [Channel9 demo](http://azsearchstore.azurewebsites.net/channel9.html) | [source](https://github.com/EvanBoyle/AzSearch.js/blob/master/channel9.html)
+* [Sample TypeScript project] (https://github.com/EvanBoyle/AzSearch.jsTypeScriptStarter)
 
 ## App Generator
 The following link contains a tool to help generate starting sample app that you can further customeize:
@@ -41,13 +42,13 @@ Samples and documentation assume the real estate sample index available through 
 ```html
 
 <!-- CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/azsearch.js/0.0.8/AzSearch.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/azsearch.js/0.0.11/AzSearch.css">
 <!-- Dependencies -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/react/15.5.0/react.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/react/15.5.0/react-dom.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/redux/3.6.0/redux.min.js"></script>
 <!-- Main -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/azsearch.js/0.0.8/AzSearch.bundle.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/azsearch.js/0.0.11/AzSearch.bundle.js"></script>
 ```
 
 ### NPM
