@@ -78,10 +78,10 @@ class SearchBox extends React.Component<PropsType, State> {
         };
 
         let suggestFetchRequested = (input: any) => {
-            if(suggesterName && input.value && input.value.length > 1) {
+            if (suggesterName && input.value && input.value.length > 1) {
                 suggest();
             }
-        }
+        };
 
         // input props
         const inputProps = {
