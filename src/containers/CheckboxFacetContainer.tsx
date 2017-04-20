@@ -33,7 +33,7 @@ function mapStateToProps(state: Store.SearchState, ownProps: OwnProps) {
 export const stateProps = getReturnType(mapStateToProps);
 export const dispatchProps = getReturnType(mapDispatchToProps);
 
-export type PropsType = typeof stateProps & typeof dispatchProps;
+export type PropsType = typeof stateProps & typeof dispatchProps & OwnProps;
 type State = {};
 
 export const CheckboxFacetContainer = connect(mapStateToProps, mapDispatchToProps)(CheckboxFacet);
