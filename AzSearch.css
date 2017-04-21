@@ -114,6 +114,11 @@ body {
   display: inline-block;
 }
 
+#facetHeader, #facetFooter {
+  text-align: right;
+}
+
+
 /*
  * Main content
  */
