@@ -82,10 +82,10 @@ class Automagic {
         );
     }
 
-    public addClearFiltersButton(htmlId: string) {
+    public addClearFiltersButton(htmlId: string, cssClasses?: { [key: string]: string; }) {
         render(
             <Provider store={this.store.store}>
-                <ClearFiltersButtonContainer/>
+                <ClearFiltersButtonContainer css={cssClasses}/>
             </Provider>,
             document.getElementById(htmlId)
         );

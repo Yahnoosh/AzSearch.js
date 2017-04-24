@@ -9,6 +9,7 @@ export type State = {};
 class ClearFiltersButton extends React.Component<PropsType, State> {
   render() {
     const { onClear, hasSelectedFacets } = this.props;
+    let css = objAssign({}, defaultCss, this.props.css);
     const text = "clear filter(s)";
     const clearAnchor = hasSelectedFacets ?
       <a
@@ -20,11 +21,11 @@ class ClearFiltersButton extends React.Component<PropsType, State> {
       >{text}</a>
     :
       <span
-      className="text-muted"
+      className={css.searchFacets__clearFiltersButtonDisabled}
       >{text}</span>;
 
     return (
-      <div className="text-right">
+      <div className={css.searchFacets__clearFiltersButtonControl}>
         {clearAnchor}
       </div>
     );
