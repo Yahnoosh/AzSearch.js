@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import * as React from "react";
 import { Store, asyncActions, facetsActions, searchParameterActions } from "azsearchstore";
 import * as redux from "redux";
-import FilterBar from "../components/FilterBar";
+import ClearFiltersButton from "../components/ClearFiltersButton";
 
 function getReturnType<RT>(expression: (...params: any[]) => RT): RT {
     return {} as RT;
@@ -48,4 +48,4 @@ export type PropsType = typeof stateProps & typeof dispatchProps & OwnProps;
 
 type State = {};
 
-export const FilterBarContainer = connect(mapStateToProps, mapDispatchToProps)(FilterBar);
+export const ClearFiltersButtonContainer = connect(mapStateToProps, mapDispatchToProps)(ClearFiltersButton);

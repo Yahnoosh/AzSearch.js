@@ -1,12 +1,12 @@
 import * as React from "react";
-import { PropsType } from "../containers/FilterBarContainer";
+import { PropsType } from "../containers/ClearFiltersButtonContainer";
 import * as objAssign from "object-assign";
 import { Store } from "azsearchstore";
 import { defaultCss } from "../utils/css";
 
 export type State = {};
 
-class FilterBar extends React.Component<PropsType, State> {
+class ClearFiltersButton extends React.Component<PropsType, State> {
   render() {
     const { onClear, hasSelectedFacets } = this.props;
     const text = "clear filter(s)";
@@ -31,4 +31,4 @@ class FilterBar extends React.Component<PropsType, State> {
   }
 }
 
-export default FilterBar;
+export default ClearFiltersButton;
