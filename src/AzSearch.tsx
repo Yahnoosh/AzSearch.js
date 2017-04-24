@@ -9,6 +9,7 @@ import { SearchBoxContainer, OwnProps as BoxOwnProps} from "./containers/SearchB
 import { ResultsContainer, OwnProps as ResultsOwnProps }from "./containers/ResultsContainer";
 import { CheckboxFacetContainer, OwnProps as CheckboxOwnProps } from "./containers/CheckboxFacetContainer";
 import { RangeFacetContainer, OwnProps as RangeOwnProps } from "./containers/RangeFacetContainer";
+import { SortByContainer, OwnProps as SortByOwnProps } from "./containers/SortByContainer";
 import { PagerContainer, OwnProps as PagerOwnProps } from "./containers/PagerContainer";
 import { FilterBarContainer, OwnProps as FilterBarOwnProps } from "./containers/FilterBarContainer";
 import SearchBox from "./components/SearchBox";
@@ -16,6 +17,7 @@ import CheckboxFacet from "./components/CheckboxFacet";
 import RangeFacet from "./components/CheckboxFacet";
 import FilterBar from "./components/FilterBar";
 import Results from "./components/Results";
+import SortBy from "./components/SortBy";
 import Pager from "./components/Pager";
 
 import "rc-slider/assets/index.css";
@@ -86,6 +88,15 @@ class Automagic {
         render(
             <Provider store={this.store.store}>
                 <FilterBarContainer/>
+            </Provider>,
+            document.getElementById(htmlId)
+        );
+    }
+
+    public addSortBy(htmlId: string) {
+        render(
+            <Provider store={this.store.store}>
+                <SortByContainer/>
             </Provider>,
             document.getElementById(htmlId)
         );
