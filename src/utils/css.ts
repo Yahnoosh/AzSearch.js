@@ -35,6 +35,8 @@ export let defaultCss = {
     searchFacets__facetControlRangeLabelMax: "searchResults__facetControl-rangeLabelMax",
     searchFacets__facetControlRangeLabelRange: "searchResults__facetControl-rangeLabelRange",
     searchFacets__sliderContainer: "searchFacets__sliderContainer",
+    searchFacets__clearFiltersButtonControl: "searchResults__clearFiltersButtonControl text-right",
+    searchFacets__clearFiltersButtonDisabled: "text-muted",
     // results
     searchResults__result: "searchResults__result col-xs-12 col-sm-12",
     results__blurb: "results__blurb row",

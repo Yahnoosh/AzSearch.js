@@ -10,16 +10,18 @@ import { ResultsContainer, OwnProps as ResultsOwnProps }from "./containers/Resul
 import { CheckboxFacetContainer, OwnProps as CheckboxOwnProps } from "./containers/CheckboxFacetContainer";
 import { RangeFacetContainer, OwnProps as RangeOwnProps } from "./containers/RangeFacetContainer";
 import { PagerContainer, OwnProps as PagerOwnProps } from "./containers/PagerContainer";
+import { ClearFiltersButtonContainer, OwnProps as FilterBarOwnProps } from "./containers/ClearFiltersButtonContainer";
 import SearchBox from "./components/SearchBox";
 import CheckboxFacet from "./components/CheckboxFacet";
 import RangeFacet from "./components/CheckboxFacet";
+import ClearFiltersButton from "./components/ClearFiltersButton";
 import Results from "./components/Results";
 import Pager from "./components/Pager";
 
 import "rc-slider/assets/index.css";
 
-let Components = { SearchBox, CheckboxFacet, Results };
-let Containers = { CheckboxFacetContainer, ResultsContainer, SearchBoxContainer };
+let Components = { SearchBox, CheckboxFacet, Results, ClearFiltersButton };
+let Containers = { CheckboxFacetContainer, ResultsContainer, SearchBoxContainer, ClearFiltersButtonContainer };
 
 class Automagic {
     public store: AzSearchStore;
@@ -75,6 +77,15 @@ class Automagic {
         render(
             <Provider store={this.store.store}>
                 <PagerContainer css={cssClasses}/>
+            </Provider>,
+            document.getElementById(htmlId)
+        );
+    }
+
+    public addClearFiltersButton(htmlId: string, cssClasses?: { [key: string]: string; }) {
+        render(
+            <Provider store={this.store.store}>
+                <ClearFiltersButtonContainer css={cssClasses}/>
             </Provider>,
             document.getElementById(htmlId)
         );

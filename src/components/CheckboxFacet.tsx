@@ -20,11 +20,12 @@ class CheckboxFacet extends React.Component<PropsType, State> {
         let checkboxes = Object.keys(facet.values).map((valueKey: string, index: number) => {
             const value = facet.values[valueKey];
             const countDisplay = value.count ? `(${value.count})` : "";
+
             return (
                 <li key={index + 1} className={css.searchFacets__facetControl}>
                     <div className={css.searchFacets__facetControlCheckboxWrapper}>
                         <label className="checkboxLabel">
-                            <input type="checkbox" className={css.searchFacets__facetControlCheckbox} onChange={toggleFacet.bind(null, valueKey)} checked={value.selected} /> {value.value + " "}{countDisplay}
+                            <input type="checkbox" className={css.searchFacets__facetControlCheckbox} onChange={toggleFacet.bind(null, valueKey)} checked={value.selected}/> {value.value + " "}{countDisplay}
                         </label>
                     </div>
                 </li>
