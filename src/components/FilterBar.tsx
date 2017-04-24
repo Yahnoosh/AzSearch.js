@@ -11,21 +11,22 @@ class FilterBar extends React.Component<PropsType, State> {
     const { onClear, hasSelectedFacets } = this.props;
     const text = "clear filter(s)";
 
+    let clearComponent = hasSelectedFacets ?
+      <a
+        href="#"
+        onClick={ e => {
+          e.preventDefault();
+          if (onClear) onClear();
+        }}
+      >{text}</a>
+    :
+      <span
+      className="text-muted"
+      >{text}</span>;
+
     return (
       <div className="text-right">
-        { hasSelectedFacets ?
-          <a
-            href="#"
-            onClick={ e => {
-              e.preventDefault();
-              if (onClear) onClear();
-            }}
-          >{text}</a>
-        :
-          <span
-          className="text-muted"
-          >{text}</span>
-        }
+        {clearComponent}
       </div>
     );
   }
