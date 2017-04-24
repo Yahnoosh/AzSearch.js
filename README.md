@@ -278,6 +278,12 @@ Adds a checkbox style faceting control to the specified htmlId over the specifie
     automagic.addCheckboxFacet("tagsFacet", "tags", "collection");
 ```
 
+### addClearFiltersButton
+
+* ```addClearFiltersButton(htmlId, css?)```
+
+Adds a button (anchor) to the specified element (```htmlId```) which when triggered clears all applied filters (facets) and updates the search results. Also accepts optional css overrides. 
+
 ### store
 * ```store```
 

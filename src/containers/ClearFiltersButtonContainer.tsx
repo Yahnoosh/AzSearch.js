@@ -2,19 +2,20 @@ import { connect } from "react-redux";
 import * as React from "react";
 import { Store, asyncActions, facetsActions, searchParameterActions } from "azsearchstore";
 import * as redux from "redux";
-import FilterBar from "../components/FilterBar";
+import ClearFiltersButton from "../components/ClearFiltersButton";
 
 function getReturnType<RT>(expression: (...params: any[]) => RT): RT {
     return {} as RT;
 }
 
 export interface OwnProps {
+  css: { [key: string]: string; };
 }
 
 const mapDispatchToProps = (dispatch: redux.Dispatch<any>, ownProps: OwnProps) => {
   return {
     onClear: () => {
-      dispatch(facetsActions.clearFacetsSelections);
+      dispatch(facetsActions.clearFacetsSelections());
       dispatch(searchParameterActions.setPage(1));
       dispatch(asyncActions.fetchSearchResults);
     }
@@ -23,21 +24,23 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>, ownProps: OwnProps) =
 
 function mapStateToProps(state: Store.SearchState, ownProps: OwnProps) {
   return {
-    hasSelectedFacets: checkForAppliedFacets(state.facets.facets)
+    hasSelectedFacets: checkForAppliedFacets(state.facets.facets),
+    css: ownProps.css
   };
 }
 
 function checkForAppliedFacets(facets: { [key: string]: Store.Facet }) {
-  for (let facetKey in facets) {
-    let checkboxFacet = facets[facetKey] as Store.CheckboxFacet;
-    for (let checkboxFacetItemKey in checkboxFacet.values) {
-      let item = checkboxFacet.values[checkboxFacetItemKey];
-      if (item.selected) {;
-        return true;
-      }
+  return !Object.keys(facets).every((key) => {
+    const facet = facets[key];
+    switch (facet.type) {
+      case "CheckboxFacet":
+        return Object.keys(facet.values).every((valueKey) => {
+          return !facet.values[valueKey].selected;
+        });
+      case "RangeFacet":
+        return facet.filterClause === "";
     }
-  }
-  return false;
+  });
 }
 
 export const stateProps = getReturnType(mapStateToProps);
@@ -47,4 +50,4 @@ export type PropsType = typeof stateProps & typeof dispatchProps & OwnProps;
 
 type State = {};
 
-export const FilterBarContainer = connect(mapStateToProps, mapDispatchToProps)(FilterBar);
+export const ClearFiltersButtonContainer = connect(mapStateToProps, mapDispatchToProps)(ClearFiltersButton);
