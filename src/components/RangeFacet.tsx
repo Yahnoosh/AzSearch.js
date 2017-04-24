@@ -12,7 +12,7 @@ class RangeFacet extends React.Component<PropsType, State> {
     render() {
         const facet = this.props.facet as Store.RangeFacet;
         let css = objAssign({}, defaultCss, this.props.css);
-        const { onRangeChange, afterRangeChange, loadedResultsCount } = this.props;
+        const { onRangeChange, afterRangeChange, loadedResultsCount, resultCount } = this.props;
         let lowerValue;
         let upperValue;
         let lowerLabel;
@@ -46,7 +46,7 @@ class RangeFacet extends React.Component<PropsType, State> {
         let upperBoundLabel = facet.filterUpperBound === facet.max ? " <" : "";
 
         // todo with advanced faceting make display condition: !(facet.lowerBucketCount + facet.middleBucketCount + facet.upperBucketCount)
-        if (!facet) {
+        if (!facet || resultCount === -1) {
             return <div></div>;
         }
 
