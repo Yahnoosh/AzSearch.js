@@ -10,13 +10,12 @@ class FilterBar extends React.Component<PropsType, State> {
   render() {
     const { onClear, hasSelectedFacets } = this.props;
     const text = "clear filter(s)";
-
-    let clearComponent = hasSelectedFacets ?
+    const clearAnchor = hasSelectedFacets ?
       <a
         href="#"
         onClick={ e => {
           e.preventDefault();
-          if (onClear) onClear();
+          onClear();
         }}
       >{text}</a>
     :
@@ -26,7 +25,7 @@ class FilterBar extends React.Component<PropsType, State> {
 
     return (
       <div className="text-right">
-        {clearComponent}
+        {clearAnchor}
       </div>
     );
   }
