@@ -8,13 +8,13 @@ export type State = {};
 
 class SortBy extends React.Component<PropsType, State> {
   render() {
-    const { fields, resultCount, onSortChange } = this.props;
+    const { fields, defaultField, resultCount, onSortChange } = this.props;
     let css = objAssign({}, defaultCss, this.props.css);
 
     if (resultCount === -1) return <div></div>;
 
     let options = fields.map((field) => {
-      return <option value={field.field}>{field.title}</option>;
+      return <option selected={field.field === defaultField} value={field.field}>{field.title}</option>;
     });
 
     let onChange = (event: React.ChangeEvent<HTMLSelectElement>) => {

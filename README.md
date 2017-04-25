@@ -286,12 +286,12 @@ Adds a button (anchor) to the specified element (```htmlId```) which when trigge
 
 ### addSortBy
 
-* ```addSortBy(htmlId, fields, css?)```
+* ```addSortBy(htmlId, fields, defaultSortFieldName?, css?)```
 
-Adds sorting control to the specified htmlId for the specified fields. Also accepts optional css overrides.
+Adds sorting control to the specified htmlId for the specified sortable fields. Accepts optional default sorting field name & css overrides.
 
 ```js
-    automagic.addSortBy("sortBy", [{title: "Size", field: "sqft"}, {title: "Beds", field: "beds"}, {title: "Baths", field: "baths"}]);
+    automagic.addSortBy("sortBy", [{title: "Relevance", field: ""}, {title: "Size", field: "sqft"}, {title: "Beds", field: "beds"}, {title: "Baths", field: "baths"}], "sqft");
 ```
 
 ### store

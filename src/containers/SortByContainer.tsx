@@ -10,13 +10,14 @@ function getReturnType<RT>(expression: (...params: any[]) => RT): RT {
 
 export interface OwnProps {
   fields: [{title: string, field: string}];
+  defaultField: string;
   css: { [key: string]: string };
 }
 
 const mapDispatchToProps = (dispatch: redux.Dispatch<any>, ownProps: OwnProps) => {
   return {
     onSortChange: (field: string, direction: string) => {
-      dispatch(searchParameterActions.updateSearchParameters({orderby: field + " " + direction}));
+      dispatch(searchParameterActions.updateSearchParameters({orderby: field + (field !== "" ? " " + direction : "")}));
       dispatch(searchParameterActions.setPage(1));
       dispatch(asyncActions.fetchSearchResultsFromFacet);
     }
