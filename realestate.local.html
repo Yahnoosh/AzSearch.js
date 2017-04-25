@@ -87,6 +87,7 @@
 <script src="https://cdn.jsdelivr.net/react/15.5.0/react.min.js"></script>
 <script src="https://cdn.jsdelivr.net/react/15.5.0/react-dom.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/redux/3.6.0/redux.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 <!-- Main -->
 <script src="./dist/AzSearch.bundle.js"></script>
 <script>
@@ -105,6 +106,8 @@
             result.displayText = result.number + " " + result.street+ " " +result.city+ ", " +result.region+ " " +result.countryCode;
             var summary = result.description;
             result.summary = summary.length < 200 ? summary : summary.substring(0, 200) + "...";
+            result.sqft = numeral(result.sqft).format("0,0");
+            result.price = numeral(result.price).format("0,0");
             return result;
         });
     };

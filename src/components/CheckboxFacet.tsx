@@ -3,6 +3,7 @@ import { PropsType } from "../containers/CheckboxFacetContainer";
 import * as objAssign from "object-assign";
 import { Store } from "azsearchstore";
 import { defaultCss } from "../utils/css";
+import * as Numeral from "numeral";
 
 export type State = {};
 
@@ -19,7 +20,7 @@ class CheckboxFacet extends React.Component<PropsType, State> {
 
         let checkboxes = Object.keys(facet.values).map((valueKey: string, index: number) => {
             const value = facet.values[valueKey];
-            const countDisplay = value.count ? `(${value.count})` : "";
+            const countDisplay = value.count ? `(${numeral(value.count).format("0,0")})` : "";
 
             return (
                 <li key={index + 1} className={css.searchFacets__facetControl}>
