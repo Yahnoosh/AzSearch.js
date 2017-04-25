@@ -25,6 +25,7 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>, ownProps: OwnProps) =
 function mapStateToProps(state: Store.SearchState, ownProps: OwnProps) {
   return {
     hasSelectedFacets: checkForAppliedFacets(state.facets.facets),
+    resultCount: state.results.count,
     css: ownProps.css
   };
 }
