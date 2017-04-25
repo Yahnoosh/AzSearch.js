@@ -54,6 +54,11 @@ body {
 .navbar {
     max-height: 50px;
 }
+
+.sorting__sortyBy select {
+  width: 100%;
+}
+
 /*
  * Global add-ons
  */

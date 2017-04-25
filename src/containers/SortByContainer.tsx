@@ -1,6 +1,6 @@
 import { connect} from "react-redux";
 import * as React from "react";
-import { Store } from "azsearchstore";
+import { Store, searchParameterActions, asyncActions } from "azsearchstore";
 import * as redux from "redux";
 import SortBy from "../components/SortBy";
 
@@ -9,15 +9,25 @@ function getReturnType<RT>(expression: (...params: any[]) => RT): RT {
 }
 
 export interface OwnProps {
-
+  fields: [{title: string, field: string}];
+  css: { [key: string]: string };
 }
 
 const mapDispatchToProps = (dispatch: redux.Dispatch<any>, ownProps: OwnProps) => {
-  return {};
+  return {
+    onSortChange: (field: string, direction: string) => {
+      dispatch(searchParameterActions.updateSearchParameters({orderby: field + " " + direction}));
+      dispatch(searchParameterActions.setPage(1));
+      dispatch(asyncActions.fetchSearchResultsFromFacet);
+    }
+  };
 };
 
 function mapStateToProps(state: Store.SearchState, ownProps: OwnProps) {
-  return {};
+  return {
+    resultCount: state.results.count,
+    css: ownProps.css
+  };
 }
 
 export const stateProps = getReturnType(mapStateToProps);

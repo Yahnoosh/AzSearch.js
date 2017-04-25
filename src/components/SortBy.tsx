@@ -8,9 +8,37 @@ export type State = {};
 
 class SortBy extends React.Component<PropsType, State> {
   render() {
-    return (
-      <div>Sort!</div>
-    );
+    const { fields, resultCount, onSortChange } = this.props;
+    let css = objAssign({}, defaultCss, this.props.css);
+
+    if (resultCount === -1) return <div></div>;
+
+    let options = fields.map((field) => {
+      return <option value={field.field}>{field.title}</option>;
+    });
+
+    let onChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+      onSortChange(event.target.value, "desc");
+    };
+
+    let container = <div className={css.sorting__sortBy}>
+      <div className={css.searchFacets__facetHeaderContainer}>
+          <h4 className={css.searchFacets__facetHeader}>
+              <a data-toggle="collapse" className={css.searchFacets__facetHeaderLink}  >
+                  <span className={css.searchFacets__facetHeaderIconOpen} aria-hidden="true"></span> Sort By
+              </a>
+          </h4>
+      </div>
+      <div className={css.searchFacets__facetControlContainer}>
+        <div className={css.searchFacets__facetControlList}>
+          <select className={css.sorting__sortByControl} onChange={onChange}>
+            {options}
+          </select>
+        </div>
+      </div>
+    </div>;
+
+    return (container);
   }
 }
 

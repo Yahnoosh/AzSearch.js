@@ -93,10 +93,10 @@ class Automagic {
         );
     }
 
-    public addSortBy(htmlId: string) {
+    public addSortBy(htmlId: string, fields: [{title: string, field: string}], cssClasses?: { [key: string]: string; }) {
         render(
             <Provider store={this.store.store}>
-                <SortByContainer/>
+                <SortByContainer css={cssClasses} fields={fields}/>
             </Provider>,
             document.getElementById(htmlId)
         );
