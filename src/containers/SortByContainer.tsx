@@ -17,8 +17,8 @@ export interface OwnProps {
 const mapDispatchToProps = (dispatch: redux.Dispatch<any>, ownProps: OwnProps) => {
   return {
     onSortChange: (fieldName: string, direction: string) => {
-      let orderByClause = fieldName ? `${fieldName} desc` : "";
-      dispatch(searchParameterActions.updateSearchParameters({orderby: orderByClause}));
+      const orderby = fieldName ? `${fieldName} ${direction}` : "";
+      dispatch(searchParameterActions.updateSearchParameters({orderby}));
       dispatch(searchParameterActions.setPage(1));
       dispatch(asyncActions.fetchSearchResultsFromFacet);
     }
