@@ -8,10 +8,10 @@ export type State = {};
 
 class ClearFiltersButton extends React.Component<PropsType, State> {
   render() {
-    const { resultCount, onClear, hasSelectedFacets } = this.props;
+    const { lastUpdated, onClear, hasSelectedFacets } = this.props;
     let css = objAssign({}, defaultCss, this.props.css);
 
-    if (resultCount === -1) { return <div></div>; }
+    if (!lastUpdated) { return <div></div>; }
 
     const text = "clear filter(s)";
     const clearAnchor = hasSelectedFacets ?
