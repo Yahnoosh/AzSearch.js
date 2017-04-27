@@ -20,7 +20,7 @@ class CheckboxFacet extends React.Component<PropsType, State> {
 
         let checkboxes = Object.keys(facet.values).map((valueKey: string, index: number) => {
             const value = facet.values[valueKey];
-            const countDisplay = value.count ? `(${numeral(value.count).format("0,0")})` : "";
+            const countDisplay = value.count ? `(${Numeral(value.count).format("0,0")})` : "";
 
             return (
                 <li key={index + 1} className={css.searchFacets__facetControl}>
