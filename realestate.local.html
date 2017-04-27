@@ -18,6 +18,10 @@
             text-transform: uppercase;
         }
 
+        .searchResults__result .resultDescription {
+            margin: 0.5em 0 0 0;
+        }
+
         .searchResults__result ul.resultProperties {
             margin: 1em 0 0 0;
             padding: 0;
@@ -66,10 +70,19 @@
 
             .searchResults__result ul.resultProperties li {
                 font-size: 1em;
+                padding: 0 0.5em 0 0;
+            }
+
+            .searchResults__result ul.resultProperties li.resultProperties__money {
+                width: inherit;
+            }
+
+            .searchResults__result ul.resultProperties li.resultProperties__home {
+                width: inherit;
             }
 
             .searchResults__result ul.resultProperties li.resultProperties__bed, .searchResults__result ul.resultProperties li.resultProperties__bath {
-                width: 6em;
+                width: inherit;
             }
         }
     </style>
@@ -236,6 +249,7 @@
     // add sorting options
     automagic.addSortBy("sortBy", [
         {displayName: "Relevance", fieldName: ""},
+        {displayName: "Price", fieldName: "price"},
         {displayName: "Size", fieldName: "sqft"},
         {displayName: "Beds", fieldName: "beds"},
         {displayName: "Baths", fieldName: "baths"}
