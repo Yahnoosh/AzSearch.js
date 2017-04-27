@@ -77,7 +77,7 @@ class RangeFacet extends React.Component<PropsType, State> {
                             <span className={css.searchFacets__facetControlRangeLabelMin}>
                                 {lowerLabel}
                             </span>
-                            <span className={css.searchFacets__facetControlRangeLabelRange}>  <b> {"< " + numeral(facet.middleBucketCount).format("0,0") + " <"} </b> </span>
+                            <span className={css.searchFacets__facetControlRangeLabelRange}>  <b> {"< " + Numeral(facet.middleBucketCount).format("0,0") + " <"} </b> </span>
                             <span className={css.searchFacets__facetControlRangeLabelMax}>
                                 {upperLabel} {upperBoundLabel}
                             </span>
