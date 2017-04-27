@@ -323,14 +323,6 @@ a.searchResults__facetHeader-link {
 	padding-left: 0;
 }
 
-.searchResults__result h4 {
-  margin-top: 0px;
-}
-
-.result_img {
-	padding: 0;
-}
-
 .resultLabel {
   vertical-align: top;
 }
@@ -345,9 +337,4 @@ a.searchResults__facetHeader-link {
 	width: auto;
 	height: auto;
   vertical-align: bottom;
-}
-
-.result_img {
-	max-width: 200px;
-	max-height: 200px;
 }
