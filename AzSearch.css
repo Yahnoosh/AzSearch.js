@@ -323,6 +323,10 @@ a.searchResults__facetHeader-link {
 	padding-left: 0;
 }
 
+.searchResults__result h4 {
+  margin-top: 0px;
+}
+
 .result_img {
 	padding: 0;
 }

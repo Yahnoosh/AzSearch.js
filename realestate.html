@@ -45,6 +45,10 @@
                   <div className="panel panel-primary behclick-panel">
                     <ul class="nav nav-sidebar">
                       <li>
+                          <div id="priceFacet">
+                          </div>
+                      </li>
+                      <li>
                           <div id="sqftFacet">
                           </div>
                       </li>
@@ -125,6 +129,9 @@
                 {{{summary}}}
             </div>
             <div>
+                price: <b>{{price}}</b>
+            </div>
+            <div>
                 sqft: <b>{{sqft}}</b>
             </div>
             <div>
@@ -150,6 +157,8 @@
     automagic.addResults("results", { count: true }, resultTemplate);
     // Adds a pager control << 1 2 3 ... >>
     automagic.addPager("pager");
+    // range facet for price
+    automagic.addRangeFacet("priceFacet", "price", "number", 0, 2000000);
     // range facet for sqft
     automagic.addRangeFacet("sqftFacet", "sqft", "number", 0, 17000);
     // checkbox facet for numeric field beds
