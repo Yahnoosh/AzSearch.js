@@ -95,7 +95,7 @@ class Automagic {
 
     public addSortBy(htmlId: string, fields: [{fieldName: string, displayName?: string}], defaultSortFieldName?: string, cssClasses?: { [key: string]: string; }) {
         if (defaultSortFieldName) {
-            this.store.updateSearchParameters({orderby: defaultSortFieldName + " desc"});
+            this.store.updateSearchParameters({orderby: `${defaultSortFieldName} desc`});
         }
 
         render(
