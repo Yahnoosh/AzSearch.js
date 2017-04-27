@@ -37,6 +37,9 @@ export let defaultCss = {
     searchFacets__sliderContainer: "searchFacets__sliderContainer",
     searchFacets__clearFiltersButtonControl: "searchResults__clearFiltersButtonControl text-right",
     searchFacets__clearFiltersButtonDisabled: "text-muted",
+    // sorting
+    sorting__sortBy: "sorting__sortyBy panel-body",
+    sorting__sortByControl: "sorting__sortyByControl list-group-item",
     // results
     searchResults__result: "searchResults__result col-xs-12 col-sm-12",
     results__blurb: "results__blurb row",

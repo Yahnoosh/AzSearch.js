@@ -9,6 +9,7 @@ import { SearchBoxContainer, OwnProps as BoxOwnProps} from "./containers/SearchB
 import { ResultsContainer, OwnProps as ResultsOwnProps }from "./containers/ResultsContainer";
 import { CheckboxFacetContainer, OwnProps as CheckboxOwnProps } from "./containers/CheckboxFacetContainer";
 import { RangeFacetContainer, OwnProps as RangeOwnProps } from "./containers/RangeFacetContainer";
+import { SortByContainer, OwnProps as SortByOwnProps } from "./containers/SortByContainer";
 import { PagerContainer, OwnProps as PagerOwnProps } from "./containers/PagerContainer";
 import { ClearFiltersButtonContainer, OwnProps as FilterBarOwnProps } from "./containers/ClearFiltersButtonContainer";
 import SearchBox from "./components/SearchBox";
@@ -16,6 +17,7 @@ import CheckboxFacet from "./components/CheckboxFacet";
 import RangeFacet from "./components/CheckboxFacet";
 import ClearFiltersButton from "./components/ClearFiltersButton";
 import Results from "./components/Results";
+import SortBy from "./components/SortBy";
 import Pager from "./components/Pager";
 
 import "rc-slider/assets/index.css";
@@ -86,6 +88,19 @@ class Automagic {
         render(
             <Provider store={this.store.store}>
                 <ClearFiltersButtonContainer css={cssClasses}/>
+            </Provider>,
+            document.getElementById(htmlId)
+        );
+    }
+
+    public addSortBy(htmlId: string, fields: [{fieldName: string, displayName?: string}], defaultSortFieldName?: string, cssClasses?: { [key: string]: string; }) {
+        if (defaultSortFieldName) {
+            this.store.updateSearchParameters({orderby: `${defaultSortFieldName} desc`});
+        }
+
+        render(
+            <Provider store={this.store.store}>
+                <SortByContainer css={cssClasses} fields={fields} defaultFieldName={defaultSortFieldName}/>
             </Provider>,
             document.getElementById(htmlId)
         );

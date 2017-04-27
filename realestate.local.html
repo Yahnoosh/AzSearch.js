@@ -45,6 +45,10 @@
                   <div className="panel panel-primary behclick-panel">
                     <ul class="nav nav-sidebar">
                       <li>
+                          <div id="sortBy">
+                          </div>
+                      </li>
+                      <li>
                           <div id="sqftFacet">
                           </div>
                       </li>
@@ -163,6 +167,13 @@
     // filter header & footer options 
     automagic.addClearFiltersButton("facetHeader");
     automagic.addClearFiltersButton("facetFooter");
+    // add sorting options
+    automagic.addSortBy("sortBy", [
+        {displayName: "Relevance", fieldName: ""},
+        {displayName: "Size", fieldName: "sqft"},
+        {displayName: "Beds", fieldName: "beds"},
+        {displayName: "Baths", fieldName: "baths"}
+        ], "beds");
 </script>
 <style>
 

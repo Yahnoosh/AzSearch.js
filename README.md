@@ -282,7 +282,18 @@ Adds a checkbox style faceting control to the specified htmlId over the specifie
 
 * ```addClearFiltersButton(htmlId, css?)```
 
-Adds a button (anchor) to the specified element (```htmlId```) which when triggered clears all applied filters (facets) and updates the search results. Also accepts optional css overrides. 
+Adds a button (anchor) to the specified element (```htmlId```) which when triggered clears all applied filters (facets) and updates the search results. Also accepts optional css overrides.
+
+### addSortBy
+
+* ```addSortBy(htmlId, fields, defaultSortFieldName?, css?)```
+
+Adds sorting control to the specified htmlId for the specified sortable fields. Accepts optional default sorting field name & css overrides.
+
+```js
+    // With optional displayName & default sort fieldName
+    automagic.addSortBy("sortBy", [{displayName: "Relevance", fieldName: ""}, {displayName: "Size", fieldName: "sqft"}, {displayName: "Beds", fieldName: "beds"}, {displayName: "Baths", fieldName: "baths"}], "sqft");
+```
 
 ### store
 * ```store```
