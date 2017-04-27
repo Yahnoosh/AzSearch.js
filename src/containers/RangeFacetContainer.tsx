@@ -29,7 +29,7 @@ function mapStateToProps(state: Store.SearchState, ownProps: OwnProps) {
     return {
         facet: state.facets.facets[ownProps.facet],
         loadedResultsCount: state.results.results.length,
-        resultCount: state.results.count,
+        lastUpdated: state.results.lastUpdated,
         css: ownProps.css
     };
 };
