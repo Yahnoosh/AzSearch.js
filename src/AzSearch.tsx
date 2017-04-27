@@ -93,14 +93,14 @@ class Automagic {
         );
     }
 
-    public addSortBy(htmlId: string, fields: [{title: string, field: string}], defaultSortFieldName?: string, cssClasses?: { [key: string]: string; }) {
+    public addSortBy(htmlId: string, fields: [{fieldName: string, displayName?: string}], defaultSortFieldName?: string, cssClasses?: { [key: string]: string; }) {
         if (defaultSortFieldName) {
             this.store.updateSearchParameters({orderby: defaultSortFieldName + " desc"});
         }
 
         render(
             <Provider store={this.store.store}>
-                <SortByContainer css={cssClasses} fields={fields} defaultField={defaultSortFieldName}/>
+                <SortByContainer css={cssClasses} fields={fields} defaultFieldName={defaultSortFieldName}/>
             </Provider>,
             document.getElementById(htmlId)
         );

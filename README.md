@@ -291,7 +291,8 @@ Adds a button (anchor) to the specified element (```htmlId```) which when trigge
 Adds sorting control to the specified htmlId for the specified sortable fields. Accepts optional default sorting field name & css overrides.
 
 ```js
-    automagic.addSortBy("sortBy", [{title: "Relevance", field: ""}, {title: "Size", field: "sqft"}, {title: "Beds", field: "beds"}, {title: "Baths", field: "baths"}], "sqft");
+    // With optional displayName & default sort fieldName
+    automagic.addSortBy("sortBy", [{displayName: "Relevance", fieldName: ""}, {displayName: "Size", fieldName: "sqft"}, {displayName: "Beds", fieldName: "beds"}, {displayName: "Baths", fieldName: "baths"}], "sqft");
 ```
 
 ### store
