@@ -45,6 +45,10 @@
                   <div className="panel panel-primary behclick-panel">
                     <ul class="nav nav-sidebar">
                       <li>
+                          <div id="sortBy">
+                          </div>
+                      </li>  
+                      <li>
                           <div id="priceFacet">
                           </div>
                       </li>
@@ -171,7 +175,14 @@
     automagic.addCheckboxFacet("tagsFacet", "tags", "collection");
     // filter header & footer options 
     automagic.addClearFiltersButton("facetHeader");
-    automagic.addClearFiltersButton("facetFooter");    
+    automagic.addClearFiltersButton("facetFooter");   
+    // add sorting options
+    automagic.addSortBy("sortBy", [
+        {displayName: "Relevance", fieldName: ""},
+        {displayName: "Size", fieldName: "sqft"},
+        {displayName: "Beds", fieldName: "beds"},
+        {displayName: "Baths", fieldName: "baths"}
+        ], "beds"); 
 </script>
 <style>
 
