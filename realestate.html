@@ -11,6 +11,81 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/azsearch.js/0.0.13/AzSearch.css">
     <title>Real Estate</title>
+
+    <style>
+        .searchResults__result h4 {
+            margin-top: 0px;
+            text-transform: uppercase;
+        }
+
+        .searchResults__result .resultDescription {
+            margin: 0.5em 0 0 0;
+        }
+
+        .searchResults__result ul.resultProperties {
+            margin: 1em 0 0 0;
+            padding: 0;
+        }
+
+        .searchResults__result ul.resultProperties li {
+            display: inline-block;
+            font-size: 1.2em;
+            padding: 0px;
+        }
+
+        .searchResults__result ul.resultProperties i.fa {
+            color: #bbb;
+        }
+
+        .searchResults__result ul.resultProperties li span {
+            padding-left:0.3em;
+        }
+
+        .searchResults__result ul.resultProperties li.resultProperties__money {
+            width: 8em;
+        }
+
+        .searchResults__result ul.resultProperties li.resultProperties__home {
+            width: 7em;
+        }
+
+        .searchResults__result ul.resultProperties li.resultProperties__bed, .searchResults__result ul.resultProperties li.resultProperties__bath {
+            width: 4em;
+        }
+
+        @media (max-width: 850px) {
+            .searchResults__result ul.resultProperties li {
+                font-size: 1.1em;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .searchResults__result h4 {
+                margin-top: 0.5em;
+            }
+
+            .searchResults__result ul.resultProperties {
+                margin: 0.5em 0 0 0;
+            }
+
+            .searchResults__result ul.resultProperties li {
+                font-size: 1em;
+                padding: 0 0.5em 0 0;
+            }
+
+            .searchResults__result ul.resultProperties li.resultProperties__money {
+                width: inherit;
+            }
+
+            .searchResults__result ul.resultProperties li.resultProperties__home {
+                width: inherit;
+            }
+
+            .searchResults__result ul.resultProperties li.resultProperties__bed, .searchResults__result ul.resultProperties li.resultProperties__bath {
+                width: inherit;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -44,6 +119,10 @@
                   <div id="facetHeader"></div>
                   <div className="panel panel-primary behclick-panel">
                     <ul class="nav nav-sidebar">
+                      <li>
+                          <div id="sortBy">
+                          </div>
+                      </li>
                       <li>
                           <div id="priceFacet">
                           </div>
@@ -79,7 +158,7 @@
                     </div>
                 </div>
             </div>
-        </div
+        </div>
         <!-- Bootstrap core JavaScript
             ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
@@ -92,6 +171,7 @@
 <script src="https://cdn.jsdelivr.net/react/15.5.0/react-dom.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/redux/3.6.0/redux.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+<script src="https://use.fontawesome.com/f07430bcbd.js"></script>
 <!-- Main -->
 <script src="https://cdn.jsdelivr.net/azsearch.js/0.0.13/AzSearch.bundle.js"></script>
 <script>
@@ -111,7 +191,7 @@
             var summary = result.description;
             result.summary = summary.length < 200 ? summary : summary.substring(0, 200) + "...";
             result.sqft = numeral(result.sqft).format("0,0");
-            result.price = numeral(result.price).format("0,0");
+            result.price = numeral(result.price).format("$0,0");
             return result;
         });
     };
@@ -120,26 +200,20 @@
 
     // Create some mustache templates to customize result/suggestion display. Default is JSON.stringify(result,null,4) rendered in <pre> and <code>.
     var resultTemplate =
-        `<div class="col-xs-12 col-sm-5 col-md-3 result_img">
+        `<div class="col-xs-12 col-sm-3 col-md-3 result_img">
             <img class="img-responsive result_img" src={{thumbnail}} alt="image not found" />
         </div>
-        <div class="col-xs-12 col-sm-7 col-md-9">
+        <div class="col-xs-12 col-sm-9 col-md-9">
             <h4>{{displayText}}</h4>
             <div class="resultDescription">
                 {{{summary}}}
             </div>
-            <div>
-                price: <b>{{price}}</b>
-            </div>
-            <div>
-                sqft: <b>{{sqft}}</b>
-            </div>
-            <div>
-                beds: <b>{{beds}}</b>
-            </div>
-            <div>
-                baths: <b>{{baths}}</b>
-            </div>
+            <ul class="resultProperties">
+                <li class="resultProperties__money"><i class="fa fa-money" aria-hidden="true"></i><span>{{price}}</span></li>
+                <li class="resultProperties__home"><i class="fa fa-home" aria-hidden="true"></i><span>{{sqft}}ft<sup>2</sup></span></li>
+                <li class="resultProperties__bed"><i class="fa fa-bed" aria-hidden="true"></i><span>{{beds}}</span></li>
+                <li class="resultProperties__bath"><i class="fa fa-bath" aria-hidden="true"></i><span>{{baths}}</span></li>
+            </ul>
         </div>`;
     var suggestionsTemplate = "{{displayText}} <br/> {{{searchText}}}";
     
@@ -171,10 +245,14 @@
     automagic.addCheckboxFacet("tagsFacet", "tags", "collection");
     // filter header & footer options 
     automagic.addClearFiltersButton("facetHeader");
-    automagic.addClearFiltersButton("facetFooter");    
+    automagic.addClearFiltersButton("facetFooter");
+    // add sorting options
+    automagic.addSortBy("sortBy", [
+        {displayName: "Relevance", fieldName: ""},
+        {displayName: "Price", fieldName: "price"},
+        {displayName: "Size", fieldName: "sqft"},
+        {displayName: "Beds", fieldName: "beds"},
+        {displayName: "Baths", fieldName: "baths"}
+        ], "beds");
 </script>
-<style>
-
-</style>
-
 </html>
