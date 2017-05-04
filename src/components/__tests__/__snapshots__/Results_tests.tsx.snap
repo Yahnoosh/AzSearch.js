@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Counter /> renders 1`] = `
+exports[`Dummy snapshot test for <Results/> renders 1`] = `
 <div>
   <div
     className="results__blurb row"

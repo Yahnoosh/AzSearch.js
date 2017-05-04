@@ -50,11 +50,13 @@
     "ts-jest": "^19.0.14",
     "ts-lint": "4.5.1",
     "typescript": "^2.2.2",
-    "webpack": "^2.2.3"
+    "webpack": "^2.2.3",
+    "react": "15.5.4",
+    "react-dom": "^15.4.4"
   },
   "peerDependencies": {
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
+    "react": "^15.4.4",
+    "react-dom": "^15.4.4",
     "redux": "^3.6.0"
   },
   "jest": {

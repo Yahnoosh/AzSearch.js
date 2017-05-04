@@ -2,7 +2,7 @@ import * as React from "react";
 import * as TestUtils from "react-dom/test-utils";
 import Results from "../Results";
 
-describe("<Counter />", () => {
+describe("Dummy snapshot test for <Results/>", () => {
     it("renders", () => {
         let results = [
             {
