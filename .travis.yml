@@ -3,4 +3,4 @@ node_js:
   - "node"
 script:
   - npm run devpack
-  - npm run test
+  - npm run test 
