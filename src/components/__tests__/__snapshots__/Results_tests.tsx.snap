@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dummy snapshot test for <Results/> renders 1`] = `
+<div>
+  <div
+    className="results__blurb row"
+  >
+    1
+     - 
+    2
+     
+     of 2
+  </div>
+  <div
+    className="searchResults__result col-xs-12 col-sm-12"
+  >
+    <pre>
+      <code>
+        {
+            "key": "foo",
+            "text": "bar"
+        }
+      </code>
+    </pre>
+  </div>
+  <div
+    className="searchResults__result col-xs-12 col-sm-12"
+  >
+    <pre>
+      <code>
+        {
+            "key": "fizz",
+            "text": "buzz"
+        }
+      </code>
+    </pre>
+  </div>
+</div>
+`;
