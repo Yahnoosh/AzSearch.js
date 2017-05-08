@@ -45,13 +45,13 @@ Samples and documentation assume the real estate sample index available through 
 ```html
 
 <!-- CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/azsearch.js/0.0.16/AzSearch.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/azsearch.js/0.0.17/AzSearch.css">
 <!-- Dependencies -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/react/15.5.4/react.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/react/15.5.4/react-dom.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/redux/3.6.0/redux.min.js"></script>
 <!-- Main -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/azsearch.js/0.0.16/AzSearch.bundle.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/azsearch.js/0.0.17/AzSearch.bundle.js"></script>
 ```
 
 ### NPM
