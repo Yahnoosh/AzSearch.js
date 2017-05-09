@@ -347,4 +347,4 @@ AzSearch.js is build with react components and react-redux containers. Both of t
 
 ## Development
 
-Set up should be as simple as running ```npm install```. Run ```npm run devbuild``` for tslint, typescript compilation, and webpack dev bundling all in one step. Run ```npm run prodpack``` for a minified bundle.
+Set up should be as simple as running ```yarn install```. Run ```yarn run devbuild``` for tslint, typescript compilation, and webpack dev bundling all in one step. Run ```yarn run prodpack``` for a minified bundle. Testing: ```yarn test```

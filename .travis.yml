@@ -2,5 +2,9 @@ language: node_js
 node_js:
   - "node"
 script:
-  - npm run devpack
-  - npm run test 
+  - yarn run devpack
+  - yarn run test 
+cache:
+  yarn: true
+  directories:
+    - node_modules
