@@ -4,3 +4,7 @@ node_js:
 script:
   - npm run devpack
   - npm run test 
+cache:
+  yarn: true
+  directories:
+    - node_modules
