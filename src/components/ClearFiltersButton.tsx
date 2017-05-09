@@ -6,7 +6,7 @@ import { defaultCss } from "../utils/css";
 
 export type State = {};
 
-class ClearFiltersButton extends React.Component<PropsType, State> {
+class ClearFiltersButton extends React.PureComponent<PropsType, State> {
   render() {
     const { lastUpdated, onClear, hasSelectedFacets } = this.props;
     let css = objAssign({}, defaultCss, this.props.css);

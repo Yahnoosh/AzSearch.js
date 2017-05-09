@@ -5,7 +5,7 @@ import { defaultCss } from "../utils/css";
 
 export type State = {};
 
-class Results extends React.Component<PropsType, State> {
+class Results extends React.PureComponent<PropsType, State> {
     render() {
         const { results, template, skip, top, count } = this.props;
         let css = objAssign({}, defaultCss, this.props.css);

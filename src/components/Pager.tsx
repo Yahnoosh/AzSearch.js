@@ -6,7 +6,7 @@ import { defaultCss } from "../utils/css";
 
 export type State = {};
 
-class Pager extends React.Component<PropsType, State> {
+class Pager extends React.PureComponent<PropsType, State> {
     render() {
         const { count, top, skip, loadedResultsCount, pageUp, pageDown, loadPage } = this.props;
         let css = objAssign({}, defaultCss, this.props.css);
