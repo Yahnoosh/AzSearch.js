@@ -26,7 +26,7 @@
   "author": "Evan Boyle (https://github.com/EvanBoyle)",
   "license": "MIT",
   "dependencies": {
-    "azsearchstore": "0.0.24",
+    "azsearchstore": "^0.0.25",
     "hogan.js": "3.0.2",
     "numeral": "^2.0.6",
     "object-assign": "^4.1.1",
@@ -45,14 +45,14 @@
     "awesome-typescript-loader": "^3.1.2",
     "css-loader": "^0.28.0",
     "jest": "^19.0.2",
+    "react": "15.5.4",
+    "react-dom": "^15.4.4",
     "react-test-render": "^1.0.3",
     "style-loader": "^0.16.1",
     "ts-jest": "^19.0.14",
     "ts-lint": "4.5.1",
     "typescript": "^2.2.2",
-    "webpack": "^2.2.3",
-    "react": "15.5.4",
-    "react-dom": "^15.4.4"
+    "webpack": "^2.2.3"
   },
   "peerDependencies": {
     "react": "^15.4.4",

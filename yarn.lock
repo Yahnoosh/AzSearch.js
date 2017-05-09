@@ -269,9 +269,9 @@ aws4@^1.2.1:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.6.0.tgz#83ef5ca860b2b32e4a0deedee8c771b9db57471e"
 
-azsearchstore@0.0.24:
-  version "0.0.24"
-  resolved "https://registry.yarnpkg.com/azsearchstore/-/azsearchstore-0.0.24.tgz#ab575a93c0e20712664c0cbb85264a69649800fc"
+azsearchstore@^0.0.25:
+  version "0.0.25"
+  resolved "https://registry.yarnpkg.com/azsearchstore/-/azsearchstore-0.0.25.tgz#0fa88b5edce9ef79adee80d7ad3d2943a1660805"
   dependencies:
     es6-promise "^4.0.5"
     isomorphic-fetch "^2.2.1"
@@ -1574,13 +1574,9 @@ https-browserify@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-0.0.1.tgz#3f91365cabe60b77ed0ebba24b454e3e09d95a82"
 
-iconv-lite@0.4.13:
+iconv-lite@0.4.13, iconv-lite@~0.4.13:
   version "0.4.13"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.13.tgz#1f88aba4ab0b1508e8312acc39345f36e992e2f2"
-
-iconv-lite@~0.4.13:
-  version "0.4.17"
-  resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.17.tgz#4fdaa3b38acbc2c031b045d0edcdfe1ecab18c8d"
 
 icss-replace-symbols@^1.0.2:
   version "1.0.2"
