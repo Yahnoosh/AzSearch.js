@@ -7,7 +7,7 @@ import * as Numeral from "numeral";
 
 export type State = {};
 
-class CheckboxFacet extends React.Component<PropsType, State> {
+class CheckboxFacet extends React.PureComponent<PropsType, State> {
     render() {
         const facet = this.props.facet as Store.CheckboxFacet;
         let css = objAssign({}, defaultCss, this.props.css);

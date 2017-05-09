@@ -6,7 +6,7 @@ import { defaultCss } from "../utils/css";
 
 export type State = {};
 
-class SearchBox extends React.Component<PropsType, State> {
+class SearchBox extends React.PureComponent<PropsType, State> {
     onInputChange(changeEvent: React.ChangeEvent<HTMLInputElement>, newValue: any) {
         if (newValue.method === "up" || newValue.method === "down") {
             return;

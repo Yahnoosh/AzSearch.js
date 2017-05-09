@@ -8,7 +8,7 @@ import * as Numeral from "numeral";
 
 export type State = {};
 
-class RangeFacet extends React.Component<PropsType, State> {
+class RangeFacet extends React.PureComponent<PropsType, State> {
     render() {
         const facet = this.props.facet as Store.RangeFacet;
         let css = objAssign({}, defaultCss, this.props.css);
