@@ -26,9 +26,9 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-dom@^0.14.23":
-  version "0.14.23"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-0.14.23.tgz#cecfcfad754b4c2765fe5d29b81b301889ad6c2e"
+"@types/react-dom@^15.5.4":
+  version "15.5.0"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-15.5.0.tgz#7f4fb9613d4051141773242f7b6b5f1a46b34bd9"
   dependencies:
     "@types/react" "*"
 
@@ -269,9 +269,9 @@ aws4@^1.2.1:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.6.0.tgz#83ef5ca860b2b32e4a0deedee8c771b9db57471e"
 
-azsearchstore@^0.0.25:
-  version "0.0.25"
-  resolved "https://registry.yarnpkg.com/azsearchstore/-/azsearchstore-0.0.25.tgz#0fa88b5edce9ef79adee80d7ad3d2943a1660805"
+azsearchstore@^0.0.26:
+  version "0.0.26"
+  resolved "https://registry.yarnpkg.com/azsearchstore/-/azsearchstore-0.0.26.tgz#0e36b8557912ddfc250d61db352f0746f0249d25"
   dependencies:
     es6-promise "^4.0.5"
     isomorphic-fetch "^2.2.1"
@@ -1224,7 +1224,7 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "^2.0.0"
 
-fbjs@^0.8.9:
+fbjs@^0.8.4, fbjs@^0.8.9:
   version "0.8.12"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.12.tgz#10b5d92f76d45575fd63a217d4ea02bea2f8ed04"
   dependencies:
@@ -3189,6 +3189,13 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-addons-test-utils@^15.5.1:
+  version "15.5.1"
+  resolved "https://registry.yarnpkg.com/react-addons-test-utils/-/react-addons-test-utils-15.5.1.tgz#e0d258cda2a122ad0dff69f838260d0c3958f5f7"
+  dependencies:
+    fbjs "^0.8.4"
+    object-assign "^4.1.0"
+
 react-autosuggest@9.0.0:
   version "9.0.0"
   resolved "https://registry.yarnpkg.com/react-autosuggest/-/react-autosuggest-9.0.0.tgz#976b02e20d05615d05c328c8f1384daf98587821"
@@ -3203,7 +3210,7 @@ react-autowhatever@^9.1.0:
     react-themeable "^1.1.0"
     section-iterator "^2.0.0"
 
-react-dom@^15.4.4:
+react-dom@^15.5.4:
   version "15.5.4"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.5.4.tgz#ba0c28786fd52ed7e4f2135fe0288d462aef93da"
   dependencies:

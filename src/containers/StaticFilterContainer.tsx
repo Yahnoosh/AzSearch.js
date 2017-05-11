@@ -1,24 +1,24 @@
 import { connect} from "react-redux";
 import * as React from "react";
-import { Store, searchParameterActions, asyncActions } from "azsearchstore";
+import { Store, searchParameterActions, facetsActions, asyncActions } from "azsearchstore";
 import * as redux from "redux";
-import SortBy from "../components/SortBy";
+import StaticFilter from "../components/StaticFilter";
 
 function getReturnType<RT>(expression: (...params: any[]) => RT): RT {
     return {} as RT;
 }
 
 export interface OwnProps {
-  fields: {fieldName: string, displayName?: string}[];
-  defaultFieldName: string;
+  filterKey: string;
+  filters: {filter: string, displayName?: string}[];
   css: { [key: string]: string };
+  title: string;
 }
 
 const mapDispatchToProps = (dispatch: redux.Dispatch<any>, ownProps: OwnProps) => {
   return {
-    onSortChange: (fieldName: string, direction: string) => {
-      const orderby = fieldName ? `${fieldName} ${direction}` : "";
-      dispatch(searchParameterActions.updateSearchParameters({orderby}));
+    onFilterChange: (filter: string) => {
+      dispatch(facetsActions.setGlobalFilter(ownProps.filterKey, filter));
       dispatch(searchParameterActions.setPage(1));
       dispatch(asyncActions.fetchSearchResultsFromFacet);
     }
@@ -28,7 +28,8 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>, ownProps: OwnProps) =
 function mapStateToProps(state: Store.SearchState, ownProps: OwnProps) {
   return {
     lastUpdated: state.results.lastUpdated,
-    css: ownProps.css
+    css: ownProps.css,
+    activeFilter: state.facets.globalFilters[ownProps.filterKey]
   };
 }
 
@@ -39,4 +40,4 @@ export type PropsType = typeof stateProps & typeof dispatchProps & OwnProps;
 
 type State = {};
 
-export const SortByContainer = connect(mapStateToProps, mapDispatchToProps)(SortBy);
+export const StaticFilterContainer = connect(mapStateToProps, mapDispatchToProps)(StaticFilter);

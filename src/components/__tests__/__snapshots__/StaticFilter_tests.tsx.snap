@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<StaticFilter/> renders against dummy snapshot 1`] = `
+<div
+  className="sorting__sortyBy panel-body"
+>
+  <div
+    className="searchResults__facetHeader-container panel-heading"
+  >
+    <h4
+      className="searchResults__facetHeader panel-title"
+    >
+      <a
+        className="searchResults__facetHeader-link"
+        data-toggle="collapse"
+      >
+        <span
+          aria-hidden="true"
+          className="searchResults__facetHeader-icon--open indicator glyphicon glyphicon-triangle-bottom"
+        />
+         
+        Home Type
+      </a>
+    </h4>
+  </div>
+  <div
+    className="searchResults__facetControl-container panel-collapse collapse in"
+  >
+    <div
+      className="searchResults__facetControl-list list-group"
+    >
+      <select
+        className="sorting__sortyByControl list-group-item"
+        onChange={[Function]}
+      >
+        <option
+          selected={true}
+          value=""
+        >
+          Any
+        </option>
+        <option
+          selected={false}
+          value="type eq 'House'"
+        >
+          House
+        </option>
+        <option
+          selected={false}
+          value="type eq 'Apartment'"
+        >
+          Apartment
+        </option>
+      </select>
+    </div>
+  </div>
+</div>
+`;

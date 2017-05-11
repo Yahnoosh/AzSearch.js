@@ -124,6 +124,10 @@
                           </div>
                       </li>
                       <li>
+                          <div id="typeFilter">
+                          </div>
+                      </li>
+                      <li>
                           <div id="priceFacet">
                           </div>
                       </li>
@@ -137,10 +141,6 @@
                       </li>
                       <li>
                           <div id="bathsFacet">
-                          </div>
-                      </li>
-                      <li>
-                          <div id="typeFacet">
                           </div>
                       </li>
                       <li>
@@ -239,8 +239,6 @@
     automagic.addCheckboxFacet("bedsFacet", "beds", "number");
     // checkbox facet for numeric field baths
     automagic.addCheckboxFacet("bathsFacet", "baths", "number");
-    // checkbox facet for string field type
-    automagic.addCheckboxFacet("typeFacet", "type", "string");
     // checkbox facet for collection field tags
     automagic.addCheckboxFacet("tagsFacet", "tags", "collection");
     // filter header & footer options 
@@ -254,5 +252,14 @@
         {displayName: "Beds", fieldName: "beds"},
         {displayName: "Baths", fieldName: "baths"}
         ], "beds");
+    // static filter for home type
+    var filters = [
+        { displayName: "Any", filter: "" },
+        { displayName: "House", filter: "type eq 'House'"},
+        { displayName: "Apartment", filter: "type eq 'Apartment'"}
+    ];
+    var defaultFilter = "";
+    var title = "Home Type";
+    automagic.addStaticFilter("typeFilter", "type", filters, defaultFilter, title);
 </script>
 </html>
