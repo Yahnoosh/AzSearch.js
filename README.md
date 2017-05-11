@@ -33,6 +33,9 @@ Samples and documentation assume the real estate sample index available through 
     * [addPager](https://github.com/EvanBoyle/AzSearch.js#addpager)
     * [addRangeFacet](https://github.com/EvanBoyle/AzSearch.js#addrangefacet)
     * [addCheckboxFacet](https://github.com/EvanBoyle/AzSearch.js#addcheckboxfacet)
+    * [addClearFiltersButton](https://github.com/EvanBoyle/AzSearch.js#addClearFiltersButton)
+    * [addSortBy](https://github.com/EvanBoyle/AzSearch.js#addSortBy)
+    * [addStaticFilter](https://github.com/EvanBoyle/AzSearch.js#addStaticFilter)
     * [store](https://github.com/EvanBoyle/AzSearch.js#store)
     * [Custom CSS](https://github.com/EvanBoyle/AzSearch.js#custom-css)
 * [Components & Containers](https://github.com/EvanBoyle/AzSearch.js#components--containers)
@@ -294,6 +297,24 @@ Adds sorting control to the specified htmlId for the specified sortable fields. 
 ```js
     // With optional displayName & default sort fieldName
     automagic.addSortBy("sortBy", [{displayName: "Relevance", fieldName: ""}, {displayName: "Size", fieldName: "sqft"}, {displayName: "Beds", fieldName: "beds"}, {displayName: "Baths", fieldName: "baths"}], "sqft");
+```
+
+### addSortBy
+
+* ```addSortBy(htmlId, filterKey, filters, defaultFilter, title?, css?)```
+
+Adds a dropdown style filter control with static pre-defined filters. Can be useful for scenarios such as language or geo filtering. You may want to allow user to set a constant filter for language to be english, or for only results within 50 miles to be shown. ```filterKey``` is a unique key that will be used to lookup and set the filter from state within the store ```state.facets.globalFilter[filterKey]```, as it is possible to have multiple global filters. 
+
+```js
+    // static filter for home type
+    var filters = [
+        { displayName: "Any", filter: "" },
+        { displayName: "House", filter: "type eq 'House'"},
+        { displayName: "Apartment", filter: "type eq 'Apartment'"}
+    ];
+    var defaultFilter = "";
+    var title = "Home Type";
+    automagic.addStaticFilter("typeFilter", "type", filters, defaultFilter, title);
 ```
 
 ### store

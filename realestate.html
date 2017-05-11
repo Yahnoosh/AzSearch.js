@@ -17,42 +17,43 @@
             margin-top: 0px;
             text-transform: uppercase;
         }
-
+        
         .searchResults__result .resultDescription {
             margin: 0.5em 0 0 0;
         }
-
+        
         .searchResults__result ul.resultProperties {
             margin: 1em 0 0 0;
             padding: 0;
         }
-
+        
         .searchResults__result ul.resultProperties li {
             display: inline-block;
             font-size: 1.2em;
             padding: 0px;
         }
-
+        
         .searchResults__result ul.resultProperties i.fa {
             color: #bbb;
         }
-
+        
         .searchResults__result ul.resultProperties li span {
-            padding-left:0.3em;
+            padding-left: 0.3em;
         }
-
+        
         .searchResults__result ul.resultProperties li.resultProperties__money {
             width: 8em;
         }
-
+        
         .searchResults__result ul.resultProperties li.resultProperties__home {
             width: 7em;
         }
-
-        .searchResults__result ul.resultProperties li.resultProperties__bed, .searchResults__result ul.resultProperties li.resultProperties__bath {
+        
+        .searchResults__result ul.resultProperties li.resultProperties__bed,
+        .searchResults__result ul.resultProperties li.resultProperties__bath {
             width: 4em;
         }
-
+        
         @media (max-width: 850px) {
             .searchResults__result ul.resultProperties li {
                 font-size: 1.1em;
@@ -63,25 +64,21 @@
             .searchResults__result h4 {
                 margin-top: 0.5em;
             }
-
             .searchResults__result ul.resultProperties {
                 margin: 0.5em 0 0 0;
             }
-
             .searchResults__result ul.resultProperties li {
                 font-size: 1em;
                 padding: 0 0.5em 0 0;
             }
-
             .searchResults__result ul.resultProperties li.resultProperties__money {
                 width: inherit;
             }
-
             .searchResults__result ul.resultProperties li.resultProperties__home {
                 width: inherit;
             }
-
-            .searchResults__result ul.resultProperties li.resultProperties__bed, .searchResults__result ul.resultProperties li.resultProperties__bath {
+            .searchResults__result ul.resultProperties li.resultProperties__bed,
+            .searchResults__result ul.resultProperties li.resultProperties__bath {
                 width: inherit;
             }
         }
@@ -116,39 +113,38 @@
         <div class="container-fluid">
             <div class="row">
                 <div id="facetPanel" class="col-sm-3 col-md-3 sidebar collapse">
-                  <div id="facetHeader"></div>
-                  <div className="panel panel-primary behclick-panel">
-                    <ul class="nav nav-sidebar">
-                      <li>
-                          <div id="sortBy">
-                          </div>
-                      </li>  
-
-                      <li>
-                          <div id="priceFacet">
-                          </div>
-                      </li>
-                      <li>
-                          <div id="sqftFacet">
-                          </div>
-                      </li>
-                      <li>
-                          <div id="bedsFacet">
-                          </div>
-                      </li>
-                      <li>
-                          <div id="bathsFacet">
-                          </div>
-                      </li>
-                      <li>
-                          <div id="typeFacet">
-                          </div>
-                      </li>
-                      <li>
-                          <div id="tagsFacet">
-                          </div>
-                      </li>
-                    </ul>
+                    <div id="facetHeader"></div>
+                    <div className="panel panel-primary behclick-panel">
+                        <ul class="nav nav-sidebar">
+                            <li>
+                                <div id="sortBy">
+                                </div>
+                            </li>
+                            <li>
+                                <div id="typeFilter">
+                                </div>
+                            </li>
+                            <li>
+                                <div id="priceFacet">
+                                </div>
+                            </li>
+                            <li>
+                                <div id="sqftFacet">
+                                </div>
+                            </li>
+                            <li>
+                                <div id="bedsFacet">
+                                </div>
+                            </li>
+                            <li>
+                                <div id="bathsFacet">
+                                </div>
+                            </li>
+                            <li>
+                                <div id="tagsFacet">
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                     <div id="facetFooter"></div>
                 </div>
@@ -179,16 +175,16 @@
     // Initialize
     var automagic = new AzSearch.Automagic({ index: "realestate-us-sample", queryKey: "D1CD08C7AC6A1886024E0F23B1824417", service: "azs-playground" });
     // Set some processors to format results for display
-    var suggestionsProcessor = function(results) {
-        return results.map(function(result){
-            result.displayText = result.number + " " + result.street+ " " +result.city+ ", " +result.region+ " " +result.countryCode;
+    var suggestionsProcessor = function (results) {
+        return results.map(function (result) {
+            result.displayText = result.number + " " + result.street + " " + result.city + ", " + result.region + " " + result.countryCode;
             result.searchText = result["@search.text"];
             return result;
         });
     };
-    var resultsProcessor = function(results) {
-        return results.map(function(result){
-            result.displayText = result.number + " " + result.street+ " " +result.city+ ", " +result.region+ " " +result.countryCode;
+    var resultsProcessor = function (results) {
+        return results.map(function (result) {
+            result.displayText = result.number + " " + result.street + " " + result.city + ", " + result.region + " " + result.countryCode;
             var summary = result.description;
             result.summary = summary.length < 200 ? summary : summary.substring(0, 200) + "...";
             result.sqft = numeral(result.sqft).format("0,0");
@@ -217,7 +213,7 @@
             </ul>
         </div>`;
     var suggestionsTemplate = "{{displayText}} <br/> {{{searchText}}}";
-    
+
     // Add a search box that uses suggester "sg", grabbing some additional fields to display during suggestions. Use the template defined above
     automagic.addSearchBox("searchBox",
         {
@@ -249,11 +245,22 @@
     automagic.addClearFiltersButton("facetFooter");
     // add sorting options
     automagic.addSortBy("sortBy", [
-        {displayName: "Relevance", fieldName: ""},
-        {displayName: "Price", fieldName: "price"},
-        {displayName: "Size", fieldName: "sqft"},
-        {displayName: "Beds", fieldName: "beds"},
-        {displayName: "Baths", fieldName: "baths"}
-        ], "beds");
+        { displayName: "Relevance", fieldName: "" },
+        { displayName: "Price", fieldName: "price" },
+        { displayName: "Size", fieldName: "sqft" },
+        { displayName: "Beds", fieldName: "beds" },
+        { displayName: "Baths", fieldName: "baths" }
+    ], "beds");
+    // static filter for home type
+    var filters = [
+        { displayName: "Any", filter: "" },
+        { displayName: "House", filter: "type eq 'House'" },
+        { displayName: "Apartment", filter: "type eq 'Apartment'" }
+    ];
+    var defaultFilter = "";
+    var title = "Home Type";
+    automagic.addStaticFilter("typeFilter", "type", filters, defaultFilter, title);
+
 </script>
+
 </html>
