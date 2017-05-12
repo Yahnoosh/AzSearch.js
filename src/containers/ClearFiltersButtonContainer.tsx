@@ -26,6 +26,7 @@ function mapStateToProps(state: Store.SearchState, ownProps: OwnProps) {
   return {
     hasSelectedFacets: checkForAppliedFacets(state.facets.facets),
     beforeFirstRequest: state.results.lastUpdated < 1,
+    css: ownProps.css
   };
 }
 
