@@ -25,22 +25,15 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>, ownProps: OwnProps) =
 function mapStateToProps(state: Store.SearchState, ownProps: OwnProps) {
   return {
     hasSelectedFacets: checkForAppliedFacets(state.facets.facets),
-    lastUpdated: state.results.lastUpdated,
-    css: ownProps.css
+    beforeFirstRequest: state.results.lastUpdated < 1,
   };
 }
 
-function checkForAppliedFacets(facets: { [key: string]: Store.Facet }) {
-  return !Object.keys(facets).every((key) => {
+function checkForAppliedFacets(facets: { [key: string]: Store.Facet }): boolean {
+  return Object.keys(facets).some((key) => {
     const facet = facets[key];
-    switch (facet.type) {
-      case "CheckboxFacet":
-        return Object.keys(facet.values).every((valueKey) => {
-          return !facet.values[valueKey].selected;
-        });
-      case "RangeFacet":
-        return facet.filterClause === "";
-    }
+    const hasFilter = facet.filterClause ? true : false;
+    return hasFilter;
   });
 }
 

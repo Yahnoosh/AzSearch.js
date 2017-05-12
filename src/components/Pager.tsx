@@ -8,9 +8,8 @@ export type State = {};
 
 class Pager extends React.PureComponent<PropsType, State> {
     render() {
-        const { count, top, skip, loadedResultsCount, pageUp, pageDown, loadPage } = this.props;
+        const { count, top, skip, showPager, pageUp, pageDown, loadPage } = this.props;
         let css = objAssign({}, defaultCss, this.props.css);
-        const showPager = loadedResultsCount > 0;
         const maxSkip = 100000;
         const maxPage = count > 0 ? Math.ceil(count / top) : Math.ceil(maxSkip / top) + 1;
         const activePage = skip / top + 1;

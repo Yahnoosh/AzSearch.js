@@ -12,7 +12,7 @@ export interface OwnProps {
     css: { [key: string]: string; };
 }
 
-const mapDispatchToProps = (dispatch: redux.Dispatch<any>, ownProps: OwnProps) => {
+const mapDispatchToProps = (dispatch: redux.Dispatch<any>) => {
     return {
         pageUp: () => {
             dispatch(spActions.incrementSkip());
@@ -35,7 +35,7 @@ function mapStateToProps(state: Store.SearchState, ownProps: OwnProps) {
         top: state.parameters.searchParameters.top,
         skip: state.parameters.searchParameters.skip,
         count: state.results.count,
-        loadedResultsCount: state.results.results.length,
+        showPager: state.results.results.length > 0,
         css: ownProps.css
     };
 };
@@ -43,7 +43,7 @@ function mapStateToProps(state: Store.SearchState, ownProps: OwnProps) {
 export const stateProps = getReturnType(mapStateToProps);
 export const dispatchProps = getReturnType(mapDispatchToProps);
 
-export type PropsType = typeof stateProps & typeof dispatchProps;
+export type PropsType = typeof stateProps & typeof dispatchProps & OwnProps;
 type State = {};
 
 export const PagerContainer = connect(mapStateToProps, mapDispatchToProps)(Pager);
