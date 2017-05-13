@@ -28,8 +28,7 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>, ownProps: OwnProps) =
 function mapStateToProps(state: Store.SearchState, ownProps: OwnProps) {
     return {
         facet: state.facets.facets[ownProps.facet],
-        loadedResultsCount: state.results.results.length,
-        lastUpdated: state.results.lastUpdated,
+        beforeFirstRequest: state.results.lastUpdated < 1,
         css: ownProps.css
     };
 };

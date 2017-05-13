@@ -12,13 +12,18 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
     render() {
         const facet = this.props.facet as Store.RangeFacet;
         let css = objAssign({}, defaultCss, this.props.css);
-        const { onRangeChange, afterRangeChange, loadedResultsCount, lastUpdated } = this.props;
+        const { onRangeChange, afterRangeChange, beforeFirstRequest } = this.props;
         let lowerValue;
         let upperValue;
         let lowerLabel;
         let upperLabel;
         let minValue;
         let maxValue;
+
+        if (!facet || beforeFirstRequest) {
+            return <div></div>;
+        }
+
         switch (facet.dataType) {
             case "number":
                 lowerValue = facet.filterLowerBound as number;
@@ -44,11 +49,6 @@ class RangeFacet extends React.PureComponent<PropsType, State> {
             onRangeChange(lower, upper);
         };
         let upperBoundLabel = facet.filterUpperBound === facet.max ? " <" : "";
-
-        // todo with advanced faceting make display condition: !(facet.lowerBucketCount + facet.middleBucketCount + facet.upperBucketCount)
-        if (!facet || !lastUpdated) {
-            return <div></div>;
-        }
 
         return (
             <div className={css.searchFacets__rangeFacet}>

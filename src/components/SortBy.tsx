@@ -8,10 +8,10 @@ export type State = {};
 
 class SortBy extends React.PureComponent<PropsType, State> {
   render() {
-    const { fields, defaultFieldName, lastUpdated, onSortChange } = this.props;
+    const { fields, defaultFieldName, beforeFirstRequest, onSortChange } = this.props;
     let css = objAssign({}, defaultCss, this.props.css);
 
-    if (!lastUpdated) return <div></div>;
+    if (beforeFirstRequest) return <div></div>;
 
     let options = fields.map((field) => {
       return <option selected={field.fieldName === defaultFieldName} value={field.fieldName}>{field.displayName ? field.displayName : field.fieldName}</option>;

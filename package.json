@@ -41,7 +41,7 @@
     "@types/object-assign": "^4.0.30",
     "@types/rc-slider": "6.1.2",
     "@types/react-autosuggest": "^8.0.0",
-    "@types/react-dom": "^15.5.4",
+    "@types/react-dom": "15.5.0",
     "@types/react-redux": "^4.4.37",
     "awesome-typescript-loader": "^3.1.2",
     "css-loader": "^0.28.0",

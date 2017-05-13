@@ -8,10 +8,10 @@ export type State = {};
 
 class StaticFilter extends React.PureComponent<PropsType, State> {
   render() {
-    const { filters, lastUpdated, onFilterChange, activeFilter, title, filterKey } = this.props;
+    const { filters, beforeFirstRequest, onFilterChange, activeFilter, title, filterKey } = this.props;
     let css = objAssign({}, defaultCss, this.props.css);
 
-    if (!lastUpdated) return <div></div>;
+    if (beforeFirstRequest) return <div></div>;
 
     let options = filters.map((filter, index) => {
       return <option key={index} selected={filter.filter === activeFilter} value={filter.filter}>{filter.displayName ? filter.displayName : filter.filter}</option>;
