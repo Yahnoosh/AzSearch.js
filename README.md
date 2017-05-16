@@ -303,7 +303,7 @@ Adds sorting control to the specified htmlId for the specified sortable fields. 
         // set lat/long to do geo distance ordering
         {displayName: "Distance", fieldName: "location", latitude: 47.673988099999995, longitude: -122.12151199999998}
     ];
-    automagic.addSortBy("sortBy", [{displayName: "Relevance", fieldName: ""}, {displayName: "Size", fieldName: "sqft"}, {displayName: "Beds", fieldName: "beds"}, {displayName: "Baths", fieldName: "baths"}], "sqft");
+    automagic.addSortBy("sortBy", fields, "sqft");
 ```
 
 ### addStaticFilter
