@@ -14,7 +14,7 @@ describe("<StaticFilter/>", () => {
     it("renders against dummy snapshot", () => {
 
         expect(TestUtils.createRenderer().render(
-            <StaticFilter  css={null} filters={filters} activeFilter={defaultFilter} filterKey={"type"} lastUpdated={1} onFilterChange={function(foo){}} title={title} />
+            <StaticFilter  css={null} filters={filters} activeFilter={defaultFilter} filterKey={"type"} beforeFirstRequest={false} onFilterChange={function(foo){}} title={title} />
         )).toMatchSnapshot();
     });
 });
