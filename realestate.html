@@ -17,49 +17,56 @@
             margin-top: 0px;
             text-transform: uppercase;
         }
-        
+
         .searchResults__result .resultDescription {
             margin: 0.5em 0 0 0;
         }
-        
+
         .searchResults__result ul.resultProperties {
             margin: 1em 0 0 0;
             padding: 0;
         }
-        
+
         .searchResults__result ul.resultProperties li {
             display: inline-block;
             font-size: 1.2em;
             padding: 0px;
         }
-        
+
         .searchResults__result ul.resultProperties i.fa {
             color: #bbb;
         }
-        
+
         .searchResults__result ul.resultProperties li span {
             padding-left: 0.3em;
         }
-        
+
         .searchResults__result ul.resultProperties li.resultProperties__money {
             width: 8em;
         }
-        
+
         .searchResults__result ul.resultProperties li.resultProperties__home {
             width: 7em;
         }
-        
+
         .searchResults__result ul.resultProperties li.resultProperties__bed,
         .searchResults__result ul.resultProperties li.resultProperties__bath {
             width: 4em;
         }
-        
+
+        .sk-bounce1,
+        .sk-bounce2,
+        .sk-bounce3,
+        .sk-spinner {
+            float: right;
+        }
+
         @media (max-width: 850px) {
             .searchResults__result ul.resultProperties li {
                 font-size: 1.1em;
             }
         }
-        
+
         @media (max-width: 767px) {
             .searchResults__result h4 {
                 margin-top: 0.5em;
@@ -149,6 +156,7 @@
                     <div id="facetFooter"></div>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-9 col-md-offset-3 results_section">
+                    <div id="loading"></div>
                     <div id="results" class="row placeholders">
                     </div>
                     <div id="pager" class="row">
@@ -226,6 +234,8 @@
         suggestionsTemplate);
     // add a results view using the template defined above
     automagic.addResults("results", { count: true }, resultTemplate);
+    // Add a loading indicator above the results view
+    automagic.addLoadingIndicator("loading");
     // Adds a pager control << 1 2 3 ... >>
     automagic.addPager("pager");
     // range facet for price

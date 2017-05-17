@@ -38,7 +38,7 @@
         }
 
         .searchResults__result ul.resultProperties li span {
-            padding-left:0.3em;
+            padding-left: 0.3em;
         }
 
         .searchResults__result ul.resultProperties li.resultProperties__money {
@@ -49,8 +49,16 @@
             width: 7em;
         }
 
-        .searchResults__result ul.resultProperties li.resultProperties__bed, .searchResults__result ul.resultProperties li.resultProperties__bath {
+        .searchResults__result ul.resultProperties li.resultProperties__bed,
+        .searchResults__result ul.resultProperties li.resultProperties__bath {
             width: 4em;
+        }
+
+        .sk-bounce1,
+        .sk-bounce2,
+        .sk-bounce3,
+        .sk-spinner {
+            float: right;
         }
 
         @media (max-width: 850px) {
@@ -58,7 +66,7 @@
                 font-size: 1.1em;
             }
         }
-        
+
         @media (max-width: 767px) {
             .searchResults__result h4 {
                 margin-top: 0.5em;
@@ -81,7 +89,8 @@
                 width: inherit;
             }
 
-            .searchResults__result ul.resultProperties li.resultProperties__bed, .searchResults__result ul.resultProperties li.resultProperties__bath {
+            .searchResults__result ul.resultProperties li.resultProperties__bed,
+            .searchResults__result ul.resultProperties li.resultProperties__bath {
                 width: inherit;
             }
         }
@@ -116,42 +125,43 @@
         <div class="container-fluid">
             <div class="row">
                 <div id="facetPanel" class="col-sm-3 col-md-3 sidebar collapse">
-                  <div id="facetHeader"></div>
-                  <div className="panel panel-primary behclick-panel">
-                    <ul class="nav nav-sidebar">
-                      <li>
-                          <div id="sortBy">
-                          </div>
-                      </li>
-                      <li>
-                          <div id="typeFilter">
-                          </div>
-                      </li>
-                      <li>
-                          <div id="priceFacet">
-                          </div>
-                      </li>
-                      <li>
-                          <div id="sqftFacet">
-                          </div>
-                      </li>
-                      <li>
-                          <div id="bedsFacet">
-                          </div>
-                      </li>
-                      <li>
-                          <div id="bathsFacet">
-                          </div>
-                      </li>
-                      <li>
-                          <div id="tagsFacet">
-                          </div>
-                      </li>
-                    </ul>
+                    <div id="facetHeader"></div>
+                    <div className="panel panel-primary behclick-panel">
+                        <ul class="nav nav-sidebar">
+                            <li>
+                                <div id="sortBy">
+                                </div>
+                            </li>
+                            <li>
+                                <div id="typeFilter">
+                                </div>
+                            </li>
+                            <li>
+                                <div id="priceFacet">
+                                </div>
+                            </li>
+                            <li>
+                                <div id="sqftFacet">
+                                </div>
+                            </li>
+                            <li>
+                                <div id="bedsFacet">
+                                </div>
+                            </li>
+                            <li>
+                                <div id="bathsFacet">
+                                </div>
+                            </li>
+                            <li>
+                                <div id="tagsFacet">
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                     <div id="facetFooter"></div>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-9 col-md-offset-3 results_section">
+                    <div id="loading"></div>
                     <div id="results" class="row placeholders">
                     </div>
                     <div id="pager" class="row">
@@ -178,16 +188,16 @@
     // Initialize
     var automagic = new AzSearch.Automagic({ index: "realestate-us-sample", queryKey: "D1CD08C7AC6A1886024E0F23B1824417", service: "azs-playground" });
     // Set some processors to format results for display
-    var suggestionsProcessor = function(results) {
-        return results.map(function(result){
-            result.displayText = result.number + " " + result.street+ " " +result.city+ ", " +result.region+ " " +result.countryCode;
+    var suggestionsProcessor = function (results) {
+        return results.map(function (result) {
+            result.displayText = result.number + " " + result.street + " " + result.city + ", " + result.region + " " + result.countryCode;
             result.searchText = result["@search.text"];
             return result;
         });
     };
-    var resultsProcessor = function(results) {
-        return results.map(function(result){
-            result.displayText = result.number + " " + result.street+ " " +result.city+ ", " +result.region+ " " +result.countryCode;
+    var resultsProcessor = function (results) {
+        return results.map(function (result) {
+            result.displayText = result.number + " " + result.street + " " + result.city + ", " + result.region + " " + result.countryCode;
             var summary = result.description;
             result.summary = summary.length < 200 ? summary : summary.substring(0, 200) + "...";
             result.sqft = numeral(result.sqft).format("0,0");
@@ -216,7 +226,7 @@
             </ul>
         </div>`;
     var suggestionsTemplate = "{{displayText}} <br/> {{{searchText}}}";
-    
+
     // Add a search box that uses suggester "sg", grabbing some additional fields to display during suggestions. Use the template defined above
     automagic.addSearchBox("searchBox",
         {
@@ -229,6 +239,8 @@
         suggestionsTemplate);
     // add a results view using the template defined above
     automagic.addResults("results", { count: true }, resultTemplate);
+    // Add a loading indicator above the results view
+    automagic.addLoadingIndicator("loading");
     // Adds a pager control << 1 2 3 ... >>
     automagic.addPager("pager");
     // range facet for price
@@ -246,20 +258,22 @@
     automagic.addClearFiltersButton("facetFooter");
     // add sorting options
     automagic.addSortBy("sortBy", [
-        {displayName: "Relevance", fieldName: ""},
-        {displayName: "Price", fieldName: "price"},
-        {displayName: "Size", fieldName: "sqft"},
-        {displayName: "Beds", fieldName: "beds"},
-        {displayName: "Baths", fieldName: "baths"}
-        ], "beds");
+        { displayName: "Relevance", fieldName: "" },
+        { displayName: "Price", fieldName: "price" },
+        { displayName: "Size", fieldName: "sqft" },
+        { displayName: "Beds", fieldName: "beds" },
+        { displayName: "Baths", fieldName: "baths" }
+    ], "beds");
     // static filter for home type
     var filters = [
         { displayName: "Any", filter: "" },
-        { displayName: "House", filter: "type eq 'House'"},
-        { displayName: "Apartment", filter: "type eq 'Apartment'"}
+        { displayName: "House", filter: "type eq 'House'" },
+        { displayName: "Apartment", filter: "type eq 'Apartment'" }
     ];
     var defaultFilter = "";
     var title = "Home Type";
     automagic.addStaticFilter("typeFilter", "type", filters, defaultFilter, title);
+
 </script>
+
 </html>
