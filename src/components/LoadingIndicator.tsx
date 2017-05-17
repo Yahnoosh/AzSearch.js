@@ -6,14 +6,14 @@ import * as Spinner from "react-spinkit";
 
 export type State = {};
 
-var style = {
+const style = {
     "height": "0em"
-}
+};
 
 class LoadingIndicator extends React.PureComponent<PropsType, State> {
     render() {
         const isLoading = this.props.isLoading;
-        return isLoading ? <div style={style}><Spinner spinnerName="three-bounce" /> </div>: <div style={style}/>
+        return isLoading ? <div style={style}><Spinner spinnerName="three-bounce" /> </div> : <div style={style} />;
     }
 }
 

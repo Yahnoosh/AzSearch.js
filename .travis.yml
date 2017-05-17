@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - "node"
 script:
-  - yarn run devpack
+  - yarn run devbuild
   - yarn run test 
 cache:
   yarn: true
