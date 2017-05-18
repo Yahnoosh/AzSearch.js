@@ -13,6 +13,7 @@ import { SortByContainer, OwnProps as SortByOwnProps } from "./containers/SortBy
 import { StaticFilterContainer, OwnProps as StaticFilterOwnProps } from "./containers/StaticFilterContainer";
 import { PagerContainer, OwnProps as PagerOwnProps } from "./containers/PagerContainer";
 import { ClearFiltersButtonContainer, OwnProps as FilterBarOwnProps } from "./containers/ClearFiltersButtonContainer";
+import { LoadingIndicatorContainer, OwnProps as LoadingIndicatorOwnProps } from "./containers/LoadingIndicatorContainer";
 import SearchBox from "./components/SearchBox";
 import CheckboxFacet from "./components/CheckboxFacet";
 import RangeFacet from "./components/CheckboxFacet";
@@ -21,12 +22,14 @@ import Results from "./components/Results";
 import SortBy from "./components/SortBy";
 import StaticFilter from "./components/StaticFilter";
 import Pager from "./components/Pager";
+import LoadingIndicator from "./components/LoadingIndicator";
 import { createOrderByClause } from "./utils/utils";
+
 
 import "rc-slider/assets/index.css";
 
-let Components = { SearchBox, CheckboxFacet, Results, ClearFiltersButton, SortBy, StaticFilter };
-let Containers = { CheckboxFacetContainer, ResultsContainer, SearchBoxContainer, ClearFiltersButtonContainer, SortByContainer, StaticFilterContainer };
+let Components = { SearchBox, CheckboxFacet, Results, ClearFiltersButton, SortBy, StaticFilter, LoadingIndicator };
+let Containers = { CheckboxFacetContainer, ResultsContainer, SearchBoxContainer, ClearFiltersButtonContainer, SortByContainer, StaticFilterContainer, LoadingIndicatorContainer };
 
 class Automagic {
     public store: AzSearchStore;
@@ -125,6 +128,15 @@ class Automagic {
         render(
             <Provider store={this.store.store}>
                 <StaticFilterContainer css={cssClasses} filterKey={filterKey} filters={filters} title={title}/>
+            </Provider>,
+            document.getElementById(htmlId)
+        );
+    }
+
+    public addLoadingIndicator(htmlId: string) {
+        render(
+            <Provider store={this.store.store}>
+                <LoadingIndicatorContainer/>
             </Provider>,
             document.getElementById(htmlId)
         );

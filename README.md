@@ -29,6 +29,7 @@ Samples and documentation assume the real estate sample index available through 
     * [constructor](https://github.com/EvanBoyle/AzSearch.js#constructor)
     * [addSearchBox](https://github.com/EvanBoyle/AzSearch.js#addsearchbox)
     * [addResults](https://github.com/EvanBoyle/AzSearch.js#addresults)
+    * [addLoadingIndicator](https://github.com/EvanBoyle/AzSearch.js#addLoadingIndicator)
     * [addPager](https://github.com/EvanBoyle/AzSearch.js#addpager)
     * [addRangeFacet](https://github.com/EvanBoyle/AzSearch.js#addrangefacet)
     * [addCheckboxFacet](https://github.com/EvanBoyle/AzSearch.js#addcheckboxfacet)
@@ -238,6 +239,15 @@ Adds a view the search results on the specifed htmlId. Optionally takes searchPa
     type QueryType = "simple" | "full";
     type SearchApiVersion = "2016-09-01" | "2015-02-28-Preview";
     type SearchMode = "any" | "all";
+```
+### addLoadingIndicator
+* ```addLoadingIndicator(htmlId)```
+
+Adds a component to show loading state there are inflight requests for searching/faceting on the specified id.
+
+```js
+    // Adds a loading indicator: . -> .. -> ... -> . -> .. -> ...
+    automagic.addLoadingIndicator("spinner");
 ```
 ### addPager
 * ```addPager(htmlId, css?)```

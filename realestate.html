@@ -54,6 +54,13 @@
             width: 4em;
         }
 
+        .sk-bounce1,
+        .sk-bounce2,
+        .sk-bounce3,
+        .sk-spinner {
+            float: right;
+        }
+
         @media (max-width: 850px) {
             .searchResults__result ul.resultProperties li {
                 font-size: 1.1em;
@@ -149,6 +156,7 @@
                     <div id="facetFooter"></div>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-9 col-md-offset-3 results_section">
+                    <div id="loading"></div>
                     <div id="results" class="row placeholders">
                     </div>
                     <div id="pager" class="row">
@@ -226,6 +234,8 @@
         suggestionsTemplate);
     // add a results view using the template defined above
     automagic.addResults("results", { count: true }, resultTemplate);
+    // Add a loading indicator above the results view
+    automagic.addLoadingIndicator("loading");
     // Adds a pager control << 1 2 3 ... >>
     automagic.addPager("pager");
     // range facet for price
