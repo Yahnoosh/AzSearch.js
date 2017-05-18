@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SortBy/> renders against dummy snapshot 1`] = `
+<div
+  className="sorting__sortyBy panel-body"
+>
+  <div
+    className="searchResults__facetHeader-container panel-heading"
+  >
+    <h4
+      className="searchResults__facetHeader panel-title"
+    >
+      <a
+        className="searchResults__facetHeader-link"
+        data-toggle="collapse"
+      >
+        <span
+          aria-hidden="true"
+          className="searchResults__facetHeader-icon--open indicator glyphicon glyphicon-triangle-bottom"
+        />
+         Sort By
+      </a>
+    </h4>
+  </div>
+  <div
+    className="searchResults__facetControl-container panel-collapse collapse in"
+  >
+    <div
+      className="searchResults__facetControl-list list-group"
+    >
+      <select
+        className="sorting__sortyByControl list-group-item"
+        onChange={[Function]}
+      >
+        <option
+          selected={true}
+          value=""
+        >
+          Relevance
+        </option>
+        <option
+          selected={false}
+          value="beds desc"
+        >
+          Beds
+        </option>
+        <option
+          selected={false}
+          value="baths desc"
+        >
+          Baths
+        </option>
+      </select>
+    </div>
+  </div>
+</div>
+`;

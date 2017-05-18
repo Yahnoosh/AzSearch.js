@@ -295,12 +295,20 @@ Adds sorting control to the specified htmlId for the specified sortable fields. 
 
 ```js
     // With optional displayName & default sort fieldName
-    automagic.addSortBy("sortBy", [{displayName: "Relevance", fieldName: ""}, {displayName: "Size", fieldName: "sqft"}, {displayName: "Beds", fieldName: "beds"}, {displayName: "Baths", fieldName: "baths"}], "sqft");
+    var fields = [
+        {displayName: "Relevance", fieldName: ""},
+        {displayName: "Size", fieldName: "sqft"},
+        {displayName: "Beds", fieldName: "beds"}, 
+        {displayName: "Baths", fieldName: "baths"},
+        // set lat/long to do geo distance ordering
+        {displayName: "Distance", fieldName: "location", latitude: 47.673988099999995, longitude: -122.12151199999998}
+    ];
+    automagic.addSortBy("sortBy", fields, "sqft");
 ```
 
-### addSortBy
+### addStaticFilter
 
-* ```addSortBy(htmlId, filterKey, filters, defaultFilter, title?, css?)```
+* ```addStaticFilter(htmlId, filterKey, filters, defaultFilter, title?, css?)```
 
 Adds a dropdown style filter control with static pre-defined filters. Can be useful for scenarios such as language or geo filtering. You may want to allow user to set a constant filter for language to be english, or for only results within 50 miles to be shown. ```filterKey``` is a unique key that will be used to lookup and set the filter from state within the store ```state.facets.globalFilter[filterKey]```, as it is possible to have multiple global filters. 
 
