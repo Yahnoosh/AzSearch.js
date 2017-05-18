@@ -9,15 +9,14 @@ function getReturnType<RT>(expression: (...params: any[]) => RT): RT {
 }
 
 export interface OwnProps {
-  fields: {fieldName: string, displayName?: string}[];
-  defaultFieldName: string;
+  fields: {displayName: string, orderbyClause: string }[];
   css: { [key: string]: string };
 }
 
 const mapDispatchToProps = (dispatch: redux.Dispatch<any>, ownProps: OwnProps) => {
   return {
-    onSortChange: (fieldName: string, direction: string) => {
-      const orderby = fieldName ? `${fieldName} ${direction}` : "";
+    onSortChange: (fieldName: string) => {
+      const orderby = fieldName ? fieldName : "";
       dispatch(searchParameterActions.updateSearchParameters({orderby}));
       dispatch(searchParameterActions.setPage(1));
       dispatch(asyncActions.fetchSearchResultsFromFacet);
@@ -28,7 +27,8 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<any>, ownProps: OwnProps) =
 function mapStateToProps(state: Store.SearchState, ownProps: OwnProps) {
   return {
     beforeFirstRequest: state.results.lastUpdated < 1,
-    css: ownProps.css
+    css: ownProps.css,
+    orderby: state.parameters.searchParameters.orderby
   };
 }
 

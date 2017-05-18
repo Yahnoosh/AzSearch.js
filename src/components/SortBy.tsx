@@ -8,17 +8,17 @@ export type State = {};
 
 class SortBy extends React.PureComponent<PropsType, State> {
   render() {
-    const { fields, defaultFieldName, beforeFirstRequest, onSortChange } = this.props;
+    const { fields, beforeFirstRequest, onSortChange, orderby } = this.props;
     let css = objAssign({}, defaultCss, this.props.css);
-
+    let order = "desc";
     if (beforeFirstRequest) return <div></div>;
 
-    let options = fields.map((field) => {
-      return <option selected={field.fieldName === defaultFieldName} value={field.fieldName}>{field.displayName ? field.displayName : field.fieldName}</option>;
+    let options = fields.map((field, index) => {
+      return <option  key={index} selected={field.orderbyClause === orderby} value={field.orderbyClause}>{field.displayName}</option>;
     });
 
     let onChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-      onSortChange(event.target.value, "desc");
+      onSortChange(event.target.value);
     };
 
     let container = <div className={css.sorting__sortBy}>

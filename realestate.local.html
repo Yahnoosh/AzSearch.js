@@ -256,14 +256,36 @@
     // filter header & footer options 
     automagic.addClearFiltersButton("facetHeader");
     automagic.addClearFiltersButton("facetFooter");
+    
     // add sorting options
-    automagic.addSortBy("sortBy", [
+    var fields = [
+
         { displayName: "Relevance", fieldName: "" },
         { displayName: "Price", fieldName: "price" },
         { displayName: "Size", fieldName: "sqft" },
         { displayName: "Beds", fieldName: "beds" },
         { displayName: "Baths", fieldName: "baths" }
-    ], "beds");
+    ];
+
+    // ask for users location and add a geo sorting option
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            fields.push({
+                displayName: "Distance",
+                fieldName: "location",
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude
+            });
+            automagic.addSortBy("sortBy", fields, "beds");
+        },
+            function () {
+                // on rejection from user
+                automagic.addSortBy("sortBy", fields, "beds");
+            });
+    } else {
+        automagic.addSortBy("sortBy", fields, "beds");
+    }
+
     // static filter for home type
     var filters = [
         { displayName: "Any", filter: "" },

@@ -23,6 +23,8 @@ import SortBy from "./components/SortBy";
 import StaticFilter from "./components/StaticFilter";
 import Pager from "./components/Pager";
 import LoadingIndicator from "./components/LoadingIndicator";
+import { createOrderByClause } from "./utils/utils";
+
 
 import "rc-slider/assets/index.css";
 
@@ -97,14 +99,24 @@ class Automagic {
         );
     }
 
-    public addSortBy(htmlId: string, fields: { fieldName: string, displayName?: string }[], defaultSortFieldName?: string, cssClasses?: { [key: string]: string; }) {
-        if (defaultSortFieldName) {
-            this.store.updateSearchParameters({ orderby: `${defaultSortFieldName} desc` });
+    public addSortBy(htmlId: string, fields: { fieldName: string, displayName?: string, latitude?: number, longitude?: number }[], defaultSortFieldName?: string, cssClasses?: { [key: string]: string; }) {
+        let updatedSortClause = "";
+        const order = "desc";
+        let formattedFields = fields.map((field) => {
+            let orderbyClause = createOrderByClause(field, order);
+            updatedSortClause = field.fieldName === defaultSortFieldName ? orderbyClause : updatedSortClause;
+            return {
+                displayName: field.displayName ? field.displayName : field.fieldName,
+                orderbyClause
+            };
+        });
+        if (updatedSortClause) {
+            this.store.updateSearchParameters({ orderby: updatedSortClause });
         }
 
         render(
             <Provider store={this.store.store}>
-                <SortByContainer css={cssClasses} fields={fields} defaultFieldName={defaultSortFieldName} />
+                <SortByContainer css={cssClasses} fields={formattedFields} />
             </Provider>,
             document.getElementById(htmlId)
         );
