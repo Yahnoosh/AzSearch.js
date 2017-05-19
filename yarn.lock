@@ -275,9 +275,9 @@ aws4@^1.2.1:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.6.0.tgz#83ef5ca860b2b32e4a0deedee8c771b9db57471e"
 
-azsearchstore@^0.0.26:
-  version "0.0.26"
-  resolved "https://registry.yarnpkg.com/azsearchstore/-/azsearchstore-0.0.26.tgz#0e36b8557912ddfc250d61db352f0746f0249d25"
+azsearchstore@^0.0.27:
+  version "0.0.27"
+  resolved "https://registry.yarnpkg.com/azsearchstore/-/azsearchstore-0.0.27.tgz#bc94ab198c84ab5d030ae54dfc966b3f82a9bd13"
   dependencies:
     es6-promise "^4.0.5"
     isomorphic-fetch "^2.2.1"

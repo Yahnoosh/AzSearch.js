@@ -26,7 +26,7 @@
   "author": "Evan Boyle (https://github.com/EvanBoyle)",
   "license": "MIT",
   "dependencies": {
-    "azsearchstore": "^0.0.26",
+    "azsearchstore": "^0.0.27",
     "hogan.js": "3.0.2",
     "numeral": "^2.0.6",
     "object-assign": "^4.1.1",
