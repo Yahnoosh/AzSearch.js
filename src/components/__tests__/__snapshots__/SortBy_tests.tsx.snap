@@ -1,57 +1,334 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SortBy/> renders against dummy snapshot 1`] = `
-<div
-  className="sorting__sortyBy panel-body"
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div
+    className="sorting__sortyBy panel-body"
 >
-  <div
-    className="searchResults__facetHeader-container panel-heading"
-  >
-    <h4
-      className="searchResults__facetHeader panel-title"
-    >
-      <a
-        className="searchResults__facetHeader-link"
-        data-toggle="collapse"
-      >
-        <span
-          aria-hidden="true"
-          className="searchResults__facetHeader-icon--open indicator glyphicon glyphicon-triangle-bottom"
-        />
-         Sort By
-      </a>
-    </h4>
-  </div>
-  <div
-    className="searchResults__facetControl-container panel-collapse collapse in"
-  >
     <div
-      className="searchResults__facetControl-list list-group"
+        className="searchResults__facetHeader-container panel-heading"
     >
-      <select
-        className="sorting__sortyByControl list-group-item"
-        onChange={[Function]}
-      >
-        <option
-          selected={true}
-          value=""
+        <h4
+            className="searchResults__facetHeader panel-title"
         >
-          Relevance
-        </option>
-        <option
-          selected={false}
-          value="beds desc"
-        >
-          Beds
-        </option>
-        <option
-          selected={false}
-          value="baths desc"
-        >
-          Baths
-        </option>
-      </select>
+            <a
+                className="searchResults__facetHeader-link"
+                data-toggle="collapse"
+            >
+                <span
+                    aria-hidden="true"
+                    className="searchResults__facetHeader-icon--open indicator glyphicon glyphicon-triangle-bottom"
+                />
+                 Sort By
+            </a>
+        </h4>
     </div>
-  </div>
-</div>
+    <div
+        className="searchResults__facetControl-container panel-collapse collapse in"
+    >
+        <div
+            className="searchResults__facetControl-list list-group"
+        >
+            <select
+                className="sorting__sortyByControl list-group-item"
+                onChange={[Function]}
+            >
+                <option
+                    selected={true}
+                    value=""
+                >
+                    Relevance
+                </option>
+                <option
+                    selected={false}
+                    value="beds desc"
+                >
+                    Beds
+                </option>
+                <option
+                    selected={false}
+                    value="baths desc"
+                >
+                    Baths
+                </option>
+            </select>
+        </div>
+    </div>
+</div>,
+  "nodes": Array [
+    <div
+      className="sorting__sortyBy panel-body"
+>
+      <div
+            className="searchResults__facetHeader-container panel-heading"
+      >
+            <h4
+                  className="searchResults__facetHeader panel-title"
+            >
+                  <a
+                        className="searchResults__facetHeader-link"
+                        data-toggle="collapse"
+                  >
+                        <span
+                              aria-hidden="true"
+                              className="searchResults__facetHeader-icon--open indicator glyphicon glyphicon-triangle-bottom"
+                        />
+                         Sort By
+                  </a>
+            </h4>
+      </div>
+      <div
+            className="searchResults__facetControl-container panel-collapse collapse in"
+      >
+            <div
+                  className="searchResults__facetControl-list list-group"
+            >
+                  <select
+                        className="sorting__sortyByControl list-group-item"
+                        onChange={[Function]}
+                  >
+                        <option
+                              selected={true}
+                              value=""
+                        >
+                              Relevance
+                        </option>
+                        <option
+                              selected={false}
+                              value="beds desc"
+                        >
+                              Beds
+                        </option>
+                        <option
+                              selected={false}
+                              value="baths desc"
+                        >
+                              Baths
+                        </option>
+                  </select>
+            </div>
+      </div>
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 1,
+      "_context": Object {},
+      "_currentElement": <SortBy
+        beforeFirstRequest={false}
+        css={null}
+        fields={
+                Array [
+                        Object {
+                          "displayName": "Relevance",
+                          "orderbyClause": "",
+                        },
+                        Object {
+                          "displayName": "Beds",
+                          "orderbyClause": "beds desc",
+                        },
+                        Object {
+                          "displayName": "Baths",
+                          "orderbyClause": "baths desc",
+                        },
+                      ]
+        }
+        onSortChange={[Function]}
+        orderby=""
+/>,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": SortBy {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "beforeFirstRequest": false,
+          "css": null,
+          "fields": Array [
+            Object {
+              "displayName": "Relevance",
+              "orderbyClause": "",
+            },
+            Object {
+              "displayName": "Beds",
+              "orderbyClause": "beds desc",
+            },
+            Object {
+              "displayName": "Baths",
+              "orderbyClause": "baths desc",
+            },
+          ],
+          "onSortChange": [Function],
+          "orderby": "",
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div
+          className="sorting__sortyBy panel-body"
+>
+          <div
+                    className="searchResults__facetHeader-container panel-heading"
+          >
+                    <h4
+                              className="searchResults__facetHeader panel-title"
+                    >
+                              <a
+                                        className="searchResults__facetHeader-link"
+                                        data-toggle="collapse"
+                              >
+                                        <span
+                                                  aria-hidden="true"
+                                                  className="searchResults__facetHeader-icon--open indicator glyphicon glyphicon-triangle-bottom"
+                                        />
+                                         Sort By
+                              </a>
+                    </h4>
+          </div>
+          <div
+                    className="searchResults__facetControl-container panel-collapse collapse in"
+          >
+                    <div
+                              className="searchResults__facetControl-list list-group"
+                    >
+                              <select
+                                        className="sorting__sortyByControl list-group-item"
+                                        onChange={[Function]}
+                              >
+                                        <option
+                                                  selected={true}
+                                                  value=""
+                                        >
+                                                  Relevance
+                                        </option>
+                                        <option
+                                                  selected={false}
+                                                  value="beds desc"
+                                        >
+                                                  Beds
+                                        </option>
+                                        <option
+                                                  selected={false}
+                                                  value="baths desc"
+                                        >
+                                                  Baths
+                                        </option>
+                              </select>
+                    </div>
+          </div>
+</div>,
+        "_debugID": 2,
+        "_renderedOutput": <div
+          className="sorting__sortyBy panel-body"
+>
+          <div
+                    className="searchResults__facetHeader-container panel-heading"
+          >
+                    <h4
+                              className="searchResults__facetHeader panel-title"
+                    >
+                              <a
+                                        className="searchResults__facetHeader-link"
+                                        data-toggle="collapse"
+                              >
+                                        <span
+                                                  aria-hidden="true"
+                                                  className="searchResults__facetHeader-icon--open indicator glyphicon glyphicon-triangle-bottom"
+                                        />
+                                         Sort By
+                              </a>
+                    </h4>
+          </div>
+          <div
+                    className="searchResults__facetControl-container panel-collapse collapse in"
+          >
+                    <div
+                              className="searchResults__facetControl-list list-group"
+                    >
+                              <select
+                                        className="sorting__sortyByControl list-group-item"
+                                        onChange={[Function]}
+                              >
+                                        <option
+                                                  selected={true}
+                                                  value=""
+                                        >
+                                                  Relevance
+                                        </option>
+                                        <option
+                                                  selected={false}
+                                                  value="beds desc"
+                                        >
+                                                  Beds
+                                        </option>
+                                        <option
+                                                  selected={false}
+                                                  value="baths desc"
+                                        >
+                                                  Baths
+                                        </option>
+                              </select>
+                    </div>
+          </div>
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <SortBy
+    beforeFirstRequest={false}
+    css={null}
+    fields={
+        Array [
+            Object {
+              "displayName": "Relevance",
+              "orderbyClause": "",
+            },
+            Object {
+              "displayName": "Beds",
+              "orderbyClause": "beds desc",
+            },
+            Object {
+              "displayName": "Baths",
+              "orderbyClause": "baths desc",
+            },
+          ]
+    }
+    onSortChange={[Function]}
+    orderby=""
+/>,
+}
 `;

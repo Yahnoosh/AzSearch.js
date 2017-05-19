@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as TestUtils from "react-dom/test-utils";
+import { shallow } from "enzyme";
 import SortBy from "../SortBy";
 
 const fields = [
@@ -12,7 +12,7 @@ const orderby = "";
 describe("<SortBy/>", () => {
     it("renders against dummy snapshot", () => {
 
-        expect(TestUtils.createRenderer().render(
+        expect(shallow(
             <SortBy  beforeFirstRequest={false} onSortChange={function(foo){}} fields={fields} css={null} orderby={orderby} />
         )).toMatchSnapshot();
     });

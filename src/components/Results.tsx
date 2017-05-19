@@ -15,7 +15,7 @@ class Results extends React.PureComponent<PropsType, State> {
         topRange = topRange > count ? count : topRange;
         let resultsBlurb =
             <div className={css.results__blurb}>
-                {bottomRange} - {topRange} {countElement}
+                {bottomRange} - {topRange}{countElement}
             </div>;
         resultsBlurb = results.length > 0 ? resultsBlurb : <div></div>;
 

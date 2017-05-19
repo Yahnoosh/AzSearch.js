@@ -21,7 +21,8 @@
     "prodpack": "webpack -p && copy AzSearch.css dist\\",
     "compile": "npm run lint && npm run tscompile",
     "pretest": "npm run lint",
-    "test": "jest"
+    "test": "jest",
+    "test-watch": "jest --watch"
   },
   "author": "Evan Boyle (https://github.com/EvanBoyle)",
   "license": "MIT",
@@ -37,6 +38,7 @@
     "react-spinkit": "^2.1.2"
   },
   "devDependencies": {
+    "@types/enzyme": "^2.8.0",
     "@types/jest": "^19.2.3",
     "@types/numeral": "0.0.20",
     "@types/object-assign": "^4.0.30",
@@ -47,7 +49,8 @@
     "@types/react-spinkit": "^1.1.31",
     "awesome-typescript-loader": "^3.1.2",
     "css-loader": "^0.28.0",
-    "jest": "^19.0.2",
+    "enzyme": "^2.8.2",
+    "jest": "^20.0.3",
     "react": "15.5.4",
     "react-dom": "^15.5.4",
     "react-test-render": "^1.0.3",
