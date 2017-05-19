@@ -1,58 +1,344 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<StaticFilter/> renders against dummy snapshot 1`] = `
-<div
-  className="sorting__sortyBy panel-body"
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div
+    className="sorting__sortyBy panel-body"
 >
-  <div
-    className="searchResults__facetHeader-container panel-heading"
-  >
-    <h4
-      className="searchResults__facetHeader panel-title"
-    >
-      <a
-        className="searchResults__facetHeader-link"
-        data-toggle="collapse"
-      >
-        <span
-          aria-hidden="true"
-          className="searchResults__facetHeader-icon--open indicator glyphicon glyphicon-triangle-bottom"
-        />
-         
-        Home Type
-      </a>
-    </h4>
-  </div>
-  <div
-    className="searchResults__facetControl-container panel-collapse collapse in"
-  >
     <div
-      className="searchResults__facetControl-list list-group"
+        className="searchResults__facetHeader-container panel-heading"
     >
-      <select
-        className="sorting__sortyByControl list-group-item"
-        onChange={[Function]}
-      >
-        <option
-          selected={true}
-          value=""
+        <h4
+            className="searchResults__facetHeader panel-title"
         >
-          Any
-        </option>
-        <option
-          selected={false}
-          value="type eq 'House'"
-        >
-          House
-        </option>
-        <option
-          selected={false}
-          value="type eq 'Apartment'"
-        >
-          Apartment
-        </option>
-      </select>
+            <a
+                className="searchResults__facetHeader-link"
+                data-toggle="collapse"
+            >
+                <span
+                    aria-hidden="true"
+                    className="searchResults__facetHeader-icon--open indicator glyphicon glyphicon-triangle-bottom"
+                />
+                 
+                Home Type
+            </a>
+        </h4>
     </div>
-  </div>
-</div>
+    <div
+        className="searchResults__facetControl-container panel-collapse collapse in"
+    >
+        <div
+            className="searchResults__facetControl-list list-group"
+        >
+            <select
+                className="sorting__sortyByControl list-group-item"
+                onChange={[Function]}
+            >
+                <option
+                    selected={true}
+                    value=""
+                >
+                    Any
+                </option>
+                <option
+                    selected={false}
+                    value="type eq 'House'"
+                >
+                    House
+                </option>
+                <option
+                    selected={false}
+                    value="type eq 'Apartment'"
+                >
+                    Apartment
+                </option>
+            </select>
+        </div>
+    </div>
+</div>,
+  "nodes": Array [
+    <div
+      className="sorting__sortyBy panel-body"
+>
+      <div
+            className="searchResults__facetHeader-container panel-heading"
+      >
+            <h4
+                  className="searchResults__facetHeader panel-title"
+            >
+                  <a
+                        className="searchResults__facetHeader-link"
+                        data-toggle="collapse"
+                  >
+                        <span
+                              aria-hidden="true"
+                              className="searchResults__facetHeader-icon--open indicator glyphicon glyphicon-triangle-bottom"
+                        />
+                         
+                        Home Type
+                  </a>
+            </h4>
+      </div>
+      <div
+            className="searchResults__facetControl-container panel-collapse collapse in"
+      >
+            <div
+                  className="searchResults__facetControl-list list-group"
+            >
+                  <select
+                        className="sorting__sortyByControl list-group-item"
+                        onChange={[Function]}
+                  >
+                        <option
+                              selected={true}
+                              value=""
+                        >
+                              Any
+                        </option>
+                        <option
+                              selected={false}
+                              value="type eq 'House'"
+                        >
+                              House
+                        </option>
+                        <option
+                              selected={false}
+                              value="type eq 'Apartment'"
+                        >
+                              Apartment
+                        </option>
+                  </select>
+            </div>
+      </div>
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 1,
+      "_context": Object {},
+      "_currentElement": <StaticFilter
+        activeFilter=""
+        beforeFirstRequest={false}
+        css={null}
+        filterKey="type"
+        filters={
+                Array [
+                        Object {
+                          "displayName": "Any",
+                          "filter": "",
+                        },
+                        Object {
+                          "displayName": "House",
+                          "filter": "type eq 'House'",
+                        },
+                        Object {
+                          "displayName": "Apartment",
+                          "filter": "type eq 'Apartment'",
+                        },
+                      ]
+        }
+        onFilterChange={[Function]}
+        title="Home Type"
+/>,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StaticFilter {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "activeFilter": "",
+          "beforeFirstRequest": false,
+          "css": null,
+          "filterKey": "type",
+          "filters": Array [
+            Object {
+              "displayName": "Any",
+              "filter": "",
+            },
+            Object {
+              "displayName": "House",
+              "filter": "type eq 'House'",
+            },
+            Object {
+              "displayName": "Apartment",
+              "filter": "type eq 'Apartment'",
+            },
+          ],
+          "onFilterChange": [Function],
+          "title": "Home Type",
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div
+          className="sorting__sortyBy panel-body"
+>
+          <div
+                    className="searchResults__facetHeader-container panel-heading"
+          >
+                    <h4
+                              className="searchResults__facetHeader panel-title"
+                    >
+                              <a
+                                        className="searchResults__facetHeader-link"
+                                        data-toggle="collapse"
+                              >
+                                        <span
+                                                  aria-hidden="true"
+                                                  className="searchResults__facetHeader-icon--open indicator glyphicon glyphicon-triangle-bottom"
+                                        />
+                                         
+                                        Home Type
+                              </a>
+                    </h4>
+          </div>
+          <div
+                    className="searchResults__facetControl-container panel-collapse collapse in"
+          >
+                    <div
+                              className="searchResults__facetControl-list list-group"
+                    >
+                              <select
+                                        className="sorting__sortyByControl list-group-item"
+                                        onChange={[Function]}
+                              >
+                                        <option
+                                                  selected={true}
+                                                  value=""
+                                        >
+                                                  Any
+                                        </option>
+                                        <option
+                                                  selected={false}
+                                                  value="type eq 'House'"
+                                        >
+                                                  House
+                                        </option>
+                                        <option
+                                                  selected={false}
+                                                  value="type eq 'Apartment'"
+                                        >
+                                                  Apartment
+                                        </option>
+                              </select>
+                    </div>
+          </div>
+</div>,
+        "_debugID": 2,
+        "_renderedOutput": <div
+          className="sorting__sortyBy panel-body"
+>
+          <div
+                    className="searchResults__facetHeader-container panel-heading"
+          >
+                    <h4
+                              className="searchResults__facetHeader panel-title"
+                    >
+                              <a
+                                        className="searchResults__facetHeader-link"
+                                        data-toggle="collapse"
+                              >
+                                        <span
+                                                  aria-hidden="true"
+                                                  className="searchResults__facetHeader-icon--open indicator glyphicon glyphicon-triangle-bottom"
+                                        />
+                                         
+                                        Home Type
+                              </a>
+                    </h4>
+          </div>
+          <div
+                    className="searchResults__facetControl-container panel-collapse collapse in"
+          >
+                    <div
+                              className="searchResults__facetControl-list list-group"
+                    >
+                              <select
+                                        className="sorting__sortyByControl list-group-item"
+                                        onChange={[Function]}
+                              >
+                                        <option
+                                                  selected={true}
+                                                  value=""
+                                        >
+                                                  Any
+                                        </option>
+                                        <option
+                                                  selected={false}
+                                                  value="type eq 'House'"
+                                        >
+                                                  House
+                                        </option>
+                                        <option
+                                                  selected={false}
+                                                  value="type eq 'Apartment'"
+                                        >
+                                                  Apartment
+                                        </option>
+                              </select>
+                    </div>
+          </div>
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <StaticFilter
+    activeFilter=""
+    beforeFirstRequest={false}
+    css={null}
+    filterKey="type"
+    filters={
+        Array [
+            Object {
+              "displayName": "Any",
+              "filter": "",
+            },
+            Object {
+              "displayName": "House",
+              "filter": "type eq 'House'",
+            },
+            Object {
+              "displayName": "Apartment",
+              "filter": "type eq 'Apartment'",
+            },
+          ]
+    }
+    onFilterChange={[Function]}
+    title="Home Type"
+/>,
+}
 `;

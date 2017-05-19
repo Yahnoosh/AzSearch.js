@@ -1,6 +1,6 @@
 import * as React from "react";
-import * as TestUtils from "react-dom/test-utils";
 import StaticFilter from "../StaticFilter";
+import { shallow } from "enzyme";
 
 const filters = [
     { displayName: "Any", filter: "" },
@@ -13,7 +13,7 @@ const title = "Home Type";
 describe("<StaticFilter/>", () => {
     it("renders against dummy snapshot", () => {
 
-        expect(TestUtils.createRenderer().render(
+        expect(shallow(
             <StaticFilter  css={null} filters={filters} activeFilter={defaultFilter} filterKey={"type"} beforeFirstRequest={false} onFilterChange={function(foo){}} title={title} />
         )).toMatchSnapshot();
     });
