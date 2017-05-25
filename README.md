@@ -14,6 +14,10 @@ The following link contains a tool to help generate starting sample app that you
 
 * [AzSearch.js application generator](http://azsearchstore.azurewebsites.net/azsearchgenerator/index.html). Generate an app to explore your data with just your service name, query key, and index definition JSON.
 
+## Overview video
+
+* [Building a search app with Azure Search and AzSearch.js (channel9)](https://channel9.msdn.com/Shows/Data-Exposed/Building-Search-Apps-with-Azure-Search-and-AzSearchjs)
+
 ## CORS
 
 Don't forget to enable CORS on your index. Make sure to always use a [query key](https://docs.microsoft.com/en-us/azure/search/search-query-rest-api#identify-your-azure-search-services-query-api-key).
