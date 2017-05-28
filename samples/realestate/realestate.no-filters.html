@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/azsearch.js@0.0.21/dist/AzSearch.css">
+    <title>Real Estate</title>
+
+    <style>
+        .searchResults__result h4 {
+            margin-top: 0px;
+            text-transform: uppercase;
+        }
+
+        .searchResults__result .resultDescription {
+            margin: 0.5em 0 0 0;
+        }
+
+        .searchResults__result ul.resultProperties {
+            margin: 1em 0 0 0;
+            padding: 0;
+        }
+
+        .searchResults__result ul.resultProperties li {
+            display: inline-block;
+            font-size: 1.2em;
+            padding: 0px;
+        }
+
+        .searchResults__result ul.resultProperties i.fa {
+            color: #bbb;
+        }
+
+        .searchResults__result ul.resultProperties li span {
+            padding-left: 0.3em;
+        }
+
+        .searchResults__result ul.resultProperties li.resultProperties__money {
+            width: 8em;
+        }
+
+        .searchResults__result ul.resultProperties li.resultProperties__home {
+            width: 7em;
+        }
+
+        .searchResults__result ul.resultProperties li.resultProperties__bed,
+        .searchResults__result ul.resultProperties li.resultProperties__bath {
+            width: 4em;
+        }
+
+        .sk-bounce1,
+        .sk-bounce2,
+        .sk-bounce3,
+        .sk-spinner {
+            float: right;
+        }
+
+        @media (max-width: 850px) {
+            .searchResults__result ul.resultProperties li {
+                font-size: 1.1em;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .searchResults__result h4 {
+                margin-top: 0.5em;
+            }
+            .searchResults__result ul.resultProperties {
+                margin: 0.5em 0 0 0;
+            }
+            .searchResults__result ul.resultProperties li {
+                font-size: 1em;
+                padding: 0 0.5em 0 0;
+            }
+            .searchResults__result ul.resultProperties li.resultProperties__money {
+                width: inherit;
+            }
+            .searchResults__result ul.resultProperties li.resultProperties__home {
+                width: inherit;
+            }
+            .searchResults__result ul.resultProperties li.resultProperties__bed,
+            .searchResults__result ul.resultProperties li.resultProperties__bath {
+                width: inherit;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#facetPanel" aria-expanded="false"
+                        aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="row">
+                        <div class="col-md-2 pagelabel">
+                            <a class="navbar-brand pagelabel" href="https://github.com/EvanBoyle/AzSearch.js">AzSearch.js</a>
+                        </div>
+                        <div id="searchBox" class="col-mid-8 col-sm-8 col-xs-6"></div>
+                        <div id="navbar" class="navbar-collapse collapse">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 results_section">
+                    <div id="loading"></div>
+                    <div id="results" class="row placeholders">
+                    </div>
+                    <div id="pager" class="row">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JavaScript
+            ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+</body>
+<!-- Dependencies -->
+<script src="https://cdn.jsdelivr.net/react/15.5.4/react.min.js"></script>
+<script src="https://cdn.jsdelivr.net/react/15.5.4/react-dom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/redux/3.6.0/redux.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+<script src="https://use.fontawesome.com/f07430bcbd.js"></script>
+<!-- Main -->
+<script src="https://cdn.jsdelivr.net/npm/azsearch.js@0.0.21/dist/AzSearch.bundle.js"></script>
+<script>
+    // Initialize
+    var automagic = new AzSearch.Automagic({ index: "realestate-us-sample", queryKey: "D1CD08C7AC6A1886024E0F23B1824417", service: "azs-playground" });
+    // Set some processors to format results for display
+    var suggestionsProcessor = function (results) {
+        return results.map(function (result) {
+            result.displayText = result.number + " " + result.street + " " + result.city + ", " + result.region + " " + result.countryCode;
+            result.searchText = result["@search.text"];
+            return result;
+        });
+    };
+    var resultsProcessor = function (results) {
+        return results.map(function (result) {
+            result.displayText = result.number + " " + result.street + " " + result.city + ", " + result.region + " " + result.countryCode;
+            var summary = result.description;
+            result.summary = summary.length < 200 ? summary : summary.substring(0, 200) + "...";
+            result.sqft = numeral(result.sqft).format("0,0");
+            result.price = numeral(result.price).format("$0,0");
+            return result;
+        });
+    };
+    automagic.store.setSuggestionsProcessor(suggestionsProcessor);
+    automagic.store.setResultsProcessor(resultsProcessor);
+
+    // Create some mustache templates to customize result/suggestion display. Default is JSON.stringify(result,null,4) rendered in <pre> and <code>.
+    var resultTemplate =
+        `<div class="col-xs-12 col-sm-3 col-md-3 result_img">
+            <img class="img-responsive result_img" src={{thumbnail}} alt="image not found" />
+        </div>
+        <div class="col-xs-12 col-sm-9 col-md-9">
+            <h4>{{displayText}}</h4>
+            <div class="resultDescription">
+                {{{summary}}}
+            </div>
+            <ul class="resultProperties">
+                <li class="resultProperties__money"><i class="fa fa-money" aria-hidden="true"></i><span>{{price}}</span></li>
+                <li class="resultProperties__home"><i class="fa fa-home" aria-hidden="true"></i><span>{{sqft}}ft<sup>2</sup></span></li>
+                <li class="resultProperties__bed"><i class="fa fa-bed" aria-hidden="true"></i><span>{{beds}}</span></li>
+                <li class="resultProperties__bath"><i class="fa fa-bath" aria-hidden="true"></i><span>{{baths}}</span></li>
+            </ul>
+        </div>`;
+    var suggestionsTemplate = "{{displayText}} <br/> {{{searchText}}}";
+
+    // Add a search box that uses suggester "sg", grabbing some additional fields to display during suggestions. Use the template defined above
+    automagic.addSearchBox("searchBox",
+        {
+            highlightPreTag: "<b>",
+            highlightPostTag: "</b>",
+            suggesterName: "sg",
+            select: "number,street,city,region,countryCode"
+        },
+        "displayText",
+        suggestionsTemplate);
+    // add a results view using the template defined above
+    automagic.addResults("results", { count: true }, resultTemplate);
+    // Add a loading indicator above the results view
+    automagic.addLoadingIndicator("loading");
+    // Adds a pager control << 1 2 3 ... >>
+    automagic.addPager("pager");
+    // range facet for price
+    automagic.addRangeFacet("priceFacet", "price", "number", 0, 2000000);
+    // range facet for sqft
+    automagic.addRangeFacet("sqftFacet", "sqft", "number", 0, 17000);
+    // checkbox facet for numeric field beds
+    automagic.addCheckboxFacet("bedsFacet", "beds", "number");
+    // checkbox facet for numeric field baths
+    automagic.addCheckboxFacet("bathsFacet", "baths", "number");
+    // checkbox facet for collection field tags
+    automagic.addCheckboxFacet("tagsFacet", "tags", "collection");
+    // filter header & footer options 
+    automagic.addClearFiltersButton("facetHeader");
+    automagic.addClearFiltersButton("facetFooter");
+    // add sorting options
+    var fields = [
+        { displayName: "Relevance", fieldName: "" },
+        { displayName: "Price", fieldName: "price" },
+        { displayName: "Size", fieldName: "sqft" },
+        { displayName: "Beds", fieldName: "beds" },
+        { displayName: "Baths", fieldName: "baths" }
+    ];
+
+    // ask for users location and add a geo sorting option
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            fields.push({
+                displayName: "Distance",
+                fieldName: "location",
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude
+            });
+            automagic.addSortBy("sortBy", fields, "beds");
+        },
+            function () {
+                // on rejection from user
+                automagic.addSortBy("sortBy", fields, "beds");
+            });
+    } else {
+        automagic.addSortBy("sortBy", fields, "beds");
+    }
+    // static filter for home type
+    var filters = [
+        { displayName: "Any", filter: "" },
+        { displayName: "House", filter: "type eq 'House'" },
+        { displayName: "Apartment", filter: "type eq 'Apartment'" }
+    ];
+    var defaultFilter = "";
+    var title = "Home Type";
+    automagic.addStaticFilter("typeFilter", "type", filters, defaultFilter, title);
+
+</script>
+
+</html>
