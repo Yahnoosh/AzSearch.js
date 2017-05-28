@@ -4,7 +4,7 @@ Automagical UI and sample react controls for [Azure Search](https://docs.microso
 [![Build Status](https://travis-ci.org/EvanBoyle/AzSearch.js.svg?branch=master)](https://travis-ci.org/EvanBoyle/AzSearch.js)
 
 ## Live Demo
-* [Real estate demo](https://azsearchstore.azurewebsites.net/realestate.html) | [source](https://github.com/EvanBoyle/AzSearch.js/blob/master/realestate.html)
+* [Real estate demo](https://azsearchstore.azurewebsites.net/realestate.html) | [source](https://github.com/EvanBoyle/AzSearch.js/blob/master/samples/realestate.html)
 
 ## Get started developing an AzSearch.js app in Typescript
 * [Sample TypeScript project](https://github.com/EvanBoyle/AzSearch.jsTypeScriptStarter): clone, customize, and go.
@@ -136,7 +136,7 @@ Sets basic configuration to connect to service. Expects an object of type Config
 ### addSearchBox
 * ```addSearchBox(htmlId, suggestionsParametersUpdate?, suggestionValueKey?, suggestionTemplate?, css?)```
 
-Adds an input field capable of suggestions/autocomplete and executing search requests. Attaches on the specified htmlID. Optionally takes SuggestionUpdateParameters (from AzSearchStore), an optional key indicating which suggestion value should be set when a suggestion is clicked (defaults to "@search.text"), a [mustache template](https://mustache.github.io/mustache.5.html) to customize rendering, or css overrides. When template is not specified, a json representation of the suggestions is displayed. When specified, the mustache template is rendered against east suggestion. The content of each  suggestion can be customized by adding fields via the select parameter as shown in the example below, or by setting a 
+Adds an input field capable of suggestions/autocomplete and executing search requests. Attaches on the specified htmlID. Optionally takes SuggestionUpdateParameters (from AzSearchStore), an optional key indicating which suggestion value should be set when a suggestion is clicked (defaults to "@search.text"), a [mustache template](https://mustache.github.io/mustache.5.html) to customize rendering, or css overrides. When template is not specified, a json representation of the suggestions is displayed. When specified, the mustache template is rendered against east suggestion. The content of each  suggestion can be customized by adding fields via the select parameter as shown in the example below, or by setting a
 [suggestions processor](https://github.com/EvanBoyle/AzSearchStore#client-side-results-processing) on the store.
 ```js
     // css class overrides
